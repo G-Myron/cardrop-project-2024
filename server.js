@@ -1,9 +1,11 @@
 const express = require("express");
+const path = require('path');
+
 const app = express();
-const port = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.sendFile(path.join(__dirname, 'views', 'user', 'index.hbs'));
 });
 
 app.get("/test", (req, res) => {
@@ -11,6 +13,6 @@ app.get("/test", (req, res) => {
 });
 
 
-app.listen(port, () => {
-  console.log(`Express app listening on  http://localhost:${port}/`);
+app.listen(PORT, () => {
+  console.log(`Express app listening on  http://localhost:${PORT}/`);
 });
