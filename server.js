@@ -1,18 +1,28 @@
 const express = require("express");
-const path = require('path');
+const exphbs = require("express-handlebars");
 
 const app = express();
-const PORT = process.env.PORT || 3000;
-
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'user', 'index.hbs'));
-});
-
-app.get("/test", (req, res) => {
-    res.send("This is just a test get controller.");
-});
+const port = process.env.PORT || 3000;
 
 
-app.listen(PORT, () => {
-  console.log(`Express app listening on  http://localhost:${PORT}/`);
+app.set('view engine', 'hbs');
+app.engine('hbs', exphbs.engine({
+  extname: '.hbs',
+  layoutsDir: __dirname + '/views/'
+}));
+
+app.use(express.static('public'));
+
+
+app.get('/', (req, res) =>
+  res.render('user', {layout: 'user/index'})
+);
+
+app.get('/edit', (req, res) =>
+  res.render('user', {layout: 'user/edit'})
+);
+
+
+app.listen(port, () => {
+  console.log(`Express-Handlebars app listening on  http://localhost:${port}/`);
 });
