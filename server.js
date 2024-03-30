@@ -23,6 +23,6 @@ app.get('/edit', (req, res) =>
 );
 
 
-app.listen(port, () => {
+app.listen(port, '0.0.0.0', () => {
   console.log(`Express-Handlebars app listening on  http://localhost:${port}/`);
 });
