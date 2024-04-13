@@ -2,6 +2,7 @@
   "engines": {
     "node": ">=10.0.0"
   },
+  "type": "module",
   "dependencies": {
     "express": "^4.19.2",
     "express-handlebars": "^7.1.2"
