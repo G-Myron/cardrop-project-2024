@@ -1,4 +1,7 @@
 import express from 'express'
+import swaggerUi from 'swagger-ui-express'
+import swaggerJSDoc from 'swagger-jsdoc'
+import swaggerAutogen from 'swagger-autogen'
 import { engine } from 'express-handlebars'
 import { router as userRouter } from './routes/userRoutes.js'
 import { router as indexRouter } from './routes/indexRoutes.js'
@@ -13,6 +16,24 @@ app.set("view engine", 'hbs')
 // Static folder
 app.use(express.static("public"))
 app.use(express.urlencoded({extended: false}))
+
+// Swagger UI
+const options = {
+  swaggerDefinition: {
+    restapi: '3.0.0',
+    info: {
+      title: 'My API',
+      version: '1.0.0',
+      description: 'My REST API',
+    },
+    servers: ['http://localhost:3000']
+  },
+  apis: []
+}
+// swaggerAutogen("swaggerTest.json", ["./routes/*.js"])
+import swaggerTest from './swaggerTest.json' with {type:"json"}
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerTest))
+// app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerJSDoc(options)))
 
 // Routers
 app.use(indexRouter)
