@@ -1,4 +1,4 @@
-import express from "express";
+import express, { text } from "express";
 import exphbs from "express-handlebars";
 
 const app = express();
@@ -11,16 +11,25 @@ app.engine('hbs', exphbs.engine({
   layoutsDir: './views/'
 }));
 
-app.use(express.static('public'));
+// app.use(express.static('public'));
+// app.use(express.urlencoded({ extended: true })); // for POST req data
 
 
 app.get('/', (req, res) =>
-  res.render('user', {layout: 'user/index'})
-);
+  res.render('user', {layout: 'user/index', text: 'I am the Teext!'})
+)
 
 app.get('/edit', (req, res) =>
   res.render('user', {layout: 'user/edit'})
-);
+)
+
+app.get('/car/:carId', (req, res) =>
+  res.send(req.params.carId)
+)
+
+app.get('/api', (req, res) =>
+  res.json({"name":"car-rentals"})
+)
 
 
 app.listen(port, () => {
