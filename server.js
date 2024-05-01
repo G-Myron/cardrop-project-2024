@@ -1,14 +1,26 @@
-const express = require("express");
+import express from 'express'
+import { engine } from 'express-handlebars'
+import { router as userRouter } from './routes/userRoutes.js'
+import { router as indexRouter } from './routes/indexRoutes.js'
+
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
+// Handlebars
+app.engine('hbs', engine({extname: ".hbs"}))
+app.set("view engine", 'hbs')
 
-app.get("/test", (req, res) => {
-    res.send("This is just a test get controller.");
-});
+// Static folder
+app.use(express.static("public"))
+app.use(express.urlencoded({extended: false}))
+
+// Routers
+app.use(indexRouter)
+app.use("/user", userRouter)
+
+app.use((req, res) => {
+  res.redirect("/")
+})
 
 
 app.listen(port, () => {
