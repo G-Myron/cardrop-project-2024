@@ -8,11 +8,11 @@ router.get("/", (req, res) => {
 })
 
 router.get("/signup", (req, res) => {
-    res.render("user/create");
+    res.render("user/create")
 });
 
 router.get("/login", (req, res) => {
-    res.render("user/login");
+    res.render("user/login")
 });
 
 

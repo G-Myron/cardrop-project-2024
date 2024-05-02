@@ -4,11 +4,11 @@ const router = express.Router()
 
 
 router.get("/", (req, res) => {
-    res.render("index");
+    res.render("index")
 });
 
 router.get("/test", (req, res) => {
-    res.render("test");
+    res.render("test")
 });
 
 
