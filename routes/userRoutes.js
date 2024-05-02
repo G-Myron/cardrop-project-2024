@@ -3,18 +3,18 @@ import express from 'express'
 const router = express.Router()
 
 
-router.get("/", (req, res) => {
-    res.redirect("login")
+router.get("/edit", (req, res) => {
+    res.render("user/edit", {edit: 1})
+});
+
+router.get("/my_reservations", (req, res) => {
+    res.render("user/reservations", {reserv: 1})
 })
 
-router.get("/signup", (req, res) => {
-    res.render("user/create")
-});
 
-router.get("/login", (req, res) => {
-    res.render("user/login")
-});
-
+router.get("/", (req, res) => {
+    res.redirect("/login")
+})
 
 
 router.use((req, res) => {
