@@ -17,16 +17,14 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    
+
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-    <main>
-        {{>header}}
-        <div class="container">
-            {{{body}}}
-        </div>
-        {{>footer}}
+    {{>header}}
+    <main class="container">
+        {{{body}}}
     </main>
+    {{>footer}}
 </body>
 </html>
