@@ -11,7 +11,9 @@ const port = process.env.PORT || 3000;
 // Handlebars
 app.engine('hbs', engine({
   extname: ".hbs",
-  helpers: { eq: (a, b) => a===b }
+  helpers: {
+    eq: (a, b) => a===b
+  }
 }))
 app.set("view engine", 'hbs')
 
