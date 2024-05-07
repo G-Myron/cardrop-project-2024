@@ -40,5 +40,15 @@
 
   <!-- Submit button -->
   <button type="submit" class="btn btn-primary w-100 mb-4">
-    Sign {{#if (eq action "signup")}} up {{else}} in {{/if}}</button>
+    Sign {{#if (eq action "signup")}} up {{else}} in {{/if}}
+  </button>
+
+  <!-- Link to the other form -->
+  <div>
+    {{#if (eq action "signup")}}
+    Already have an account? <a href="/login">Login</a> here!
+    {{else}}
+    You don't have an account? <a href="/signup">Sign up</a> now!
+    {{/if}}
+  </div>
 </form>

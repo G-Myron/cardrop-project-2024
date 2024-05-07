@@ -28,7 +28,7 @@ router.get("/vehicle/:id", (req, res) => {
 });
 
 router.get("/book", (req, res) => {
-    res.send("Book the car with id=?")
+    res.send("Instead, make a POST req to 'My Reservations' with a form containing the id.")
 });
 
 
