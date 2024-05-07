@@ -1,0 +1,50 @@
+<section class="card m-lg-5">
+  <div class="card-body p-4">
+    <div class="d-flex flex-wrap">
+      <div class="flex-shrink-0">
+        <img src="/images/car.jpg" alt="Car: {{title}}" class="img-fluid rounded" width="250">
+      </div>
+      <div class="flex-grow-1 ms-3">
+        <div class="d-flex justify-content-between">
+          <div>
+            <h5 class="card-title">{{title}}</h5>
+            <p class="card-text mb-2">like Alfa Romeo Giulia</p>
+          </div>
+          <div>
+            <h2 class="mb-0 me-3">{{price}}€</h2>
+            <p class="mb-0" style="font-size:.8em">for 3 days</p>
+          </div>
+        </div>
+        <div class="d-flex justify-content-evenly rounded-3 p-2 mb-2 gap-1 bg-body-secondary">
+          <div>
+            <p class="small text-muted mb-1">Seats</p>
+            <p class="">4</p>
+          </div>
+          <div class="px-3">
+            <p class="small text-muted mb-1">Doors</p>
+            <p class="">5</p>
+          </div>
+          <div>
+            <p class="small text-muted mb-1">Transmition</p>
+            <p class="">Manual</p>
+          </div>
+          <div>
+            <p class="small text-muted mb-1">Bags</p>
+            <p class="">2</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr class="mb-0"><hr class="mt-0">
+    <div class="d-flex align-items-center flex-column gap-4">
+      <h2>Evaluations</h2>
+      <div class="d-flex flex-column gap-4 overflow-auto">
+        {{>cards/evaluation user="John Doe" time="3 mins ago" eval=4}}
+        {{>cards/evaluation user="Colin Serster" time="2 days ago" eval=3}}
+      </div>
+      <div class="d-flex justify-content-end w-75 mt-5">
+        <a href="/book" class="btn btn-success px-4 py-3">Book vehicle</a>
+      </div>
+    </div>
+  </div>
+</section>

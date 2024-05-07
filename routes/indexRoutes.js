@@ -27,6 +27,10 @@ router.get("/vehicle/:id", (req, res) => {
     }
 });
 
+router.get("/book", (req, res) => {
+    res.send("Book the car with id=?")
+});
+
 
 
 export {router}
