@@ -1,4 +1,4 @@
-<div class="card text-center my-5">
+{{!-- <div class="card text-center my-5">
   <div class="card-header">
     <h2>{{title}}</h2>
   </div>
@@ -10,4 +10,39 @@
   <div class="card-footer text-muted">
     2 days ago
   </div>
-</div>
+</div> --}}
+
+<section class="card m-lg-5">
+  <div class="card-body p-4">
+    <div class="d-flex flex-wrap">
+      <div class="flex-shrink-0">
+        <img src="/images/car.jpg" alt="Car: {{title}}" class="img-fluid rounded" width="250">
+      </div>
+      <div class="flex-grow-1 ms-3">
+        <h5 class="card-title">{{title}}</h5>
+        <p class="mb-2 pb-1">like Alfa Romeo Giulia</p>
+        <div class="d-flex justify-content-evenly rounded-3 p-2 mb-2 gap-1 bg-body-secondary">
+          <div>
+            <p class="small text-muted mb-1">Seats</p>
+            <p class="">4</p>
+          </div>
+          <div class="px-3">
+            <p class="small text-muted mb-1">Doors</p>
+            <p class="">5</p>
+          </div>
+          <div>
+            <p class="small text-muted mb-1">Transmition</p>
+            <p class="">Manual</p>
+          </div>
+          <div>
+            <p class="small text-muted mb-1">Bags</p>
+            <p class="">2</p>
+          </div>
+        </div>
+        <div class="d-flex justify-content-end p-1 pb-0">
+          <a href="/vehicle/{{id}}" class="btn btn-primary px-4">See details</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
