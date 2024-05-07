@@ -1,5 +1,5 @@
 <form method="post" action="/api/{{action}}">
-  {{#if register}}
+  {{#if (eq action "signup")}}
   <!-- 2 column grid layout with text inputs for the first and last name -->
   <div class="row">
     <div class="col-md-6 mb-4">

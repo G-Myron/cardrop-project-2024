@@ -1,5 +1,5 @@
 import express from 'express'
-import { engine } from 'express-handlebars'
+import { engine, create } from 'express-handlebars'
 
 import { router as userRouter } from './routes/userRoutes.js'
 import { router as indexRouter } from './routes/indexRoutes.js'
@@ -9,7 +9,10 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 // Handlebars
-app.engine('hbs', engine({extname: ".hbs"}))
+app.engine('hbs', engine({
+  extname: ".hbs",
+  helpers: { eq: (a, b) => a===b }
+}))
 app.set("view engine", 'hbs')
 
 // Static folder
