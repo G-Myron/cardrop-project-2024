@@ -1,12 +1,12 @@
 import express from 'express'
-import { engine, create } from 'express-handlebars'
+import { engine } from 'express-handlebars'
 
 import { router as userRouter } from './routes/userRoutes.js'
 import { router as indexRouter } from './routes/indexRoutes.js'
 import { router as apiRouter } from './routes/apiRoutes.js'
 
-const app = express();
-const port = process.env.PORT || 3000;
+const app = express()
+const port = process.env.PORT || 3000
 
 // Handlebars
 app.engine('hbs', engine({
@@ -35,5 +35,5 @@ app.use((req, res) => {
 
 
 app.listen(port, () => {
-  console.log(`Express app listening on  http://localhost:${port}/`);
-});
+  console.log(`Express app listening on  http://localhost:${port}/`)
+})

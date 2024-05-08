@@ -6,7 +6,7 @@ const password = process.env.MONGODB_PASSWORD //Ask your admin
 const uri = `mongodb+srv://myron:${password}@rentcarcluster.deg8eob.mongodb.net/?retryWrites=true&w=majority&appName=RentCarCluster`
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
-const client = new MongoClient(uri, {
+const mongoDbClient = new MongoClient(uri, {
   serverApi: {
     version: ServerApiVersion.v1,
     strict: true,
@@ -17,16 +17,33 @@ const client = new MongoClient(uri, {
 async function checkUp() {
   try {
     // Connect the client to the server
-    await client.connect()
+    await mongoDbClient.connect()
     
     // Send a ping to confirm a successful connection
-    await client.db("admin").command({ ping: 1 })
+    await mongoDbClient.db("admin").command({ ping: 1 })
     console.log("Successfully connected to MongoDB!")
   }
   finally {
     // Ensures that the client will close when you finish/error
-    await client.close()
+    await mongoDbClient.close()
   }
 }
 
-checkUp().catch(console.dir)
+async function initializeDB() {
+  try {
+    await mongoDbClient.connect()
+    
+    // Drop and create database
+    mongoDbClient.db('rentACar').dropDatabase()
+    mongoDbClient.db('rentACar')
+  }
+  finally { await mongoDbClient.close() }
+}
+
+// If __name__ == main
+if (process.argv[1] === import.meta.filename){
+  checkUp().catch(console.dir)
+  initializeDB().catch(console.dir)
+}
+
+export { mongoDbClient, initializeDB }
