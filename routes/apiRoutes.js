@@ -4,8 +4,13 @@ import { UserController } from '../controllers/userController.js'
 const router = express.Router()
 
 
+router.get("/users", async (req, res) => {
+    res.send(await UserController.getAllUsers())
+})
+
 router.post("/login", async (req, res) => {
-    res.send(await UserController.findAll())
+    await UserController.handleLogin()
+    res.redirect("/")
 })
 
 router.post("/signup", (req, res) => {

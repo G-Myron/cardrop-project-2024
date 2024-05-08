@@ -42,8 +42,12 @@ async function initializeDB() {
 
 // If __name__ == main
 if (process.argv[1] === import.meta.filename){
-  checkUp().catch(console.dir)
-  initializeDB().catch(console.dir)
+  await checkUp().catch(console.dir)
+  await initializeDB().catch(console.dir)
 }
 
-export { mongoDbClient, initializeDB }
+// Open connection globaly for all app (has pros and cons)
+const _ = await mongoDbClient.connect()
+const db = mongoDbClient.db("rentACar")
+
+export { db }
