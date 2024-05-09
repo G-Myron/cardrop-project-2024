@@ -1,7 +1,7 @@
 {
   "name": "web_project_2024",
   "version": "1.0.0",
-  "description": "The final project for 4th year Computer Engineering class on \"Web programming\"",
+  "description": "An app for car rentals. - The final project for 4th year Computer Engineering class on \"Web programming\"",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -12,15 +12,17 @@
     "url": "https://github.com/G-Myron/web-project-2024.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Myron Giannakis",
   "type": "module",
   "engines": {
     "node": ">=10.0.0"
   },
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "express-handlebars": "^7.1.2",
+    "express-session": "^1.18.0",
     "mongodb": "^6.6.1",
     "nodemon": "^3.1.0"
   }

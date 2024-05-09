@@ -1,4 +1,5 @@
 import { db, closeDb } from "./database.js"
+import bcrypt from 'bcrypt'
 
 export class UsersCollection {
   static async initializeUsers() {
@@ -7,10 +8,11 @@ export class UsersCollection {
     await db.createCollection('users')
 
     // Populate collection
+    const defaultPassword = await bcrypt.hash('ok', 10)
     await db.collection('users').insertMany([
-      { name: 'Myron', email: 'myron@gmail.com', password: 'ok' },
-      { name: 'John', email: 'a@a.uk', password: 'ok' },
-      { name: 'John', email: 'ok@email.com', password: 'ok' },
+      { name: 'Myron', email: 'myron@gmail.com', password: defaultPassword },
+      { name: 'John', email: 'a@a.uk', password: defaultPassword },
+      { name: 'John', email: 'ok@email.com', password: defaultPassword },
     ])
 
     console.log("Successfully initialized users collection!")
