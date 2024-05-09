@@ -5,12 +5,17 @@ const router = express.Router()
 
 
 router.get("/users", async (req, res) => {
+    console.log(req.params)
     res.send(await UserController.getAllUsers())
+})
+router.get("/users/:email", async (req, res) => {
+    res.send(await UserController.getUserDetails(req.params.email))
 })
 
 router.post("/login", async (req, res) => {
-    await UserController.handleLogin()
-    res.redirect("/")
+    if (await UserController.handleLogin(req.body.email, req.body.password))
+        res.redirect("/")
+    else res.redirect("/login")
 })
 
 router.post("/signup", (req, res) => {

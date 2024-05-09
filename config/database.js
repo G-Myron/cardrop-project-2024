@@ -14,20 +14,6 @@ const mongoDbClient = new MongoClient(uri, {
   }
 })
 
-async function checkUp() {
-  try {
-    // Connect the client to the server
-    await mongoDbClient.connect()
-    
-    // Send a ping to confirm a successful connection
-    await mongoDbClient.db("admin").command({ ping: 1 })
-    console.log("Successfully connected to MongoDB!")
-  }
-  finally {
-    // Ensures that the client will close when you finish/error
-    await mongoDbClient.close()
-  }
-}
 
 async function initializeDB() {
   try {
@@ -42,12 +28,13 @@ async function initializeDB() {
 
 // If __name__ == main
 if (process.argv[1] === import.meta.filename){
-  await checkUp().catch(console.dir)
+  console.log("Running database script..")
   await initializeDB().catch(console.dir)
 }
 
 // Open connection globaly for all app (has pros and cons)
 const _ = await mongoDbClient.connect()
+const closeDb = async () => await mongoDbClient.close()
 const db = mongoDbClient.db("rentACar")
 
-export { db }
+export { db, closeDb }
