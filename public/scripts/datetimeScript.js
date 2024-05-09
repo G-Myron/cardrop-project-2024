@@ -1,5 +1,5 @@
-const dateFromPicker = document.querySelector(".index input#rentDateFrom")
-const dateToPicker = document.querySelector(".index input#rentDateTo")
+const dateFromPicker = document.querySelector(" input#rentDateFrom")
+const dateToPicker = document.querySelector(" input#rentDateTo")
 
 const timezone = new Date().getTimezoneOffset() * 60_000
 
