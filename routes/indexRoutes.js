@@ -5,15 +5,15 @@ const router = express.Router()
 
 router.get("/", (req, res) => {
     res.render("index", {home: 1})
-})
+});
 
 router.get("/signup", (req, res) => {
     res.render("user/create", {signup: 1})
-})
+});
 
 router.get("/login", (req, res) => {
     res.render("user/login", {login: 1})
-})
+});
 
 
 router.get("/vehicle/:id", (req, res) => {
@@ -25,11 +25,11 @@ router.get("/vehicle/:id", (req, res) => {
         res.status(400)
         throw new Error("Error. Invalid id: " + id)
     }
-})
+});
 
 router.get("/book", (req, res) => {
     res.send("Instead, make a POST req to 'My Reservations' with a form containing the id.")
-})
+});
 
 
 
