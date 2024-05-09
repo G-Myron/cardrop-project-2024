@@ -5,7 +5,6 @@ const router = express.Router()
 
 
 router.get("/users", async (req, res) => {
-    console.log(req.params)
     res.send(await UserController.getAllUsers())
 })
 router.get("/users/:email", async (req, res) => {
