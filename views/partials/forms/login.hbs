@@ -1,0 +1,67 @@
+<form method="post" action="/api/{{action}}" class="needs-validation" novalidate>
+
+  <!-- Email input -->
+  <div class="form-floating mb-4">
+    <input type="email" class="form-control" name="email" id="floatingEmail" placeholder="Email" required autofocus>
+    <label for="floatingEmail">Email</label>
+  </div>
+
+  {{#if (eq action "signup")}}
+  <!-- 2 column grid layout with text inputs for the first and last name -->
+  <div class="row">
+    <div class="col-md-6 mb-4">
+      <div class="form-floating">
+        <input type="text" class="form-control" name="first-name" id="floatingFirstName" placeholder="John">
+        <label for="floatingFirstName">First name</label>
+      </div>
+    </div>
+    <div class="col-md-6 mb-4">
+      <div class="form-floating">
+        <input type="text" class="form-control" name="last-name" id="floatingLastName" placeholder="Doe">
+        <label for="floatingLastName">Last name</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- New password input -->
+  <div class="form-floating mb-4">
+    <input type="password" class="form-control" name="new-password" id="floatingNewPassword" placeholder="Password" required>
+    <label for="floatingNewPassword">New password</label>
+  </div>
+  <!-- Repeat password input -->
+  <div class="form-floating mb-4">
+    <input type="password" class="form-control" name="confirm-password" id="floatingConfirmPassword" placeholder="Password" required>
+    <label for="floatingConfirmPassword">Confirm password</label>
+  </div>
+
+  {{else}}
+
+  <!-- Password input -->
+  <div class="form-floating mb-4">
+    <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="Password" required>
+    <label for="floatingPassword">Password</label>
+  </div>
+  {{/if}}
+
+  <!-- Remember me checkbox -->
+  <div class="form-check text-start mb-4">
+  {{#unless (eq action "signup")}}
+    <input class="form-check-input dmxValidator-invalid" type="checkbox" name="remember-me" id="rememberMeCheck">
+    <label class="form-check-label" for="rememberMeCheck">Remember me</label>
+  {{/unless}}
+  </div>
+
+  <!-- Submit button -->
+  <button type="submit" class="btn btn-primary w-100 mb-4">
+    Sign {{#if (eq action "signup")}} up {{else}} in {{/if}}
+  </button>
+
+  <!-- Link to the other form -->
+  <div>
+    {{#if (eq action "signup")}}
+    Already have an account? <a href="/login">Login</a> here!
+    {{else}}
+    You don't have an account? <a href="/signup">Sign up</a> now!
+    {{/if}}
+  </div>
+</form>

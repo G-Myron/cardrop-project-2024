@@ -1,5 +1,5 @@
-<div class="">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<header class="navbar navbar-expand-md sticky-top bg-primary">
+    <nav class="container navbar navbar-dark flex-wrap flex-md-nowrap">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">
                 <img src="/logo.png" alt="Logo" height="40px">
@@ -9,14 +9,15 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-link {{#if home}}active{{/if}}" aria-current="page" href="/">Home</a>
+                    <a class="nav-link {{#if home}}active{{/if}}" href="/">Home</a>
+                    <a class="nav-link {{#if details}}active{{/if}}" href="/vehicle/1">Vehicle details</a>
+                    <a class="nav-link {{#if reserv}}active{{/if}}" href="/user/my_reservations">My reserveations</a>
                     <a class="nav-link {{#if signup}}active{{/if}}" href="/signup">Signup</a>
                     <a class="nav-link {{#if login}}active{{/if}}" href="/login">Login</a>
-                    <a class="nav-link {{#if details}}active{{/if}}" href="/vehicle/1">Vehicle details</a>
-                    <a class="nav-link {{#if edit}}active{{/if}}" href="/user/edit">Edit profile</a>
-                    <a class="nav-link {{#if reserv}}active{{/if}}" href="/user/my_reservations">Reserveations</a>
+                    <a class="nav-link {{#if edit}}active{{/if}}" href="/user/edit">(Edit profile)</a>
                 </div>
             </div>
+            {{>helpers/color_mode}}
         </div>
     </nav>
-</div>
+</header>
