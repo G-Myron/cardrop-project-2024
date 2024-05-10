@@ -5,6 +5,7 @@ import session from 'express-session'
 import { router as userRouter } from './routes/userRoutes.js'
 import { router as indexRouter } from './routes/indexRoutes.js'
 import { router as apiRouter } from './routes/apiRoutes.js'
+import { router as authRouter } from './routes/authRoutes.js'
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -37,7 +38,7 @@ app.use( session({
 }))
 
 // Check Authentication
-const authWhiteList = ["/login", "/signup", "/api/login", "/api/signup", "/api/users"]
+const authWhiteList = ["/login", "/signup", "/auth/login", "/auth/signup", "/api/users"]
 app.use((req, res, next) => {
   if(req.session.username || authWhiteList.includes(req.originalUrl)){
     res.locals.username = req.session.username
@@ -50,7 +51,9 @@ app.use((req, res, next) => {
 app.use(indexRouter)
 app.use("/user", userRouter)
 app.use("/api", apiRouter)
+app.use("/auth", authRouter)
 
+// Redirect any other route
 app.use((req, res) => {
   res.redirect("/")
 })
