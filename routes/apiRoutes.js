@@ -12,8 +12,10 @@ router.get("/users/:email", async (req, res) => {
 })
 
 router.post("/login", async (req, res) => {
-    if (await UserController.handleLogin(req.body.email, req.body.password))
+    if (await UserController.handleLogin(req.body.email, req.body.password)){
+        req.session.username = req.body.email
         res.redirect("/")
+    }
     else res.redirect("/login")
 })
 
@@ -23,7 +25,8 @@ router.post("/signup", (req, res) => {
 
 
 router.get("/logout", (req, res) => {
-    res.send(req.body)
+    req.session.destroy()
+    res.redirect("/")
 })
 
 router.post("/search", (req, res) => {

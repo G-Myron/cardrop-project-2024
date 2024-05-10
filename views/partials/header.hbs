@@ -12,8 +12,12 @@
                     <a class="nav-link {{#if home}}active{{/if}}" href="/">Home</a>
                     <a class="nav-link {{#if details}}active{{/if}}" href="/vehicle/1">Vehicle details</a>
                     <a class="nav-link {{#if reserv}}active{{/if}}" href="/user/my_reservations">My reserveations</a>
+                    {{#if username}}
+                    <a class="nav-link" href="/api/logout">Logout</a>
+                    {{else}}
                     <a class="nav-link {{#if signup}}active{{/if}}" href="/signup">Signup</a>
                     <a class="nav-link {{#if login}}active{{/if}}" href="/login">Login</a>
+                    {{/if}}
                     <a class="nav-link {{#if edit}}active{{/if}}" href="/user/edit">(Edit profile)</a>
                 </div>
             </div>
