@@ -14,11 +14,11 @@
                     <a class="nav-link {{#if reserv}}active{{/if}}" href="/user/my_reservations">My reserveations</a>
                     {{#if username}}
                     <a class="nav-link" href="/api/logout">Logout</a>
+                    <a class="nav-link {{#if edit}}active{{/if}}" href="/user/edit">Edit profile ({{username}})</a>
                     {{else}}
                     <a class="nav-link {{#if signup}}active{{/if}}" href="/signup">Signup</a>
                     <a class="nav-link {{#if login}}active{{/if}}" href="/login">Login</a>
                     {{/if}}
-                    <a class="nav-link {{#if edit}}active{{/if}}" href="/user/edit">(Edit profile)</a>
                 </div>
             </div>
             {{>helpers/color_mode}}

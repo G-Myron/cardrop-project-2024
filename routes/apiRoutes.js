@@ -12,15 +12,20 @@ router.get("/users/:email", async (req, res) => {
 })
 
 router.post("/login", async (req, res) => {
-    if (await UserController.handleLogin(req.body.email, req.body.password)){
+    if (await UserController.handleLogin(req.body)){
         req.session.username = req.body.email
         res.redirect("/")
     }
-    else res.redirect("/login")
+    else res.redirect("./logout")
 })
 
-router.post("/signup", (req, res) => {
-    res.send(req.body)
+router.post("/signup", async (req, res) => {
+    try {
+        await UserController.handleSignup(req.body)
+        req.session.username = req.body.email
+        res.redirect("/")
+    }
+    catch(error) { throw error }
 })
 
 

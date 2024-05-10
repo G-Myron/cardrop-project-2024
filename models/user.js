@@ -1,43 +1,53 @@
 import { db, closeDb } from "../config/database.js"
-import bcrypt from 'bcrypt'
+import { initUsers } from "../config/initialData.js"
 
 export class Users {
   static async initializeUsers() {
-    // Drop and create collection
+    // Drop and create collection with schema
     db.dropCollection('users')
-    await db.createCollection('users')
+    await db.createCollection('users',  {
+      validator: {
+        $jsonSchema: {
+          bsonType: "object",
+          title: "User Object Validation",
+          required: [ "name", "email", "password" ],
+          properties: {
+            name: {bsonType: "string"},
+            email: {bsonType: "string"},
+            password: {bsonType: "string"},
+          }
+      }}
+    })
 
     // Populate collection
-    const defaultPassword = await bcrypt.hash('ok', 10)
-    await db.collection('users').insertMany([
-      { name: 'Myron', email: 'myron@gmail.com', password: defaultPassword },
-      { name: 'John', email: 'a@a.uk', password: defaultPassword },
-      { name: 'John', email: 'ok@email.com', password: defaultPassword },
-    ])
-
+    await db.collection('users').insertMany(initUsers)
     console.log("Successfully initialized users collection!")
   }
 
   static async getAllUsers() {
     const query = {}
-    const options = { projection: {_id:0, password:0} }
+    const options = { projection: {_id:0, password:0} } // Hide the passwords
 
     return await db.collection('users').find(query, options).toArray()
   }
 
-  static async getUserDetails(userEmail) {
+  static async getUser(userEmail) {
     const query = { email:userEmail }
     const options = {}
 
-    return await db.collection('users').find(query, options).toArray()
+    // Get user from database
+    const user = await db.collection('users').findOne(query, options)
+
+    if (!user) throw new Error("No account corresponds to the email you have provided.")
+    return user
   }
 
-  static async getPassword(userEmail) {
-    const query = { email:userEmail }
-    const options = { projection: {_id:0, password:1} }
-
-    const result = await db.collection('users').findOne(query, options)
-    return result?.password
+  static async createUser(userDto) {
+    const query = userDto
+    const options = {}
+    
+    // Create user in database
+    return await db.collection('users').insertOne(query, options)
   }
 }
 

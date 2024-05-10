@@ -26,18 +26,18 @@ app.use(express.urlencoded({extended: false}))
 app.use(express.json())
 
 // Session configuration
-app.use(session({
+app.use( session({
   secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
   name: "rentACar",
   cookie: {
-      maxAge: 60e3 * 20 // 20mims
+      maxAge: 20 * 60e3 // 20mims
   }
 }))
 
 // Check Authentication
-const authWhiteList = ["/login", "/signup", "/api/login"]
+const authWhiteList = ["/login", "/signup", "/api/login", "/api/signup", "/api/users"]
 app.use((req, res, next) => {
   if(req.session.username || authWhiteList.includes(req.originalUrl)){
     res.locals.username = req.session.username
