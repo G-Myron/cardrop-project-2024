@@ -37,10 +37,7 @@ export class Users {
     const options = {}
 
     // Get user from database
-    const user = await db.collection('users').findOne(query, options)
-
-    if (!user) throw new Error("No account corresponds to the email you have provided.")
-    return user
+    return await db.collection('users').findOne(query, options)
   }
 
   static async createUser(userDto) {

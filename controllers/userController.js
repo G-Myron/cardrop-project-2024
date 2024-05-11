@@ -13,6 +13,8 @@ export class UserController {
 
   static async handleLogin(htmlBody) {
     const user = await Users.getUser(htmlBody.email)
+    if (!user) throw new Error("No account corresponds to the email you have provided.")
+    
     const validPassword = await bcrypt.compare(htmlBody.password, user.password)
     return validPassword
   }

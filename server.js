@@ -60,7 +60,7 @@ app.use((req, res) => {
 
 // Error Handling
 app.use((err, req, res, next) => {
-  console.log(err.message)
+  console.error("Error:", err.message)
   res.render("error", {message: err.message})
 })
 
