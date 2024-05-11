@@ -58,6 +58,11 @@ app.use((req, res) => {
   res.redirect("/")
 })
 
+// Error Handling
+app.use((err, req, res, next) => {
+  console.log(err.message)
+  res.render("error", {message: err.message})
+})
 
 app.listen(port, () => {
   console.log(`Express app listening on  http://localhost:${port}/`)

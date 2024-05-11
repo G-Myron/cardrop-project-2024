@@ -2,6 +2,7 @@ import { db, closeDb } from "../config/database.js"
 import { initUsers } from "../config/initialData.js"
 
 export class Users {
+
   static async initializeUsers() {
     // Drop and create collection with schema
     db.dropCollection('users')
@@ -45,6 +46,10 @@ export class Users {
   static async createUser(userDto) {
     const query = userDto
     const options = {}
+    
+    // Check if user exists
+    const user = await db.collection('users').findOne({ email: query.email })
+    if (user) throw new Error("Account with this email already exists.")
     
     // Create user in database
     return await db.collection('users').insertOne(query, options)

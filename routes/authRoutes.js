@@ -4,21 +4,28 @@ import { UserController } from '../controllers/userController.js'
 const router = express.Router()
 
 
-router.post("/login", async (req, res) => {
-    if (await UserController.handleLogin(req.body)){
-        req.session.username = req.body.email
-        res.redirect("/")
+router.post("/login", async (req, res, next) => {
+    try {
+        if (await UserController.handleLogin(req.body)){
+            req.session.username = req.body.email
+            res.redirect("/")
+        }
+        else res.redirect("./logout")
     }
-    else res.redirect("./logout")
+    catch(error) {
+        next(error)
+    }
 })
 
-router.post("/signup", async (req, res) => {
+router.post("/signup", async (req, res, next) => {
     try {
         await UserController.handleSignup(req.body)
         req.session.username = req.body.email
         res.redirect("/")
     }
-    catch(error) { throw error }
+    catch(error) {
+        next(error)
+    }
 })
 
 router.get("/logout", (req, res) => {
