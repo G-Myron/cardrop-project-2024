@@ -8,11 +8,13 @@ router.get("/", (req, res) => {
 })
 
 router.get("/signup", (req, res) => {
-    res.render("user/create", {signup: 1})
+    req.session.username? res.redirect("/") :
+        res.render("user/create", {signup: 1})
 })
 
 router.get("/login", (req, res) => {
-    res.render("user/login", {login: 1})
+    req.session.username? res.redirect("/") :
+        res.render("user/login", {login: 1})
 })
 
 
