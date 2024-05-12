@@ -1,4 +1,4 @@
-<form method="post" action="/api/{{action}}" class="needs-validation" novalidate>
+<form method="post" action="/auth/{{action}}" class="needs-validation" novalidate>
 
   <!-- Email input -->
   <div class="form-floating mb-4">
@@ -11,13 +11,13 @@
   <div class="row">
     <div class="col-md-6 mb-4">
       <div class="form-floating">
-        <input type="text" class="form-control" name="first-name" id="floatingFirstName" placeholder="John">
+        <input type="text" class="form-control" name="name" id="floatingFirstName" placeholder="John">
         <label for="floatingFirstName">First name</label>
       </div>
     </div>
     <div class="col-md-6 mb-4">
       <div class="form-floating">
-        <input type="text" class="form-control" name="last-name" id="floatingLastName" placeholder="Doe">
+        <input type="text" class="form-control" name="surname" id="floatingLastName" placeholder="Doe">
         <label for="floatingLastName">Last name</label>
       </div>
     </div>
@@ -25,7 +25,7 @@
 
   <!-- New password input -->
   <div class="form-floating mb-4">
-    <input type="password" class="form-control" name="new-password" id="floatingNewPassword" placeholder="Password" required>
+    <input type="password" class="form-control" name="password" id="floatingNewPassword" placeholder="Password" required>
     <label for="floatingNewPassword">New password</label>
   </div>
   <!-- Repeat password input -->

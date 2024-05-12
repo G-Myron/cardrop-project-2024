@@ -7,16 +7,17 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            {{#if username}}
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
                     <a class="nav-link {{#if home}}active{{/if}}" href="/">Home</a>
                     <a class="nav-link {{#if details}}active{{/if}}" href="/vehicle/1">Vehicle details</a>
                     <a class="nav-link {{#if reserv}}active{{/if}}" href="/user/my_reservations">My reserveations</a>
-                    <a class="nav-link {{#if signup}}active{{/if}}" href="/signup">Signup</a>
-                    <a class="nav-link {{#if login}}active{{/if}}" href="/login">Login</a>
-                    <a class="nav-link {{#if edit}}active{{/if}}" href="/user/edit">(Edit profile)</a>
+                    <a class="nav-link {{#if edit}}active{{/if}}" href="/user/edit">Edit profile ({{username}})</a>
+                    <a class="nav-link" href="/auth/logout">Logout</a>
                 </div>
             </div>
+            {{/if}}
             {{>helpers/color_mode}}
         </div>
     </nav>

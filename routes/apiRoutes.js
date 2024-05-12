@@ -11,21 +11,6 @@ router.get("/users/:email", async (req, res) => {
     res.send(await UserController.getUserDetails(req.params.email))
 })
 
-router.post("/login", async (req, res) => {
-    if (await UserController.handleLogin(req.body.email, req.body.password))
-        res.redirect("/")
-    else res.redirect("/login")
-})
-
-router.post("/signup", (req, res) => {
-    res.send(req.body)
-})
-
-
-router.get("/logout", (req, res) => {
-    res.send(req.body)
-})
-
 router.post("/search", (req, res) => {
     console.log(req.body)
     res.redirect("/")
