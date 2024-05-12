@@ -38,9 +38,9 @@ app.use( session({
 }))
 
 // Check Authentication
-const authWhiteList = ["/login", "/signup", "/auth/login", "/auth/signup", "/api/users"]
+const authWhiteList = ["/auth/login", "/auth/signup", "/api/users"]
 app.use((req, res, next) => {
-  if(req.session.username || authWhiteList.includes(req.originalUrl)){
+  if(req.session.username || authWhiteList.includes(req._parsedUrl.pathname)){
     res.locals.username = req.session.username
     next()
   }
@@ -58,7 +58,7 @@ app.use((req, res) => {
   res.redirect("/")
 })
 
-// Error Handling
+// Error Handling / Handle all next(error)
 app.use((err, req, res, next) => {
   console.error("Error:", err.message)
   res.render("error", {message: err.message})

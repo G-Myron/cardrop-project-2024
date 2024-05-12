@@ -5,7 +5,7 @@ const validateLogin = [
   // No need for too many validations. If it's invalid it won't be found in the db.
   body("email").trim().escape().notEmpty(),
   body("password").exists(),
-  handleValidityErrors
+  (req, res, next) => handleValidityErrors(req, res, next, "user/login")
 ]
 
 const validateSignup = [
@@ -16,19 +16,16 @@ const validateSignup = [
       if (value === req.body.password) return true
       else throw new Error("Passwords don't match")
     }),
-    handleValidityErrors
+    (req, res, next) => handleValidityErrors(req, res, next, "user/create")
 ]
 
 
-function handleValidityErrors(req, res, next) {
+function handleValidityErrors(req, res, next, onErrorRender) {
   const errors = validationResult(req)
   if (errors.isEmpty())
     next()
   else {
-    // TODO: Error handling
-    throw new Error( errors.array()[0].msg )
-    // next( JSON.stringify(errors.errors[0]) )
-    // res.render("home", { message: errors.mapped() }) // Sintoris
+    res.render(onErrorRender, {errorMsg: errors.array()[0].msg})
   }
 }
 
