@@ -7,16 +7,6 @@ router.get("/", (req, res) => {
     res.render("index", {home: 1})
 })
 
-router.get("/signup", (req, res) => {
-    req.session.username? res.redirect("/") :
-        res.render("user/create", {signup: 1})
-})
-
-router.get("/login", (req, res) => {
-    req.session.username? res.redirect("/") :
-        res.render("user/login", {login: 1})
-})
-
 
 router.get("/vehicle/:id", (req, res) => {
     const id = req.params.id

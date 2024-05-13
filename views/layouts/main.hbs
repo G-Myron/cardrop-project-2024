@@ -27,7 +27,8 @@
 
 <body class="d-flex flex-column min-vh-100">
     {{>header}}
-    <main class="container d-grid" style="justify-items:center">
+    {{>error}}
+    <main class="container mb-4">
         {{{body}}}
     </main>
     {{>footer}}

@@ -22,4 +22,5 @@ dateFromPicker?.addEventListener("change", () => {
   dateFrom.setDate( dateFrom.getDate() + 1 )
   
   dateToPicker.setAttribute("min", dateFrom.toISOString().slice(0, 16))
+  dateToPicker.setAttribute("value", dateFrom.toISOString().slice(0, 16))
 })

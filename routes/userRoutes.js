@@ -12,11 +12,6 @@ router.get("/my_reservations", (req, res) => {
 })
 
 
-router.get("/", (req, res) => {
-    res.redirect("/login")
-})
-
-
 router.use((req, res) => {
     res.redirect(".")
 })
