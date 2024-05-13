@@ -1,6 +1,8 @@
 import express from 'express'
 import { engine } from 'express-handlebars'
 import session from 'express-session'
+import i18n from 'i18n-express'
+import path from 'path'
 
 import { router as userRouter } from './routes/userRoutes.js'
 import { router as indexRouter } from './routes/indexRoutes.js'
@@ -25,6 +27,16 @@ app.use(express.urlencoded({extended: false}))
 
 // Middleware for reading json body from post requests
 app.use(express.json())
+
+// i18next translation files
+app.use(
+  i18n({
+    translationsPath: path.join(import.meta.dirname, 'i18n'),
+    textsVarName: 'translation',
+    paramLangName: "lang",
+    siteLangs: ["el", "en"],
+    defaultLang: 'el'
+}))
 
 // Session configuration
 app.use( session({
