@@ -9,5 +9,12 @@ const initUsers = [
   { name: 'Maria', email: 'a@a', password: defaultPassword },
 ]
 
+const initCars = [
+  { type: 'small', model: 'Alfa Romeo Giulia', plate: 'NKP-1234', location: 'Thessaloniki'},
+  { type: 'small', model: 'Hyundai i30', plate: 'AZK-5620', location: 'Patras'},
+  { type: 'small', model: 'Ford GT', plate: 'ZHN-7569', location: 'Athens'},
+  { type: 'large', model: 'Lamborghini Urus', plate: 'YXB-6934', location: 'Athens'},
+]
 
-export { initUsers }
+
+export { initUsers, initCars }
