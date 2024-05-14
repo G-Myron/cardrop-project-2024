@@ -1,0 +1,26 @@
+<form action="/api/search" method="post" class="d-flex gap-2">
+  <select class="form-select" size="" name="city">
+    <option disabled selected>City</option>
+    <option>Athens</option>
+    <option>Thessaloniki</option>
+    <option>Patras</option>
+    <option>Piraeus</option>
+    <option>Larissa</option>
+    <option>Heraklion</option>
+    <option>Volos</option>
+    <option>Ioannina</option>
+    <option>Trikala</option>
+    <option>Serres</option>
+    <option>Alexandroupoli</option>
+    <option>Serres</option>
+    <option>Katerini</option>
+    <option>Kalamata</option>
+    <option>Xanthi</option>
+  </select>
+
+  <input type="datetime-local" class="form-control" placeholder="Rent date"
+      name="rentDateFrom" id="rentDateFrom" required>
+  <input type="datetime-local" class="form-control" placeholder="Return date"
+      name="rentDateTo" id="rentDateTo" required>
+  <button class="btn btn-outline-primary" type="submit">Search</button>
+</form>
