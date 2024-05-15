@@ -11,9 +11,8 @@ export class Cars {
         $jsonSchema: {
           bsonType: "object",
           title: "Car Object Validation",
-          required: [ "type", "model", "plate", "location" ],
+          required: [ "model", "plate", "location" ],
           properties: {
-            type: {bsonType: "string"},
             model: {bsonType: "string"},
             plate: {bsonType: "string"},
             location: {bsonType: "string"},
@@ -40,12 +39,13 @@ export class Cars {
     return await this.customFind(query, options)
   }
 
-  static async getCarsOfType(type) {
-    const query = { type: type}
-    const options = {}
+  // TODO: Get cars of category. Join tables
+  // static async getCarsOfType(type) {
+  //   const query = { type: type}
+  //   const options = {}
 
-    return await this.customFind(query, options)
-  }
+  //   return await this.customFind(query, options)
+  // }
 
   static async getCarsFromLocation(location) {
     const query = { location: location}

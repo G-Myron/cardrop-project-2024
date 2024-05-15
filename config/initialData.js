@@ -9,22 +9,24 @@ const initUsers = [
   { name: 'Maria', email: 'a@a', password: defaultPassword },
 ]
 
-const initTypes = [
+const initCategories = [
   { name: 'small' },
   { name: 'medium' },
   { name: 'large' },
 ]
 
 const initCars = [
-  { type: 'small', model: 'Alfa Romeo Giulia', plate: 'NKP-1234', location: 'Thessaloniki'},
-  { type: 'small', model: 'Hyundai i30', plate: 'AZK-5620', location: 'Patras'},
-  { type: 'small', model: 'Ford GT', plate: 'ZHN-7569', location: 'Athens'},
-  { type: 'large', model: 'Lamborghini Urus', plate: 'YXB-6934', location: 'Athens'},
+  { model: 'Alfa Romeo Giulia', plate: 'NKP-1234', location: 'Thessaloniki'},
+  { model: 'Hyundai i30', plate: 'AZK-5620', location: 'Patras'},
+  { model: 'Ford GT', plate: 'ZHN-7569', location: 'Athens'},
+  { model: 'Lamborghini Urus', plate: 'YXB-6934', location: 'Athens'},
 ]
 
 const initReservations = [
-  {}
+  { user: 'gmyron1@gmail.com', category: 'small', dateFrom: new Date("2024-04-15"), dateTo: new Date("2024-04-17") },
+  { user: 'a@a.uk', category: 'small', dateFrom: new Date("2024-03-12"), dateTo: new Date("2024-04-01") },
+  { user: 'gmyron1@gmail.com', category: 'medium', dateFrom: new Date("2024-04-29"), dateTo: new Date("2024-05-05") },
 ]
 
 
-export { initUsers, initTypes, initCars, initReservations }
+export { initUsers, initCategories, initCars, initReservations }

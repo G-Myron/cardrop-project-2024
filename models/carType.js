@@ -1,16 +1,16 @@
 import { db, closeDb } from "../config/database.js";
-import { initTypes } from "../config/initialData.js";
+import { initCategories } from "../config/initialData.js";
 
-export class CarTypes {
+export class Categories {
 
-  static async initializeTypes() {
+  static async initializeCategories() {
     // Drop and create collection with schema
-    db.dropCollection('car_types')
-    await db.createCollection('car_types',  {
+    db.dropCollection('categories')
+    await db.createCollection('categories',  {
       validator: {
         $jsonSchema: {
           bsonType: "object",
-          title: "Car-Type Object Validation",
+          title: "Category Object Validation",
           required: [ "name" ],
           properties: {
             name: {bsonType: "string"},
@@ -19,18 +19,18 @@ export class CarTypes {
     })
 
     // Set primary key
-    await db.collection('car_types').createIndex({ name: 1}, {unique: true})
+    await db.collection('categories').createIndex({ name: 1}, {unique: true})
 
     // Populate collection
-    await db.collection('car_types').insertMany(initTypes)
-    console.log("Successfully created car types collection!")
+    await db.collection('categories').insertMany(initCategories)
+    console.log("Successfully created categories collection!")
   }
 
   static async customFind(query, options) {
-    return await db.collection('car_types').find(query, options).toArray()
+    return await db.collection('categories').find(query, options).toArray()
   }
 
-  static async getAllTypes() {
+  static async getAllCategories() {
     return await this.customFind( {}, {projection: { _id: 0 }} )
   }
 
@@ -38,8 +38,8 @@ export class CarTypes {
 
 // If __name__ == main
 if (process.argv[1] === import.meta.filename){
-  await CarTypes.initializeTypes().catch(console.dir)
+  await Categories.initializeCategories().catch(console.dir)
   // Print the results in JSON format
-  console.dir( await CarTypes.getAllTypes().catch(console.dir) )
+  console.dir( await Categories.getAllCategories().catch(console.dir) )
   await closeDb()
 }
