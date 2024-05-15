@@ -11,8 +11,9 @@ export class Cars {
         $jsonSchema: {
           bsonType: "object",
           title: "Car Object Validation",
-          required: [ "model", "plate", "location" ],
+          required: [ "category", "model", "plate", "location" ],
           properties: {
+            category: {bsonType: "string"}, // Foreign key
             model: {bsonType: "string"},
             plate: {bsonType: "string"},
             location: {bsonType: "string"},

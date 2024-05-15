@@ -16,10 +16,10 @@ const initCategories = [
 ]
 
 const initCars = [
-  { model: 'Alfa Romeo Giulia', plate: 'NKP-1234', location: 'Thessaloniki'},
-  { model: 'Hyundai i30', plate: 'AZK-5620', location: 'Patras'},
-  { model: 'Ford GT', plate: 'ZHN-7569', location: 'Athens'},
-  { model: 'Lamborghini Urus', plate: 'YXB-6934', location: 'Athens'},
+  { category: 'small', model: 'Alfa Romeo Giulia', plate: 'NKP-1234', location: 'Thessaloniki'},
+  { category: 'small', model: 'Hyundai i30', plate: 'AZK-5620', location: 'Patras'},
+  { category: 'small', model: 'Ford GT', plate: 'ZHN-7569', location: 'Athens'},
+  { category: 'large', model: 'Lamborghini Urus', plate: 'YXB-6934', location: 'Athens'},
 ]
 
 const initReservations = [

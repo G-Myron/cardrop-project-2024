@@ -13,8 +13,8 @@ export class Reservations {
           title: "Reservation Object Validation",
           required: [ "user", "category", "dateFrom", "dateTo" ],
           properties: {
-            user: {bsonType: "string"},
-            category: {bsonType: "string"},
+            user: {bsonType: "string"}, // Foreign key
+            category: {bsonType: "string"}, // Foreign key
             dateFrom: {bsonType: "date"},
             dateTo: {bsonType: "date"},
           }
