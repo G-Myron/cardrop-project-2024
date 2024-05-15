@@ -1,10 +1,13 @@
 import express from 'express'
+import { SearchController } from "../controllers/searchController.js"
 
 const router = express.Router()
 
 
-router.get("/", (req, res) => {
-    res.render("index", {home: 1})
+router.get("/",
+    async (req, res) => {
+        const categories = await SearchController.getAvailiableCategories()
+        res.render("index", {home: 1, categories: categories})
 })
 
 

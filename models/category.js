@@ -1,5 +1,5 @@
-import { db, closeDb } from "../config/database.js";
-import { initCategories } from "../config/initialData.js";
+import { db, closeDb } from "../config/database.js"
+import { initCategories } from "../config/initialData.js"
 
 export class Categories {
 

@@ -3,7 +3,7 @@
 </div>
 
 <div class="mx-lg-5 px-lg-5">
-  {{>cards/brief title="Small" photo="/images/aston.jpg" id=1 price= "50.20"}}
-  {{>cards/brief title="Medium" photo="/images/alfa.jpg" id=2 price= "130.99"}}
-  {{>cards/brief title="Large" photo="/images/lambo.jpg" id=3 price= "420.00"}}
+  {{#each categories }}
+  {{>cards/brief title=this id=@index price="50.20"}}
+  {{/each}}
 </div>
