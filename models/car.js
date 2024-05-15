@@ -21,6 +21,9 @@ export class Cars {
       }}
     })
 
+    // Set primary key
+    await db.collection('cars').createIndex({ plate: 1}, {unique: true})
+
     // Populate collection
     await db.collection('cars').insertMany(initCars)
     console.log("Successfully initialized cars collection!")

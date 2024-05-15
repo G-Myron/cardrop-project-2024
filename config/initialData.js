@@ -22,5 +22,9 @@ const initCars = [
   { type: 'large', model: 'Lamborghini Urus', plate: 'YXB-6934', location: 'Athens'},
 ]
 
+const initReservations = [
+  {}
+]
 
-export { initUsers, initTypes, initCars }
+
+export { initUsers, initTypes, initCars, initReservations }

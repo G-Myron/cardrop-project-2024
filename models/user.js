@@ -20,6 +20,9 @@ export class Users {
       }}
     })
 
+    // Set primary key
+    await db.collection('users').createIndex({ email: 1}, {unique: true})
+
     // Populate collection
     await db.collection('users').insertMany(initUsers)
     console.log("Successfully initialized users collection!")
