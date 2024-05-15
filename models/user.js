@@ -20,16 +20,23 @@ export class Users {
       }}
     })
 
+    // Set primary key
+    await db.collection('users').createIndex({ email: 1}, {unique: true})
+
     // Populate collection
     await db.collection('users').insertMany(initUsers)
     console.log("Successfully initialized users collection!")
+  }
+
+  static async customFind(query, options) {
+    return await db.collection('users').find(query, options).toArray()
   }
 
   static async getAllUsers() {
     const query = {}
     const options = { projection: {_id:0, password:0} } // Hide the passwords
 
-    return await db.collection('users').find(query, options).toArray()
+    return await this.customFind(query, options)
   }
 
   static async getUser(userEmail) {

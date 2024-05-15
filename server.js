@@ -33,12 +33,12 @@ app.use( session({
   saveUninitialized: false,
   name: "rentACar",
   cookie: {
-      maxAge: 20 * 60e3 // 20mims
+      maxAge: 30 * 60e3 // 30mims
   }
 }))
 
 // Check Authentication
-const authWhiteList = ["/auth/login", "/auth/signup", "/api/users"]
+const authWhiteList = ["/auth/login", "/auth/signup"]
 app.use((req, res, next) => {
   if(req.session.username || authWhiteList.includes(req._parsedUrl.pathname)){
     res.locals.username = req.session.username
