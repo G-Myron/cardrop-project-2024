@@ -9,6 +9,12 @@ const initUsers = [
   { name: 'Maria', email: 'a@a', password: defaultPassword },
 ]
 
+const initTypes = [
+  { name: 'small' },
+  { name: 'medium' },
+  { name: 'large' },
+]
+
 const initCars = [
   { type: 'small', model: 'Alfa Romeo Giulia', plate: 'NKP-1234', location: 'Thessaloniki'},
   { type: 'small', model: 'Hyundai i30', plate: 'AZK-5620', location: 'Patras'},
@@ -17,4 +23,4 @@ const initCars = [
 ]
 
 
-export { initUsers, initCars }
+export { initUsers, initTypes, initCars }
