@@ -3,12 +3,12 @@ import { Categories } from "../models/category.js"
 
 export class SearchController {
 
-  static async getAvailiableCategories(dateFrom, dateTo) {
-    const categories = await Categories.getAllCategories()
+  static async getAvailiableCategories(city) {
+    const categories = await Categories.getAllCategories(city)
 
     const availiable = []
     for (let category of categories) {
-      if ( await Cars.countCarsOfCategory(category.name) )
+      if ( await Cars.countCarsOfCategoryInLocation(category.name, city) )
         availiable.push(category)
     }
     

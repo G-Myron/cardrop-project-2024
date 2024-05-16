@@ -54,8 +54,9 @@ export class Cars {
     return await this.customFind(query, options)
   }
 
-  static async countCarsOfCategory(category) {
-    return await db.collection('cars').countDocuments({ category: category})
+  static async countCarsOfCategoryInLocation(category, location) {
+    const filter = { category: category, location: location }
+    return await db.collection('cars').countDocuments(filter)
   }
 
 }

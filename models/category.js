@@ -31,7 +31,7 @@ export class Categories {
   }
 
   static async getAllCategories() {
-    const options = {projection: { _id: 0 }, sort:{_id:1}}
+    const options = {projection: { _id: 0 }, sort:{ _id: 1 }}
     return await this.customFind({}, options)
   }
 

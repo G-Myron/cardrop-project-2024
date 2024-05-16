@@ -9,7 +9,7 @@ router.get("/", async (req, res) => {
     res.render("index", {home: 1})
 })
 router.post("/", validateSearch, async (req, res) => {
-    const categories = await SearchController.getAvailiableCategories( req.body.dateFrom, req.body.dateTo )
+    const categories = await SearchController.getAvailiableCategories( req.body.city )
     res.render("index", {home: 1, categories: categories})
 })
 
