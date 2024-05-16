@@ -1,13 +1,16 @@
 import express from 'express'
 import { SearchController } from "../controllers/searchController.js"
+import { validateSearch } from '../validators/validator.js'
 
 const router = express.Router()
 
 
-router.get("/",
-    async (req, res) => {
-        const categories = await SearchController.getAvailiableCategories()
-        res.render("index", {home: 1, categories: categories})
+router.get("/", async (req, res) => {
+    res.render("index", {home: 1})
+})
+router.post("/", validateSearch, async (req, res) => {
+    const categories = await SearchController.getAvailiableCategories( req.body.dateFrom, req.body.dateTo )
+    res.render("index", {home: 1, categories: categories})
 })
 
 

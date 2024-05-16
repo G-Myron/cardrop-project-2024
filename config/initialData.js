@@ -1,6 +1,5 @@
-import bcrypt from 'bcrypt'
 
-const defaultPassword = await bcrypt.hash('ok', 10)
+const defaultPassword = '$2b$10$NupTT/IIKmVq/8L4a4m.7ecxPeAkZQdbN.dILI8Emi91lvNuq.e3C' //await bcrypt.hash('ok', 10)
 const initUsers = [
   { name: 'Myron', email: 'myron@gmail.com', password: defaultPassword },
   { name: 'Myron', email: 'gmyron1@gmail.com', password: defaultPassword},
@@ -10,9 +9,9 @@ const initUsers = [
 ]
 
 const initCategories = [
-  { name: 'small' },
-  { name: 'medium' },
-  { name: 'large' },
+  { name: 'small', like: 'Fiat Panda', price: 30, seats: 2, doors:3, transmition: 'Manual', bags:2 },
+  { name: 'medium', like: 'Alfa Romeo Giulia', price: 50, seats: 4, doors:5, transmition: 'Semi-automatic', bags:3 },
+  { name: 'large', like: 'Lamborghini Urus', price: 100, seats: 5, doors:5, transmition: 'Automatic', bags:4 },
 ]
 
 const initCars = [

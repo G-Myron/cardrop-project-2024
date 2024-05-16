@@ -55,9 +55,7 @@ export class Cars {
   }
 
   static async countCarsOfCategory(category) {
-    const query = { category: category}
-
-    return await db.collection('cars').countDocuments(query)
+    return await db.collection('cars').countDocuments({ category: category})
   }
 
 }

@@ -19,6 +19,21 @@ const validateSignup = [
     (req, res, next) => handleValidityErrors(req, res, next, "user/create")
 ]
 
+const validateSearch = [
+  body("city").exists().withMessage("Please choose a city from the list"),
+  body("rentDateFrom").custom( (value) => {
+    const today = new Date()
+    today.setTime(0)
+    if ( new Date(value) >= today ) return true
+    else throw new Error("The reservation date cannot be before today")
+  }),
+  body("rentDateTo").custom( (value, {req}) => {
+    if ( new Date(value) >= new Date(req.body.rentDateFrom) ) return true
+    else throw new Error("The reservation dates are not valid")
+  }),
+  (req, res, next) => handleValidityErrors(req, res, next, "")
+]
+
 
 function handleValidityErrors(req, res, next, onErrorRender) {
   const errors = validationResult(req)
@@ -30,4 +45,4 @@ function handleValidityErrors(req, res, next, onErrorRender) {
 }
 
 
-export { validateLogin, validateSignup }
+export { validateLogin, validateSignup, validateSearch }

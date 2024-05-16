@@ -11,11 +11,6 @@ router.get("/users/:email", async (req, res) => {
     res.send(await UserController.getUserDetails(req.params.email))
 })
 
-router.post("/search", (req, res) => {
-    console.log(req.body)
-    res.redirect("/")
-})
-
 router.post("/reserve", (req, res) => {
     console.log(req.body)
     res.redirect("/user/my_reservations")

@@ -3,13 +3,15 @@ import { Categories } from "../models/category.js"
 
 export class SearchController {
 
-  static async getAvailiableCategories() {
+  static async getAvailiableCategories(dateFrom, dateTo) {
     const categories = await Categories.getAllCategories()
 
-    const availiable = await Promise.all(categories.map(
-      async cat => await Cars.countCarsOfCategory(cat.name)? cat.name:null
-    ))
+    const availiable = []
+    for (let category of categories) {
+      if ( await Cars.countCarsOfCategory(category.name) )
+        availiable.push(category)
+    }
     
-    return availiable.filter( value=>value )
+    return availiable
   }
 }
