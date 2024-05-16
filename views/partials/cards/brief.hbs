@@ -2,12 +2,12 @@
   <div class="card-body p-4 overflow-auto">
     <div class="d-flex flex-wrap gap-3">
       <div class="flex-shrink-0">
-        <img src="/images/categories/{{title}}.jpg" alt="Car: {{title}}" class="img-fluid rounded" width="250">
+        <img src="/images/categories/{{name}}.jpg" alt="Car: {{name}}" class="img-fluid rounded" width="250">
       </div>
       <div class="flex-grow-1">
         <div class="d-flex justify-content-between">
           <div>
-            <h5 class="card-title">{{title}}</h5>
+            <h5 class="card-title">{{name}}</h5>
             <p class="card-text mb-2">like {{like}}</p>
           </div>
           <div>
@@ -16,6 +16,10 @@
           </div>
         </div>
         <div class="d-flex justify-content-evenly rounded-3 p-2 mb-2 gap-1 bg-body-secondary">
+          <div>
+            <p class="small text-muted mb-1">CC</p>
+            <p class="">{{cc}}</p>
+          </div>
           <div>
             <p class="small text-muted mb-1">Seats</p>
             <p class="">{{seats}}</p>

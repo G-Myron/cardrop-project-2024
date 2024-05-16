@@ -1,21 +1,9 @@
 <form action="/" method="post" class="d-flex gap-2">
   <select class="form-select" size="" name="city" required>
-    <option disabled selected>City</option>
-    <option>Athens</option>
-    <option>Thessaloniki</option>
-    <option>Patras</option>
-    <option>Piraeus</option>
-    <option>Larissa</option>
-    <option>Heraklion</option>
-    <option>Volos</option>
-    <option>Ioannina</option>
-    <option>Trikala</option>
-    <option>Serres</option>
-    <option>Alexandroupoli</option>
-    <option>Serres</option>
-    <option>Katerini</option>
-    <option>Kalamata</option>
-    <option>Xanthi</option>
+    <option disabled selected hidden>City</option>
+    {{#each citiesList}}
+    <option {{#if (eq ../city this)}}selected{{/if}}>{{this}}</option>
+    {{/each}}
   </select>
 
   <input type="date" class="form-control" placeholder="Rent date"

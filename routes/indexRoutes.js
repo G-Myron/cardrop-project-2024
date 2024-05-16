@@ -4,13 +4,17 @@ import { validateSearch } from '../validators/validator.js'
 
 const router = express.Router()
 
+const citiesList = ["Athens","Thessaloniki","Patras","Larissa","Heraklion","Volos","Ioannina"]
 
 router.get("/", async (req, res) => {
-    res.render("index", {home: 1})
+    res.render("index", {home: 1, citiesList: citiesList})
 })
 router.post("/", validateSearch, async (req, res) => {
     const categories = await SearchController.getAvailiableCategories( req.body.city )
-    res.render("index", {home: 1, categories: categories})
+    const daysCount = await SearchController.getDays( req.body.rentDateFrom, req.body.rentDateTo )
+    categories.forEach(category => category.price = category.price * daysCount)
+
+    res.render("index", {home: 1, citiesList: citiesList, city: req.body.city, categories: categories, days: daysCount})
 })
 
 

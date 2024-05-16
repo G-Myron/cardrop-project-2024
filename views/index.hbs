@@ -4,8 +4,6 @@
 
 <div class="mx-lg-5 px-lg-5">
   {{#each categories }}
-    {{>cards/brief id=@index title=(cptl this.name) like=this.like
-        seats=this.seats doors=this.doors transmition=this.transmition bags=this.bags
-        days=3 price="50.20"}}
+    {{>cards/brief id=@index days=../days TESTprice="50.20"}}
   {{/each}}
 </div>
