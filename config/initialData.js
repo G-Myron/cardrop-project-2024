@@ -1,6 +1,6 @@
 import fs from 'fs/promises'
 
-const readFromInitFile = async (collectionName) => JSON.parse(await fs.readFile(`data/${collectionName}.json`))
+const readFromInitFile = async (collectionName) => JSON.parse(await fs.readFile(`data/init/${collectionName}.json`))
 
 const initUsers = await readFromInitFile('users')
 const initCategories = await readFromInitFile('categories')
