@@ -1,0 +1,32 @@
+[
+  {
+    "category": "small",
+    "model": "Aston Martin DB12",
+    "plate": "IKP-9513",
+    "location": "Athens"
+  },
+  {
+    "category": "small",
+    "model": "Hyundai i30",
+    "plate": "AZK-5620",
+    "location": "Patras"
+  },
+  {
+    "category": "medium",
+    "model": "Alfa Romeo Giulia",
+    "plate": "NKP-1234",
+    "location": "Thessaloniki"
+  },
+  {
+    "category": "medium",
+    "model": "Ford GT",
+    "plate": "ZHN-7569",
+    "location": "Athens"
+  },
+  {
+    "category": "large",
+    "model": "Lamborghini Urus",
+    "plate": "YXB-6934",
+    "location": "Athens"
+  }
+]

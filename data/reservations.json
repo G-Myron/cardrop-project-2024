@@ -1,0 +1,20 @@
+[
+  {
+    "user": "gmyron1@gmail.com",
+    "category": "small",
+    "location": "Thessaloniki",
+    "dateFrom": "2024-04-15", "dateTo": "2024-04-17"
+  },
+  {
+    "user": "a@a.uk",
+    "category": "small",
+    "location": "Patras",
+    "dateFrom": "2024-03-12", "dateTo": "2024-04-01"
+  },
+  {
+    "user": "gmyron1@gmail.com",
+    "category": "medium",
+    "location": "Thessaloniki",
+    "dateFrom": "2024-04-29", "dateTo": "2024-05-05"
+  }
+]

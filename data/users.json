@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Myron",
+    "email": "myron@gmail.com",
+    "password": "$2b$10$NupTT/IIKmVq/8L4a4m.7ecxPeAkZQdbN.dILI8Emi91lvNuq.e3C"
+  },
+  {
+    "name": "Myron",
+    "email": "gmyron1@gmail.com",
+    "password": "$2b$10$NupTT/IIKmVq/8L4a4m.7ecxPeAkZQdbN.dILI8Emi91lvNuq.e3C"
+  },
+  {
+    "name": "John",
+    "email": "a@a.uk",
+    "password": "$2b$10$NupTT/IIKmVq/8L4a4m.7ecxPeAkZQdbN.dILI8Emi91lvNuq.e3C"
+  },
+  {
+    "name": "John",
+    "email": "test@email.com",
+    "password": "$2b$10$NupTT/IIKmVq/8L4a4m.7ecxPeAkZQdbN.dILI8Emi91lvNuq.e3C"
+  },
+  {
+    "name": "Maria",
+    "email": "a@a.com",
+    "password": "$2b$10$NupTT/IIKmVq/8L4a4m.7ecxPeAkZQdbN.dILI8Emi91lvNuq.e3C"
+  }
+]
