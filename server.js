@@ -2,6 +2,7 @@ import express from 'express'
 import { engine } from 'express-handlebars'
 import session from 'express-session'
 
+import { router as detailsRouter } from './routes/detailsRoutes.js'
 import { router as userRouter } from './routes/userRoutes.js'
 import { router as indexRouter } from './routes/indexRoutes.js'
 import { router as apiRouter } from './routes/apiRoutes.js'
@@ -43,6 +44,7 @@ app.use(authenticationMW, globalVariablesMW)
 
 // Routers
 app.use(indexRouter)
+app.use("/vehicle", detailsRouter)
 app.use("/user", userRouter)
 app.use("/api", apiRouter)
 app.use("/auth", authRouter)

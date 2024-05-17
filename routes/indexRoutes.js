@@ -25,17 +25,4 @@ router.post("/", validateSearch, async (req, res) => {
 })
 
 
-router.get("/vehicle/:id", (req, res) => {
-    const id = req.params.id
-    if (Number.isInteger(Number(id))){
-        res.render("vehicleDetails", {details: 1, id: id})
-    }
-    else {
-        res.status(400)
-        throw new Error("Invalid vehicle id: " + id)
-    }
-})
-
-
-
 export {router}

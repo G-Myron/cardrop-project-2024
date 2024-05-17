@@ -1,9 +1,12 @@
+
+{{#unless categories}}<div style="margin-top: 20vh;"></div>{{/unless}}
+
 <div class="mt-3 m-md-5 p-4 p-md-5 rounded border border-3">
   {{>forms/search}}
 </div>
 
 <div class="mx-lg-5 px-lg-5">
   {{#each categories }}
-    {{>cards/brief id=@index days=../days TESTprice="50.20"}}
+    {{>cards/brief days=../days city=../city dateFrom=../dateFrom dateTo=../dateTo}}
   {{/each}}
 </div>

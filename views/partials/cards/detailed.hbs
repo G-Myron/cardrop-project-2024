@@ -2,35 +2,39 @@
   <div class="card-body p-4">
     <div class="d-flex flex-wrap gap-3">
       <div class="flex-shrink-0">
-        <img src="/images/category/Medium.jpg" alt="Car: {{title}}" class="img-fluid rounded" width="350">
+        <img src="/images/category/{{category.name}}.jpg" alt="Car: {{category.name}}" class="img-fluid rounded" width="350">
       </div>
       <div class="flex-grow-1 d-grid align-content-between">
         <div class="d-flex justify-content-between">
           <div>
-            <h5 class="card-title">{{title}}</h5>
-            <p class="card-text mb-2">like Alfa Romeo Giulia</p>
+            <h5 class="card-title">{{category.name}}</h5>
+            <p class="card-text mb-2">like {{category.like}}</p>
           </div>
           <div>
-            <h2 class="mb-0 me-3">{{price}}€</h2>
-            <p class="mb-0" style="font-size:.8em">for 3 days</p>
+            <h2 class="mb-0 me-3">{{category.price}}€</h2>
+            <p class="mb-0" style="font-size:.8em">for {{days}} days</p>
           </div>
         </div>
         <div class="d-flex justify-content-evenly rounded-3 p-2 mb-2 gap-1 bg-body-secondary">
           <div>
+            <p class="small text-muted mb-1">CC</p>
+            <p class="">{{category.cc}}</p>
+          </div>
+          <div>
             <p class="small text-muted mb-1">Seats</p>
-            <p class="">4</p>
+            <p class="">{{category.seats}}</p>
           </div>
           <div class="px-3">
             <p class="small text-muted mb-1">Doors</p>
-            <p class="">5</p>
+            <p class="">{{category.doors}}</p>
           </div>
           <div>
             <p class="small text-muted mb-1">Transmition</p>
-            <p class="">Manual</p>
+            <p class="">{{category.transmition}}</p>
           </div>
           <div>
             <p class="small text-muted mb-1">Bags</p>
-            <p class="">2</p>
+            <p class="">{{category.bags}}</p>
           </div>
         </div>
       </div>
@@ -43,8 +47,8 @@
         {{>cards/evaluation user="Colin Serster" time="2 days ago" eval=3}}
       </div>
       <form action="/api/reserve" method="post" class="d-flex justify-content-end w-75 mt-5">
-        <input name="id" value="{{id}}" hidden>
-        <button type="submit" class="btn btn-success px-4 py-3">Book vehicle #{{id}}</button>
+        <input name="category" value="{{category.name}}" hidden>
+        <button type="submit" class="btn btn-success px-4 py-3">Book {{category.name}} vehicle</button>
       </form>
     </div>
   </div>
