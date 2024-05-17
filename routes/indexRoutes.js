@@ -8,8 +8,7 @@ const router = express.Router()
 const citiesList = JSON.parse(await fs.readFile(`data/citiesList.json`))
 
 router.get("/", async (req, res) => {
-    res.locals.citiesList = citiesList
-    res.render("index", {home: 1})
+    res.render("index", {home: 1, citiesList: citiesList})
 })
 router.post("/", validateSearch, async (req, res) => {
     const categories = await SearchController.getAvailiableCategories( req.body.city )
@@ -18,7 +17,8 @@ router.post("/", validateSearch, async (req, res) => {
         category.price = (category.price * daysCount).toLocaleString('el', { minimumFractionDigits: 2 })
     )
 
-    res.render("index", {home: 1,
+    res.render("index", {
+        home: 1,
         citiesList: citiesList,
         city: req.body.city,
         dateFrom: req.body.rentDateFrom,
