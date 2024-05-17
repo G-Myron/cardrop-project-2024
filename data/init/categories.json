@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Small",
+    "like": "Aston Martin DB12",
+    "price": 30,
+    "seats": 2, "doors":3, "bags":2, "cc": 100,
+    "transmition": "Manual"
+  },
+  {
+    "name": "Medium",
+    "like": "Alfa Romeo Giulia",
+    "price": 50,
+    "seats": 4, "doors":5, "bags":3, "cc": 110,
+    "transmition": "Semi-automatic"
+  },
+  {
+    "name": "Large",
+    "like": "Lamborghini Urus",
+    "price": 100,
+    "seats": 5, "doors":5, "bags":4, "cc": 120,
+    "transmition": "Automatic"
+  }
+]

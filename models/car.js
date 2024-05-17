@@ -40,19 +40,23 @@ export class Cars {
     return await this.customFind(query, options)
   }
 
-  // TODO: Get cars of category. Join tables
-  // static async getCarsOfType(type) {
-  //   const query = { type: type}
-  //   const options = {}
+  static async getCarsOfCategory(category) {
+    const query = { category: category}
+    const options = {}
 
-  //   return await this.customFind(query, options)
-  // }
+    return await this.customFind(query, options)
+  }
 
   static async getCarsFromLocation(location) {
     const query = { location: location}
     const options = {}
 
     return await this.customFind(query, options)
+  }
+
+  static async countCarsOfCategoryInLocation(category, location) {
+    const filter = { category: category, location: location }
+    return await db.collection('cars').countDocuments(filter)
   }
 
 }

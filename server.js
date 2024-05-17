@@ -14,7 +14,7 @@ const port = process.env.PORT || 3000
 app.engine('hbs', engine({
   extname: ".hbs",
   helpers: {
-    eq: (a, b) => a===b
+    eq: (a, b) => a===b,
   }
 }))
 app.set("view engine", 'hbs')

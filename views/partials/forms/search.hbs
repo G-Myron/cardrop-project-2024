@@ -1,0 +1,14 @@
+<form action="/" method="post" class="d-flex gap-2">
+  <select class="form-select" size="" name="city" required>
+    <option disabled selected hidden>City</option>
+    {{#each citiesList}}
+    <option {{#if (eq ../city this)}}selected{{/if}}>{{this}}</option>
+    {{/each}}
+  </select>
+
+  <input type="date" class="form-control" placeholder="Rent date" {{#if dateFrom}}value={{dateFrom}}{{/if}}
+      name="rentDateFrom" id="rentDateFrom" required>
+  <input type="date" class="form-control" placeholder="Return date" {{#if dateTo}}value={{dateTo}}{{/if}}
+      name="rentDateTo" id="rentDateTo" required>
+  <button class="btn btn-outline-primary" type="submit">Search</button>
+</form>

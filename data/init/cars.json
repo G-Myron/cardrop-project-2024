@@ -1,0 +1,74 @@
+[
+  {
+    "category": "Small",
+    "model": "Aston Martin DB12",
+    "plate": "IKP-9513",
+    "location": "Athens"
+  },
+  {
+    "category": "Small",
+    "model": "Mini Cooper S",
+    "plate": "ΙΥΟ-7107",
+    "location": "Volos"
+  },
+  {
+    "category": "Small",
+    "model": "Mini Cooper S",
+    "plate": "ΒΡΕ-2836",
+    "location": "Ioannina"
+  },
+  {
+    "category": "Small",
+    "model": "Hyundai i20",
+    "plate": "AZK-5620",
+    "location": "Patras"
+  },
+  {
+    "category": "Small",
+    "model": "Audi A3",
+    "plate": "ΟΤΗ-2606",
+    "location": "Larissa"
+  },
+  {
+    "category": "Medium",
+    "model": "Ferrari SF90",
+    "plate": "ΝΖΝ-0845",
+    "location": "Thessaloniki"
+  },
+  {
+    "category": "Medium",
+    "model": "Alfa Romeo Giulia",
+    "plate": "NKP-1234",
+    "location": "Thessaloniki"
+  },
+  {
+    "category": "Medium",
+    "model": "Ford GT",
+    "plate": "ZHN-7569",
+    "location": "Athens"
+  },
+  {
+    "category": "Medium",
+    "model": "Mercedes-Benz S 500",
+    "plate": "ΑΕΧ-2186",
+    "location": "Patras"
+  },
+  {
+    "category": "Large",
+    "model": "Lamborghini Urus",
+    "plate": "YXB-6934",
+    "location": "Athens"
+  },
+  {
+    "category": "Large",
+    "model": "Audi Q8",
+    "plate": "ΚΡΖ-9964",
+    "location": "Thessaloniki"
+  },
+  {
+    "category": "Large",
+    "model": "BMW X4",
+    "plate": "ΖΑΜ-0278",
+    "location": "Heraklion"
+  }
+]
