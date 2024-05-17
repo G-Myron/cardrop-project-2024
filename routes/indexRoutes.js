@@ -14,10 +14,18 @@ router.get("/", async (req, res) => {
 router.post("/", validateSearch, async (req, res) => {
     const categories = await SearchController.getAvailiableCategories( req.body.city )
     const daysCount = await SearchController.getDays( req.body.rentDateFrom, req.body.rentDateTo )
-    categories.forEach(category => category.price = category.price * daysCount)
+    categories.forEach(category =>
+        category.price = (category.price * daysCount).toLocaleString('el', { minimumFractionDigits: 2 })
+    )
 
-    res.locals.citiesList = citiesList
-    res.render("index", {home: 1, city: req.body.city, categories: categories, days: daysCount})
+    res.render("index", {home: 1,
+        citiesList: citiesList,
+        city: req.body.city,
+        dateFrom: req.body.rentDateFrom,
+        dateTo: req.body.rentDateTo,
+        categories: categories,
+        days: daysCount
+    })
 })
 
 
