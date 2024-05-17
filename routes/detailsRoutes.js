@@ -3,11 +3,16 @@ import { DetailsController } from "../controllers/detailsController.js"
 
 const router = express.Router()
 
-router.get("/:category", async (req, res) => {
-  if (!true){
-      res.status(400)
-      throw new Error("Invalid vehicle category.")
+router.get("/:category", async (req, res, next) => {
+  // Validation
+  try {
+    const acceptableCategories = (await DetailsController.getAcceptableCategories()).map( cat => cat.name)
+    if (! acceptableCategories.includes(req.params.category)){
+        res.status(400)
+        throw new Error("Invalid vehicle category.")
+    }
   }
+  catch(err) { next(err) }
   
   const category = await DetailsController.getCategoryDetails(req.params.category)
   const daysCount = await DetailsController.getDays( req.query.from, req.query.to )

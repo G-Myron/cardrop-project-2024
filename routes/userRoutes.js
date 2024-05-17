@@ -12,9 +12,4 @@ router.get("/my_reservations", (req, res) => {
 })
 
 
-router.use((req, res) => {
-    res.redirect(".")
-})
-
-
 export {router}

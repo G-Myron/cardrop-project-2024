@@ -12,7 +12,11 @@ router.get("/users/:email", async (req, res) => {
 })
 
 router.post("/reserve", (req, res) => {
-    console.log(req.body)
+    const category = req.body.category
+    const location = req.body.city
+    const dateFrom = new Date( req.body.dateFrom.split("/").reverse().join("/") )
+    const dateTo = new Date( req.body.dateTo.split("/").reverse().join("/") )
+
     res.redirect("/user/my_reservations")
 })
 

@@ -15,7 +15,10 @@
         {{>cards/testimonial user="Colin Serster" time="2 days ago" stars=3}}
       </div>
       <form action="/api/reserve" method="post" class="d-flex justify-content-end w-75 mt-5">
-        <input name="category" value="{{category.name}}" hidden>
+        <input name="category" value={{category.name}} hidden>
+        <input name="city" value={{city}} hidden>
+        <input name="dateFrom" value={{dateFrom}} hidden>
+        <input name="dateTo" value={{dateTo}} hidden>
         <button type="submit" class="btn btn-success px-4 py-3">Book vehicle</button>
       </form>
     </div>
