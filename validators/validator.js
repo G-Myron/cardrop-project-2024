@@ -1,5 +1,4 @@
 import { body, validationResult } from 'express-validator'
-import fs from 'fs/promises'
 
 
 const validateLogin = [
@@ -32,7 +31,7 @@ const validateSearch = [
     if ( new Date(value) >= new Date(req.body.rentDateFrom) ) return true
     else throw new Error("The reservation dates are not valid")
   }),
-  async (req, res, next) => handleValidityErrors(req, res, next, "index", {home: 1, citiesList: JSON.parse(await fs.readFile(`data/citiesList.json`))})
+  async (req, res, next) => handleValidityErrors(req, res, next, "index", {home: 1})
 ]
 
 

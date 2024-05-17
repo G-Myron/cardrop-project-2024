@@ -6,6 +6,7 @@ import { router as userRouter } from './routes/userRoutes.js'
 import { router as indexRouter } from './routes/indexRoutes.js'
 import { router as apiRouter } from './routes/apiRoutes.js'
 import { router as authRouter } from './routes/authRoutes.js'
+import { authenticationMW, globalVariablesMW } from './config/globalMiddleware.js'
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -37,15 +38,8 @@ app.use( session({
   }
 }))
 
-// Check Authentication
-const authWhiteList = ["/auth/login", "/auth/signup"]
-app.use((req, res, next) => {
-  if(req.session.username || authWhiteList.includes(req._parsedUrl.pathname)){
-    res.locals.username = req.session.username
-    next()
-  }
-  else res.redirect(authWhiteList[0])
-})
+// Check Authentication and set global variables for all pages
+app.use(authenticationMW, globalVariablesMW)
 
 // Routers
 app.use(indexRouter)

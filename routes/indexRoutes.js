@@ -1,14 +1,11 @@
 import express from 'express'
 import { SearchController } from "../controllers/searchController.js"
 import { validateSearch } from '../validators/validator.js'
-import fs from 'fs/promises'
 
 const router = express.Router()
 
-const citiesList = JSON.parse(await fs.readFile(`data/citiesList.json`))
-
 router.get("/", async (req, res) => {
-    res.render("index", {home: 1, citiesList: citiesList})
+    res.render("index", {home: 1})
 })
 router.post("/", validateSearch, async (req, res) => {
     const categories = await SearchController.getAvailiableCategories( req.body.city )
@@ -19,7 +16,6 @@ router.post("/", validateSearch, async (req, res) => {
 
     res.render("index", {
         home: 1,
-        citiesList: citiesList,
         city: req.body.city,
         dateFrom: req.body.rentDateFrom,
         dateTo: req.body.rentDateTo,
@@ -36,7 +32,7 @@ router.get("/vehicle/:id", (req, res) => {
     }
     else {
         res.status(400)
-        throw new Error("Error. Invalid id: " + id)
+        throw new Error("Invalid vehicle id: " + id)
     }
 })
 
