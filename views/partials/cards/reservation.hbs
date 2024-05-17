@@ -38,20 +38,10 @@
           <h4 class="m-0">Reserved vehicle</h4>
           <a href="#" class="btn btn-primary px-4">Cancel</a>
         </div>
-        {{else if currently}}
-        <div class="d-flex justify-content-end align-items-center gap-4 p-1 w-100 pb-0">
-          <h4 class="m-0">Current reservation</h4>
-          <a href="#" class="btn btn-primary px-4">Report an issue</a>
-        </div>
         {{else if oldRental}}
         <div class="d-flex justify-content-end align-items-center gap-4 p-1 w-100 pb-0">
           <h4 class="m-0">Old rental</h4>
           <a href="#" class="btn btn-primary px-4">Rate it</a>
-        </div>
-        {{else if canceled}}
-        <div class="d-flex justify-content-end align-items-center gap-4 p-1 w-100 pb-0">
-          <h4 class="m-0">Canceled</h4>
-          <a href="#" class="btn btn-primary px-4">Reserve it</a>
         </div>
         {{/if}}
       </div>
