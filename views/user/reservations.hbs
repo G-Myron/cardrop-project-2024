@@ -2,7 +2,7 @@
   {{#each reservations}}
   <section class="card my-5 mx-lg-5">
     <div class="card-body p-4 overflow-auto">
-      {{>cards/details category rented=rented imgWidth=300 isReservation=1 }}
+      {{>cards/details category days=days rented=rented imgWidth=300 isReservation=1 }}
 
       <!-- Cancel Modal -->
       <div class="modal fade text-center" id="reservationModal{{@index}}" tabindex="-1">

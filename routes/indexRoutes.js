@@ -8,11 +8,8 @@ router.get("/", async (req, res) => {
   res.render("index", {home: 1})
 })
 router.post("/", validateSearch, async (req, res) => {
-  const categories = await SearchController.getAvailiableCategories( req.body.city )
-  const daysCount = await SearchController.getDays( req.body.rentDateFrom, req.body.rentDateTo )
-  categories.forEach(category =>
-    category.price = (category.price * daysCount).toLocaleString('el', { minimumFractionDigits: 2 })
-  )
+  const daysCount = SearchController.getDays( req.body.rentDateFrom, req.body.rentDateTo )
+  const categories = await SearchController.getAvailiableCategories( req.body.city, daysCount )
 
   res.render("index", {
     home: 1,
