@@ -1,8 +1,24 @@
 <div class="reservations">
   {{#each reservations}}
-  <section class="card my-5 mx-lg-5">
+  <section class="card my-5 mx-lg-5 border-3 {{#if rented}}border-success{{else}}border-warning{{/if}}">
     <div class="card-body p-4 overflow-auto">
-      {{>cards/details category days=days rented=rented imgWidth=300 isReservation=1 }}
+      {{>cards/details category days=days imgWidth=300 }}
+      
+      <div class="d-flex justify-content-evenly align-items-center gap-3 flex-wrap text-center mt-4 py-3 bg-body-tertiary">
+        <p class="fs-5 m-0">
+          You have reserved this car in <strong>{{location}}</strong>
+          from {{{date dateFrom}}} to {{{date dateTo}}}
+        </p>
+      </div>
+
+      <div class="d-flex justify-content-end align-items-center gap-4 w-100 mt-3 p-1 pb-0">
+        <h4 class="m-0">
+          {{#if rented}}Old rental{{else}}Reserved vehicle{{/if}}
+        </h4>
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reservationModal{{@index}}">
+          {{#if rented}}Rate it{{else}}Cancel{{/if}}
+        </button>
+      </div>
 
       <!-- Popup Modal -->
       <div class="modal fade text-center" id="reservationModal{{@index}}" tabindex="-1">

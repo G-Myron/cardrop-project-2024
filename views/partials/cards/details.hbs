@@ -35,18 +35,7 @@
         <p class="">{{bags}}</p>
       </div>
     </div>
-    {{#if isReservation}}
-
-      <div class="d-flex justify-content-end align-items-center gap-4 p-1 w-100 pb-0">
-        <h4 class="m-0">
-          {{#if rented}}Old rental{{else}}Reserved vehicle{{/if}}
-        </h4>
-        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reservationModal{{@index}}">
-          {{#if rented}}Rate it{{else}}Cancel{{/if}}
-        </button>
-      </div>
-      
-    {{else if isBrief}}
+    {{#if isBrief}}
       <div class="d-flex justify-content-end p-1 w-100 pb-0">
         <a href="/vehicle/{{name}}?city={{city}}&from={{dateFrom}}&to={{dateTo}}" class="btn btn-primary px-4">See details</a>
       </div>

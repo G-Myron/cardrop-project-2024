@@ -19,8 +19,8 @@ router.get("/:category", async (req, res, next) => {
 
   res.render("vehicleDetails", {
     city: req.query.city,
-    dateFrom: new Date(req.query.from).toLocaleDateString(),
-    dateTo: new Date(req.query.to).toLocaleDateString(),
+    dateFrom: req.query.from,
+    dateTo: req.query.to,
     category: category,
     days: daysCount
   })
