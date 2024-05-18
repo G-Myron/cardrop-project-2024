@@ -18,6 +18,7 @@ app.engine('hbs', engine({
   helpers: {
     eq: (a, b) => a===b,
     mt: (a, b) => a > b,
+    ifexists: (a, b) => a?? b,
   }
 }))
 app.set("view engine", 'hbs')

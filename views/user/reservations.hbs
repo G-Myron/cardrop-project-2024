@@ -1,5 +1,9 @@
 <div>
   {{#each reservations}}
-    {{>cards/reservation}}
+  <section class="card my-5 mx-lg-5">
+    <div class="card-body p-4 overflow-auto">
+      {{>cards/details imgWidth=300 isReservation=1 }}
+    </div>
+  </section>
   {{/each}}
 </div>
