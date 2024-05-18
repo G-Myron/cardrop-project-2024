@@ -2,18 +2,20 @@
   <div class="card-body p-4">
     {{>cards/details}}
     
-    <div class="text-center my-5 py-4">
-      <strong class="text-bold text-primary rounded p-3" style="background-color: #ccb;">Reserve it in {{city}} from {{dateFrom}} to {{dateTo}}</strong>
+    <div class="text-end my-5 py-4 me-3">
+      <strong class="rounded-1 py-4 px-5 bg-primary text-light">
+        Reserve it in {{city}} from {{dateFrom}} to {{dateTo}}</strong>
     </div>
 
     <hr class="mb-0"><hr class="mt-0">
     
     <div class="d-flex align-items-center flex-column gap-4">
       <h3>Testimonials from {{city}}</h3>
-      <div class="d-flex flex-column gap-4 overflow-auto text-center">
-        {{>cards/testimonial user="John Doe" time="3 mins ago" stars=4}}
-        {{>cards/testimonial user="Colin Serster" time="2 days ago" stars=3}}
+      <div class="d-grid gap-4 overflow-auto text-center">
+        {{>cards/testimonial user="John Doe" car="Alfa Romeo Giulia" time="3 mins ago" stars=4}}
+        {{>cards/testimonial user="Colin Serster" car="Alfa Romeo Giulia" time="2 days ago" stars=3}}
       </div>
+      
       <form action="/api/reserve" method="post" class="d-flex justify-content-end w-75 mt-5">
         <input name="category" value={{category.name}} hidden>
         <input name="city" value={{city}} hidden>
@@ -22,5 +24,6 @@
         <button type="submit" class="btn btn-success px-4 py-3">Book vehicle</button>
       </form>
     </div>
+    
   </div>
 </section>
