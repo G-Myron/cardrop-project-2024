@@ -37,7 +37,7 @@ app.use( session({
   saveUninitialized: false,
   name: "rentACar",
   cookie: {
-      maxAge: 30 * 60e3 // 30mims
+      maxAge: 20 * 60e3 // 20mims
   }
 }))
 

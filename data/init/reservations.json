@@ -8,9 +8,16 @@
   },
   {
     "user": "gmyron1@gmail.com",
-    "category": "Small",
+    "category": "Large",
     "location": "Patras",
     "dateFrom": "2024-03-12", "dateTo": "2024-04-01",
+    "rented": true
+  },
+  {
+    "user": "gmyron1@gmail.com",
+    "category": "Small",
+    "location": "Patras",
+    "dateFrom": "2024-04-12", "dateTo": "2024-04-20",
     "rented": true
   },
   {
