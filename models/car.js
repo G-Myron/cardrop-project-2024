@@ -47,7 +47,7 @@ export class Cars {
     return await this.customFind(query, options)
   }
 
-  static async getCarsFromLocation(location) {
+  static async getCarsByLocation(location) {
     const query = { location: location}
     const options = {}
 

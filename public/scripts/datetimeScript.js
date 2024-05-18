@@ -11,9 +11,9 @@ dateFromPicker?.setAttribute("min", today.toISOString().slice(0, 10))
 if ( !dateFromPicker?.value )
   dateFromPicker?.setAttribute("value", today.toISOString().slice(0, 10))
 
-dateToPicker?.setAttribute("min", tomorrow.toISOString().slice(0, 10))
 if ( !dateToPicker?.value )
   dateToPicker?.setAttribute("value", tomorrow.toISOString().slice(0, 10))
+dateToPicker?.setAttribute("min", dateFromPicker.value)
 
 dateFromPicker?.addEventListener("change", () => {
   const dateFromValue = dateFromPicker.value

@@ -1,6 +1,7 @@
+import fs from 'fs/promises'
 
 const authWhiteList = ["/auth/login", "/auth/signup"]
-const citiesList = ["Athens","Thessaloniki","Patras","Larissa","Heraklion","Volos","Ioannina"]
+const citiesList = JSON.parse(await fs.readFile(`data/citiesList.json`))
 
 const authenticationMW = (req, res, next) => {
   if(req.session.username || authWhiteList.includes(req._parsedUrl.pathname)){
