@@ -1,10 +1,10 @@
-<div>
+<div class="reservations">
   {{#each reservations}}
   <section class="card my-5 mx-lg-5">
     <div class="card-body p-4 overflow-auto">
       {{>cards/details category days=days rented=rented imgWidth=300 isReservation=1 }}
 
-      <!-- Cancel Modal -->
+      <!-- Popup Modal -->
       <div class="modal fade text-center" id="reservationModal{{@index}}" tabindex="-1">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -16,14 +16,20 @@
             </div>
             <div class="modal-body">
               {{#if rented}}
-              <form action="/" method="get" id="reservationModalForm{{@index}}">
-                <div class="mb-4 text-primary">
-                  <i class="bi-star fs-4"></i>
-                  <i class="bi-star fs-4"></i>
-                  <i class="bi-star fs-4"></i>
-                  <i class="bi-star fs-4"></i>
-                  <i class="bi-star fs-4"></i>
+              <form action="/api/test" method="post" id="reservationModalForm{{@index}}">
+                <div class="mb-4 text-primary d-flex justify-content-center flex-row-reverse" id="stars-rating">
+                  <input type="radio" name="rating" value="5" id="stars-5" hidden/>
+                  <label class="bi-star fs-3 ps-1" for="stars-5"></label>
+                  <input type="radio" name="rating" value="4" id="stars-4" hidden/>
+                  <label class="bi-star fs-3 ps-1" for="stars-4"></label>
+                  <input type="radio" name="rating" value="3" id="stars-3" hidden/>
+                  <label class="bi-star fs-3 ps-1" for="stars-3"></label>
+                  <input type="radio" name="rating" value="2" id="stars-2" hidden/>
+                  <label class="bi-star fs-3 ps-1" for="stars-2"></label>
+                  <input type="radio" name="rating" value="1" id="stars-1" hidden/>
+                  <label class="bi-star fs-3 ps-1" for="stars-1"></label>
                 </div>
+
                 <textarea class="form-control" name="reservationComment" rows="3"
                   placeholder="Leave your comments here"></textarea>
               </form>

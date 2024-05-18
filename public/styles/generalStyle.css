@@ -1,0 +1,11 @@
+
+.reservations #stars-rating {
+  cursor: default;
+}
+
+.reservations #stars-rating > label:hover::before,
+.reservations #stars-rating > label:hover ~ label::before,
+.reservations #stars-rating > input:checked ~ label::before {
+  content: "\f586"; /*bi-star-filled*/
+}
+
