@@ -15,9 +15,4 @@ router.get("/my_reservations", async (req, res) => {
 })
 
 
-router.use((req, res) => {
-    res.redirect(".")
-})
-
-
 export {router}

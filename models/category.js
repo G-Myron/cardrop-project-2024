@@ -35,6 +35,13 @@ export class Categories {
     return await this.customFind({}, options)
   }
 
+  static async getCategory(name) {
+    const query = { name: name }
+    const options = {}
+
+    return await db.collection('categories').findOne(query, options)
+  }
+
 }
 
 // If __name__ == main

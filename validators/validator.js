@@ -28,7 +28,7 @@ const validateSearch = [
     else throw new Error("The reservation date cannot be before today")
   }),
   body("rentDateTo").custom( (value, {req}) => {
-    if ( new Date(value) >= new Date(req.body.rentDateFrom) ) return true
+    if ( new Date(value) > new Date(req.body.rentDateFrom) ) return true
     else throw new Error("The reservation dates are not valid")
   }),
   async (req, res, next) => handleValidityErrors(req, res, next, "index", {home: 1})
