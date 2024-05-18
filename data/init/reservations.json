@@ -3,18 +3,28 @@
     "user": "gmyron1@gmail.com",
     "category": "small",
     "location": "Thessaloniki",
-    "dateFrom": "2024-04-15", "dateTo": "2024-04-17"
+    "dateFrom": "2024-04-15", "dateTo": "2024-04-17",
+    "closed": false
+  },
+  {
+    "user": "gmyron1@gmail.com",
+    "category": "small",
+    "location": "Patras",
+    "dateFrom": "2024-03-12", "dateTo": "2024-04-01",
+    "closed": true
   },
   {
     "user": "a@a.uk",
     "category": "small",
-    "location": "Patras",
-    "dateFrom": "2024-03-12", "dateTo": "2024-04-01"
+    "location": "Athens",
+    "dateFrom": "2024-05-02", "dateTo": "2024-05-06",
+    "closed": true
   },
   {
     "user": "gmyron1@gmail.com",
     "category": "medium",
     "location": "Thessaloniki",
-    "dateFrom": "2024-04-29", "dateTo": "2024-05-05"
+    "dateFrom": "2024-04-29", "dateTo": "2024-05-05",
+    "closed": false
   }
 ]

@@ -2,12 +2,12 @@
   <div class="card-body p-4 overflow-auto">
     <div class="d-flex flex-wrap gap-3">
       <div class="flex-shrink-0">
-        <img src="/images/category/Medium.jpg" alt="Car: {{title}}" class="img-fluid rounded" width="300">
+        <img src="/images/category/{{category}}.jpg" alt="Car: {{category}}" class="img-fluid rounded" width="300">
       </div>
       <div class="flex-grow-1">
         <div class="d-flex justify-content-between">
           <div>
-            <h5 class="card-title">{{title}}</h5>
+            <h5 class="card-title">{{category}}</h5>
             <p class="card-text mb-2">like Alfa Romeo Giulia</p>
           </div>
           <div>
@@ -33,17 +33,17 @@
             <p class="">2</p>
           </div>
         </div>
-        {{#if reserved}}
+        {{#unless closed}}
         <div class="d-flex justify-content-end align-items-center gap-4 p-1 w-100 pb-0">
           <h4 class="m-0">Reserved vehicle</h4>
           <a href="#" class="btn btn-primary px-4">Cancel</a>
         </div>
-        {{else if oldRental}}
+        {{else}}
         <div class="d-flex justify-content-end align-items-center gap-4 p-1 w-100 pb-0">
           <h4 class="m-0">Old rental</h4>
           <a href="#" class="btn btn-primary px-4">Rate it</a>
         </div>
-        {{/if}}
+        {{/unless}}
       </div>
     </div>
   </div>
