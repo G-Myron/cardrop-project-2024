@@ -15,6 +15,22 @@ export class ReservationController {
     return resvs
   }
 
+  static async saveReservation(userEmail, category, city, dateFrom, dateTo) {
+    const reservationDto = {
+      user: userEmail,
+      category: category,
+      location: city,
+      dateFrom: dateFrom,
+      dateTo: dateTo,
+      rented: false
+    }
+    await Reservations.createReservation(reservationDto)
+  }
+
+  static async deleteReservation(reservationId) {
+    await Reservations.deleteReservation(reservationId)
+  }
+
   static getDays(dateFrom, dateTo) {
     const diff = new Date(dateTo) - new Date(dateFrom)
     return diff / ( 24 * 60 * 60e3 )

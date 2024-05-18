@@ -16,17 +16,17 @@
             </div>
             <div class="modal-body">
               {{#if rented}}
-              <form action="/api/test" method="post" id="reservationModalForm{{@index}}">
+              <form action="/api/rate" method="post" id="reservationModalForm{{@index}}">
                 <div class="mb-4 text-primary d-flex justify-content-center flex-row-reverse" id="stars-rating">
-                  <input type="radio" name="rating" value="5" id="stars-5" hidden/>
+                  <input type="radio" name="rating" value="5" id="stars-5" hidden>
                   <label class="bi-star fs-3 ps-1" for="stars-5"></label>
-                  <input type="radio" name="rating" value="4" id="stars-4" hidden/>
+                  <input type="radio" name="rating" value="4" id="stars-4" hidden>
                   <label class="bi-star fs-3 ps-1" for="stars-4"></label>
-                  <input type="radio" name="rating" value="3" id="stars-3" hidden/>
+                  <input type="radio" name="rating" value="3" id="stars-3" hidden>
                   <label class="bi-star fs-3 ps-1" for="stars-3"></label>
-                  <input type="radio" name="rating" value="2" id="stars-2" hidden/>
+                  <input type="radio" name="rating" value="2" id="stars-2" hidden>
                   <label class="bi-star fs-3 ps-1" for="stars-2"></label>
-                  <input type="radio" name="rating" value="1" id="stars-1" hidden/>
+                  <input type="radio" name="rating" value="1" id="stars-1" hidden>
                   <label class="bi-star fs-3 ps-1" for="stars-1"></label>
                 </div>
 
@@ -34,8 +34,9 @@
                   placeholder="Leave your comments here"></textarea>
               </form>
               {{else}}
-              <form action="/" method="get" id="reservationModalForm{{@index}}">
+              <form action="/api/unreserve" method="post" id="reservationModalForm{{@index}}">
                 <p>Are you sure you want to cancel this reservation</p>
+                <input name="reservationId" value={{_id}} hidden>
               </form>
               {{/if}}
             </div>

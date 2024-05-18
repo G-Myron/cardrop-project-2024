@@ -1,3 +1,4 @@
+import { ObjectId } from "mongodb"
 import { db, closeDb } from "../config/database.js"
 import { initReservations } from "../config/initialData.js"
 
@@ -40,11 +41,23 @@ export class Reservations {
   }
 
   static async getAllReservations() {
-    return await this.customFind( {}, {projection: { _id: 0 }} )
+    return await this.customFind( {}, {sort: {dateTo: -1, dateFrom: -1}} )
   }
 
   static async getReservationsByUser(user) {
-    return await this.customFind( {user:user}, {projection: { _id: 0 }} )
+    return await this.customFind( {user:user}, {sort: {dateTo: -1, dateFrom: -1}} )
+  }
+
+  static async createReservation(reservationDto) {
+    const query = reservationDto
+
+    return await db.collection('reservations').insertOne(query)
+  }
+
+  static async deleteReservation(id) {
+    const query = {_id: ObjectId.createFromHexString(id)}
+
+    await db.collection('reservations').findOneAndDelete(query)
   }
 
 }
