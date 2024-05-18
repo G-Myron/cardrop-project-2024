@@ -1,6 +1,6 @@
 <div class="reservations">
   {{#each reservations}}
-  <section class="card my-5 mx-lg-5 border-3 {{#if rented}}border-success{{else}}border-warning{{/if}}">
+  <section class="card my-5 mx-lg-5 border-2 {{#if rented}}border-success{{else}}border-warning{{/if}}">
     <div class="card-body p-4 overflow-auto">
       {{>cards/details category days=days imgWidth=300 }}
       
