@@ -1,10 +1,15 @@
 <section class="card my-5 mx-lg-5">
-  <div class="card-body p-4">
-    {{>cards/details}}
+  <form action="/api/reserve" method="post" class="card-body p-4">
+    <input name="category" value={{category.name}} hidden>
+    <input name="city" value={{city}} hidden>
+    <input name="dateFrom" value={{dateFrom}} hidden>
+    <input name="dateTo" value={{dateTo}} hidden>
     
-    <div class="text-end my-5 py-4 me-3">
-      <strong class="rounded-1 py-4 px-5 bg-primary text-light">
-        Reserve it in {{city}} from {{dateFrom}} to {{dateTo}}</strong>
+    {{>cards/details category days=days imgWidth=350 }}
+    
+    <div class="d-flex justify-content-evenly align-items-center gap-3 flex-wrap text-center my-5 py-3 bg-body-tertiary">
+      <h5 class="m-0">{{city}}: from {{{date dateFrom}}} to {{{date dateTo}}}</h5>
+      <button type="submit" class="btn btn-success px-4 py-3">Book vehicle</button>
     </div>
 
     <hr class="mb-0"><hr class="mt-0">
@@ -15,15 +20,8 @@
         {{>cards/testimonial user="John Doe" car="Alfa Romeo Giulia" time="3 mins ago" stars=4}}
         {{>cards/testimonial user="Colin Serster" car="Alfa Romeo Giulia" time="2 days ago" stars=3}}
       </div>
-      
-      <form action="/api/reserve" method="post" class="d-flex justify-content-end w-75 mt-5">
-        <input name="category" value={{category.name}} hidden>
-        <input name="city" value={{city}} hidden>
-        <input name="dateFrom" value={{dateFrom}} hidden>
-        <input name="dateTo" value={{dateTo}} hidden>
-        <button type="submit" class="btn btn-success px-4 py-3">Book vehicle</button>
-      </form>
+      <br>
     </div>
     
-  </div>
+  </form>
 </section>

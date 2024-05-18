@@ -11,6 +11,8 @@ router.get("/login", (req, res) => {
 })
 router.post("/login", validateLogin,
     async (req, res) => {
+        if (req.body.rememberMe)
+            req.session.cookie.maxAge = 365*24*3600e3 // 1 year
         try {
             if (await UserController.handleLogin(req.body)){
                 req.session.username = req.body.email

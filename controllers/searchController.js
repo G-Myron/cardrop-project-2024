@@ -3,8 +3,8 @@ import { Categories } from "../models/category.js"
 
 export class SearchController {
 
-  static async getAvailiableCategories(city) {
-    const categories = await Categories.getAllCategories(city)
+  static async getAvailiableCategories(city, daysCount) {
+    const categories = await Categories.getAllCategories(daysCount)
 
     const availiable = []
     for (let category of categories) {
@@ -15,7 +15,7 @@ export class SearchController {
     return availiable
   }
 
-  static async getDays(dateFrom, dateTo) {
+  static getDays(dateFrom, dateTo) {
     const diff = new Date(dateTo) - new Date(dateFrom)
     return diff / ( 24 * 60 * 60e3 )
   }

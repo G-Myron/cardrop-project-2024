@@ -14,14 +14,13 @@ router.get("/:category", async (req, res, next) => {
   }
   catch(err) { next(err) }
   
-  const category = await DetailsController.getCategoryDetails(req.params.category)
-  const daysCount = await DetailsController.getDays( req.query.from, req.query.to )
-  category.price = (category.price * daysCount).toLocaleString('el', { minimumFractionDigits: 2 })
+  const daysCount = DetailsController.getDays( req.query.from, req.query.to )
+  const category = await DetailsController.getCategoryDetails( req.params.category, daysCount )
 
   res.render("vehicleDetails", {
     city: req.query.city,
-    dateFrom: new Date(req.query.from).toLocaleDateString(),
-    dateTo: new Date(req.query.to).toLocaleDateString(),
+    dateFrom: req.query.from,
+    dateTo: req.query.to,
     category: category,
     days: daysCount
   })

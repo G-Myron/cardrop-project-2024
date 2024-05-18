@@ -18,6 +18,8 @@ app.engine('hbs', engine({
   helpers: {
     eq: (a, b) => a===b,
     mt: (a, b) => a > b,
+    ifexists: (a, b) => a?? b,
+    date: (d) => new Date(d).toLocaleDateString(),
   }
 }))
 app.set("view engine", 'hbs')
@@ -36,7 +38,7 @@ app.use( session({
   saveUninitialized: false,
   name: "rentACar",
   cookie: {
-      maxAge: 30 * 60e3 // 30mims
+      maxAge: 20 * 60e3 // 20mims
   }
 }))
 

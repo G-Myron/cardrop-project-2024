@@ -1,6 +1,74 @@
-<div>
-  {{>cards/reservation title="My Car" price=300 reserved=1}}
-  {{>cards/reservation title="My Car" price=300 currently=1}}
-  {{>cards/reservation title="My Car" price=300 oldRental=1}}
-  {{>cards/reservation title="My Car" price=300 canceled=1}}
+<div class="reservations">
+  {{#each reservations}}
+  <section class="card my-5 mx-lg-5 border-2 {{#if rented}}border-success{{else}}border-warning{{/if}}">
+    <div class="card-body p-4 overflow-auto">
+      {{>cards/details category days=days imgWidth=300 }}
+      
+      <div class="d-flex justify-content-evenly align-items-center gap-3 flex-wrap text-center mt-4 py-3 bg-body-tertiary">
+        <p class="fs-5 m-0">
+          You have reserved this car in <strong>{{location}}</strong>
+          from {{{date dateFrom}}} to {{{date dateTo}}}
+        </p>
+      </div>
+
+      <div class="d-flex justify-content-end align-items-center gap-4 w-100 mt-3 p-1 pb-0">
+        <h4 class="m-0">
+          {{#if rented}}Old rental{{else}}Reserved vehicle{{/if}}
+        </h4>
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reservationModal{{@index}}">
+          {{#if rented}}Rate it{{else}}Cancel{{/if}}
+        </button>
+      </div>
+
+      <!-- Popup Modal -->
+      <div class="modal fade text-center" id="reservationModal{{@index}}" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5">
+                {{#if rented}}Rate reservation{{else}}Cancel reservation{{/if}}
+              </h1>
+              <button class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+              {{#if rented}}
+              <form action="/api/rate" method="post" id="reservationModalForm{{@index}}">
+                <div class="mb-4 text-primary d-flex justify-content-center flex-row-reverse" id="stars-rating">
+                  <input type="radio" name="rating" value="5" id="stars-5" hidden>
+                  <label class="bi-star fs-3 ps-1" for="stars-5"></label>
+                  <input type="radio" name="rating" value="4" id="stars-4" hidden>
+                  <label class="bi-star fs-3 ps-1" for="stars-4"></label>
+                  <input type="radio" name="rating" value="3" id="stars-3" hidden>
+                  <label class="bi-star fs-3 ps-1" for="stars-3"></label>
+                  <input type="radio" name="rating" value="2" id="stars-2" hidden>
+                  <label class="bi-star fs-3 ps-1" for="stars-2"></label>
+                  <input type="radio" name="rating" value="1" id="stars-1" hidden>
+                  <label class="bi-star fs-3 ps-1" for="stars-1"></label>
+                </div>
+
+                <textarea class="form-control" name="reservationComment" rows="3"
+                  placeholder="Leave your comments here"></textarea>
+              </form>
+              {{else}}
+              <form action="/api/unreserve" method="post" id="reservationModalForm{{@index}}">
+                <p>Are you sure you want to cancel this reservation</p>
+                <input name="reservationId" value={{_id}} hidden>
+              </form>
+              {{/if}}
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              {{#if rented}}
+              <button type="submit" form="reservationModalForm{{@index}}" class="btn btn-success">Submit</button>
+              {{else}}
+              <button type="submit" form="reservationModalForm{{@index}}" class="btn btn-danger">Cancel it</button>
+              {{/if}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  {{/each}}
 </div>

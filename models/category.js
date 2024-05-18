@@ -30,16 +30,26 @@ export class Categories {
     return await db.collection('categories').find(query, options).toArray()
   }
 
-  static async getAllCategories() {
+  static async getAllCategories(daysCount=undefined) {
     const options = {projection: { _id: 0 }, sort:{ _id: 1 }}
-    return await this.customFind({}, options)
+    
+    const categories = await this.customFind({}, options)
+
+    if (daysCount)
+      categories.forEach( category => category.price = (category.price * daysCount).toLocaleString('el', { minimumFractionDigits: 2 }) )
+    return categories
   }
 
-  static async getCategory(name) {
+  static async getCategory(name, daysCount=undefined) {
     const query = { name: name }
-    const options = {}
+    const options = {projection: { _id: 0 }, sort:{ _id: 1 }}
 
-    return await db.collection('categories').findOne(query, options)
+    const category = await db.collection('categories').findOne(query, options)
+
+    if (daysCount)
+      category.price = (category.price * daysCount).toLocaleString('el', { minimumFractionDigits: 2 })
+
+    return category
   }
 
 }
