@@ -37,17 +37,14 @@
     </div>
     {{#if isReservation}}
 
-      {{#unless closed}}
       <div class="d-flex justify-content-end align-items-center gap-4 p-1 w-100 pb-0">
-        <h4 class="m-0">Reserved vehicle</h4>
-        <a href="#" class="btn btn-primary px-4">Cancel</a>
+        <h4 class="m-0">
+          {{#if rented}}Old rental{{else}}Reserved vehicle{{/if}}
+        </h4>
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reservationModal{{@index}}">
+          {{#if rented}}Rate it{{else}}Cancel{{/if}}
+        </button>
       </div>
-      {{else}}
-      <div class="d-flex justify-content-end align-items-center gap-4 p-1 w-100 pb-0">
-        <h4 class="m-0">Old rental</h4>
-        <a href="#" class="btn btn-primary px-4">Rate it</a>
-      </div>
-      {{/unless}}
       
     {{else if isBrief}}
       <div class="d-flex justify-content-end p-1 w-100 pb-0">

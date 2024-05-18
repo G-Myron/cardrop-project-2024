@@ -4,27 +4,27 @@
     "category": "Small",
     "location": "Thessaloniki",
     "dateFrom": "2024-04-15", "dateTo": "2024-04-17",
-    "closed": false
+    "rented": false
   },
   {
     "user": "gmyron1@gmail.com",
     "category": "Small",
     "location": "Patras",
     "dateFrom": "2024-03-12", "dateTo": "2024-04-01",
-    "closed": true
+    "rented": true
   },
   {
     "user": "a@a.uk",
     "category": "Small",
     "location": "Athens",
     "dateFrom": "2024-05-02", "dateTo": "2024-05-06",
-    "closed": true
+    "rented": true
   },
   {
     "user": "gmyron1@gmail.com",
     "category": "Medium",
     "location": "Thessaloniki",
     "dateFrom": "2024-04-29", "dateTo": "2024-05-05",
-    "closed": false
+    "rented": false
   }
 ]
