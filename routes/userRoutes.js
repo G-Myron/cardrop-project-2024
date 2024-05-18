@@ -10,8 +10,10 @@ router.get("/edit", (req, res) => {
 
 router.get("/my_reservations", async (req, res) => {
     const resvs = await ReservationController.getReservationsByUser(req.session.username)
+
+    console.log(resvs);
     
-    res.render("user/reservations", {reservations: resvs})
+    res.render("user/reservations", {reserv: 1, reservations: resvs})
 })
 
 
