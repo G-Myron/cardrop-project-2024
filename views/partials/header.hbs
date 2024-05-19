@@ -2,32 +2,35 @@
   <nav class="container navbar navbar-dark flex-wrap flex-md-nowrap">
     <div class="container-fluid">
       <a class="navbar-brand" href="/" tabindex="-1">
-        <img src="/logo.png" alt="Logo" height="40px">
+        <img src="/logo.png" alt="Logo" height="40px" class="me-3">
+        Rent A Car
       </a>
-      {{#if username}}
-      <div class="nav-item dropdown">
-        <button class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-          <img src="/images/profile.jpg" alt="profile" class="rounded-circle" height="30"/>
-          {{username}}
-        </button>
-        <ul class="dropdown-menu dropdown-menu-end shadow">
-          <a class="dropdown-item {{#if reserv}}active{{/if}}" href="/user/my_reservations">
-            <i class="bi bi-journals me-1"></i>
-            My reservations
-          </a>
-          <a class="dropdown-item {{#if edit}}active{{/if}}" href="/user/edit">
-            <i class="bi bi-pencil-fill me-1"></i>
-            Edit profile
-          </a>
-          <hr class="m-2">
-          <a class="dropdown-item" href="/auth/logout">
-            <i class="bi bi-box-arrow-right me-1"></i>
-            Logout
-          </a>
-        </ul>
+      <div class="d-flex navbar-nav align-items-center gap-md-5">
+        {{#if username}}
+        <div class="nav-item dropdown">
+          <button class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+            <img src="/images/profile.jpg" alt="profile" class="rounded-circle" height="30"/>
+            {{username}}
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end shadow">
+            <a class="dropdown-item {{#if reserv}}active{{/if}}" href="/user/my_reservations">
+              <i class="bi bi-journals me-1"></i>
+              My reservations
+            </a>
+            <a class="dropdown-item {{#if edit}}active{{/if}}" href="/user/edit">
+              <i class="bi bi-pencil-fill me-1"></i>
+              Edit profile
+            </a>
+            <hr class="m-2">
+            <a class="dropdown-item" href="/auth/logout">
+              <i class="bi bi-box-arrow-right me-1"></i>
+              Logout
+            </a>
+          </ul>
+        </div>
+        {{/if}}
+        {{>helpers/color_mode}}
       </div>
-      {{/if}}
-      {{>helpers/color_mode}}
     </div>
   </nav>
 </header>
