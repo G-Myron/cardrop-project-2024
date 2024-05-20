@@ -1,4 +1,12 @@
 <div class="reservations">
+  {{#unless reservations}}
+  <div class="row justify-content-center mt-5">
+    <div class="alert alert-info p-4 py-5 m-4 text-center w-75">
+      It seems that you haven't made any reservations yet.
+      Go to <a href="/" class="alert-link">the home page</a> to book one now!
+    </div>
+  </div>
+  {{/unless}}
   {{#each reservations}}
   <section class="card my-5 mx-lg-5 border-5 {{#if rented}}border-success{{else}}border-warning{{/if}}">
     <div class="card-body p-4 overflow-auto">
