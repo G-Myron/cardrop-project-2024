@@ -1,4 +1,9 @@
 
+header {
+  /* background: linear-gradient(var(--bs-primary) 80%, var(--bs-body-bg) 100%); */
+  box-shadow: 0 2em 5em 3em var(--bs-body-bg);
+}
+
 .reservations #stars-rating {
   cursor: default;
 }

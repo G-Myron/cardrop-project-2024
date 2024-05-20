@@ -9,8 +9,8 @@ const validateLogin = [
 ]
 
 const validateSignup = [
-  body("name").trim().escape().notEmpty(),
-  body("surname").trim().escape().notEmpty(),
+  body("name").trim().escape().notEmpty().withMessage("Please give a valid name"),
+  body("surname").trim().escape().notEmpty().withMessage("Please give a valid surname"),
   body("tel").trim().escape().notEmpty()
     .isMobilePhone().withMessage("Please provide a valid phone number"),
   body("email").trim().escape().notEmpty()
@@ -20,7 +20,7 @@ const validateSignup = [
       if (value === req.body.password) return true
       else throw new Error("Passwords don't match")
     }),
-    (req, res, next) => handleValidityErrors(req, res, next, "user/create")
+    (req, res, next) => handleValidityErrors(req, res, next, "user"+req.route.path)
 ]
 
 const validateSearch = [

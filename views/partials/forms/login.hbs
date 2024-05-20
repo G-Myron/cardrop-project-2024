@@ -24,7 +24,7 @@
     <div class="col-md-6 mb-4">
       <div class="form-floating">
         <input type="email" class="form-control" name="email" id="floatingEmail" placeholder="Email" value="{{user.email}}" required
-          {{#if (eq action "edit")}}disabled{{/if}} >
+          {{#if (eq action "edit")}}readonly{{/if}} >
         <label for="floatingEmail">Email</label>
       </div>
     </div>
@@ -42,7 +42,7 @@
     {{#if (eq action "edit")}}<div class="form-control-plaintext d-none"></div>{{/if}}
     <input type="password" class="form-control" name="password" id="floatingNewPassword" placeholder="New password" required>
     <label for="floatingNewPassword">New password</label>
-    <span class="input-group-text fs-4 bi-eye" id="passShow"></span>
+    <button type="button" tabindex="-1" class="input-group-text fs-4 bi-eye" id="passShow"></button>
   </div>
   <!-- Repeat password input -->
   <div class="form-floating mb-4">
@@ -65,7 +65,7 @@
   <div class="form-floating mb-4 input-group">
     <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="Password" required>
     <label for="floatingPassword">Password</label>
-    <span class="input-group-text fs-4 bi-eye" id="passShow"></span>
+    <button type="button" tabindex="-1" class="input-group-text fs-4 bi-eye" id="passShow"></button>
   </div>
 
   <!-- Remember me checkbox -->
