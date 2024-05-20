@@ -9,8 +9,12 @@ const validateLogin = [
 ]
 
 const validateSignup = [
+  body("name").trim().escape().notEmpty(),
+  body("surname").trim().escape().notEmpty(),
+  body("tel").trim().escape().notEmpty()
+    .isMobilePhone().withMessage("Please provide a valid phone number"),
   body("email").trim().escape().notEmpty()
-    .isEmail().withMessage("This is not a valid email"),
+    .isEmail().withMessage("Please provide a valid email"),
   body("confirm-password").exists()
     .custom( (value, {req}) => {
       if (value === req.body.password) return true

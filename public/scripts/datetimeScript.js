@@ -1,5 +1,5 @@
-const dateFromPicker = document.querySelector(" input#rentDateFrom")
-const dateToPicker = document.querySelector(" input#rentDateTo")
+const dateFromPicker = document.querySelector("input#rentDateFrom")
+const dateToPicker = document.querySelector("input#rentDateTo")
 
 const today = new Date(Date.now())
 

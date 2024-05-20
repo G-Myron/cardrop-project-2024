@@ -11,9 +11,11 @@ export class Users {
         $jsonSchema: {
           bsonType: "object",
           title: "User Object Validation",
-          required: [ "name", "email", "password" ],
+          required: [ "name", "surname", "email", "password" ],
           properties: {
             name: {bsonType: "string"},
+            surname: {bsonType: "string"},
+            tel: {bsonType: "string"},
             email: {bsonType: "string"},
             password: {bsonType: "string"},
           }
@@ -48,15 +50,26 @@ export class Users {
   }
 
   static async createUser(userDto) {
-    const query = userDto
-    const options = {}
+    const query = { email: userDto.email }
+    const doc = userDto
     
     // Check if user exists
-    const user = await db.collection('users').findOne({ email: query.email })
-    if (user) throw new Error("Account with this email already exists.")
+    const oldUser = await db.collection('users').findOne(query)
+    if (oldUser) throw new Error("Account with this email already exists.")
     
     // Create user in database
-    return await db.collection('users').insertOne(query, options)
+    await db.collection('users').insertOne(doc)
+
+    return await db.collection('users').findOne(query)
+  }
+
+  static async updateUser(userDto) {
+    const query = { email: userDto.email }
+    const updateDoc = { $set: userDto }
+
+    await db.collection('users').updateOne(query, updateDoc)
+
+    return await db.collection('users').findOne(query)
   }
 }
 

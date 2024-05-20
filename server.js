@@ -16,7 +16,7 @@ const port = process.env.PORT || 3000
 app.engine('hbs', engine({
   extname: ".hbs",
   helpers: {
-    eq: (a, b) => a===b,
+    eq: (a, b, c) => a===b || a===c,
     mt: (a, b) => a > b,
     ifexists: (a, b) => a?? b,
     date: (d) => new Date(d).toLocaleDateString(),
