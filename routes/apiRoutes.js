@@ -1,6 +1,7 @@
 import express from 'express'
 import { UserController } from '../controllers/userController.js'
 import { ReservationController } from '../controllers/reservationController.js'
+import { RatingController } from '../controllers/ratingController.js'
 
 const router = express.Router()
 
@@ -29,6 +30,11 @@ router.post("/reserve", async (req, res, next) => {
 
 router.post("/unreserve", async (req, res, next) => {
     await ReservationController.deleteReservation(req.body.reservationId)
+    res.redirect("/user/my_reservations")
+})
+
+router.post("/set_rating", async (req, res, next) => {
+    await RatingController.addRating(req.body);
     res.redirect("/user/my_reservations")
 })
 

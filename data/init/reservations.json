@@ -1,37 +1,56 @@
 [
   {
     "user": "gmyron1@gmail.com",
-    "category": "Small",
     "location": "Thessaloniki",
     "dateFrom": "2024-04-15", "dateTo": "2024-04-17",
-    "rented": false
+    "category": "Small",
+    "carPlate": null,
+    "rating": null,
+    "comment": null
   },
   {
     "user": "gmyron1@gmail.com",
-    "category": "Large",
+    "location": "Athens",
+    "dateFrom": "2024-04-21", "dateTo": "2024-04-23",
+    "category": "Small",
+    "carPlate": null,
+    "rating": null,
+    "comment": null
+  },
+  {
+    "user": "gmyron1@gmail.com",
     "location": "Patras",
     "dateFrom": "2024-03-12", "dateTo": "2024-04-01",
-    "rented": true
+    "category": "Large",
+    "carPlate": null,
+    "rating": null,
+    "comment": null
   },
   {
     "user": "gmyron1@gmail.com",
-    "category": "Small",
-    "location": "Patras",
-    "dateFrom": "2024-04-12", "dateTo": "2024-04-20",
-    "rented": true
-  },
-  {
-    "user": "a@a.uk",
-    "category": "Small",
-    "location": "Athens",
-    "dateFrom": "2024-05-02", "dateTo": "2024-05-06",
-    "rented": true
-  },
-  {
-    "user": "gmyron1@gmail.com",
-    "category": "Medium",
     "location": "Thessaloniki",
-    "dateFrom": "2024-04-29", "dateTo": "2024-05-05",
-    "rented": false
+    "dateFrom": "2024-04-12", "dateTo": "2024-04-20",
+    "category": "Medium",
+    "carPlate": "NKP-1234",
+    "rating": 4,
+    "comment": "Nice car... Alfa Romeo!"
+  },
+  {
+    "user": "gmyron1@gmail.com",
+    "location": "Thessaloniki",
+    "dateFrom": "2024-04-12", "dateTo": "2024-04-20",
+    "category": "Medium",
+    "carPlate": "ΝΖΝ-0845",
+    "rating": 4,
+    "comment": ""
+  },
+  {
+    "user": "gmyron1@gmail.com",
+    "location": "Thessaloniki",
+    "dateFrom": "2024-04-12", "dateTo": "2024-04-20",
+    "category": "Medium",
+    "carPlate": null,
+    "rating": null,
+    "comment": null
   }
 ]
