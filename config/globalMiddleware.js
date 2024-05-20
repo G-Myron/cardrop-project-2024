@@ -4,8 +4,8 @@ const authWhiteList = ["/auth/login", "/auth/signup"]
 const citiesList = JSON.parse(await fs.readFile(`data/citiesList.json`))
 
 const authenticationMW = (req, res, next) => {
-  if(req.session.username || authWhiteList.includes(req._parsedUrl.pathname)){
-    res.locals.username = req.session.username
+  if(req.session.user || authWhiteList.includes(req._parsedUrl.pathname)){
+    res.locals.user = req.session.user
     next()
   }
   else res.redirect(authWhiteList[0])

@@ -1,16 +1,16 @@
 <header class="navbar navbar-expand-md sticky-top bg-primary">
   <nav class="container navbar navbar-dark flex-wrap flex-md-nowrap">
-    <div class="container-fluid">
+    <div class="container-fluid justify-content-center justify-content-md-between">
       <a class="navbar-brand" href="/" tabindex="-1">
         <img src="/logo.png" alt="Logo" height="40px" class="me-3">
         Rent A Car
       </a>
-      <div class="d-flex navbar-nav align-items-center gap-md-5">
-        {{#if username}}
+      <div class="d-flex align-items-center gap-4 gap-md-5" style="color: var(--bs-navbar-color);">
+        {{#if user}}
         <div class="nav-item dropdown">
           <button class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
             <img src="/images/profile.jpg" alt="profile" class="rounded-circle" height="30"/>
-            {{username}}
+            {{user.name}} {{user.surname}}
           </button>
           <ul class="dropdown-menu dropdown-menu-end shadow">
             <a class="dropdown-item {{#if reserv}}active{{/if}}" href="/user/my_reservations">

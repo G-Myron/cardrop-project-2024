@@ -16,17 +16,32 @@ export class UserController {
     if (!user) throw new Error("No account corresponds to the email you have provided.")
     
     const validPassword = await bcrypt.compare(htmlBody.password, user.password)
-    return validPassword
+    
+    return validPassword? user : undefined
   }
 
   static async handleSignup(htmlBody) {
     const passwordHash = await bcrypt.hash(htmlBody.password, 10)
     const userDto = {
       name: htmlBody.name,
+      surname: htmlBody.surname,
+      tel: htmlBody.tel,
       email: htmlBody.email,
       password: passwordHash
     }
-    await Users.createUser(userDto)
+    return await Users.createUser(userDto)
+  }
+
+  static async handleEdit(htmlBody) {
+    const passwordHash = await bcrypt.hash(htmlBody.password, 10)
+    const userDto = {
+      name: htmlBody.name,
+      surname: htmlBody.surname,
+      tel: htmlBody.tel,
+      email: htmlBody.email,
+      password: passwordHash
+    }
+    return await Users.updateUser(userDto)
   }
 }
 

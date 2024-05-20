@@ -1,4 +1,59 @@
-<form method="post" action="/auth/{{action}}" class="needs-validation" novalidate>
+<form action="/auth/{{action}}" method="post" class="needs-validation" novalidate>
+
+  {{#if (eq action "signup" "edit")}}
+  <!-- 2 column grid layout with text inputs for the first and last name -->
+  <div class="row">
+    <div class="col-md-6 mb-4">
+      <div class="form-floating">
+        <input type="text" class="form-control" name="name" id="floatingFirstName" placeholder="Name" value="{{user.name}}" required>
+        {{#if (eq action "edit")}}<div class="form-control-plaintext d-none"></div>{{/if}}
+        <label for="floatingFirstName">First name</label>
+      </div>
+    </div>
+    <div class="col-md-6 mb-4">
+      <div class="form-floating">
+        <input type="text" class="form-control" name="surname" id="floatingLastName" placeholder="Surname" value="{{user.surname}}" required>
+        {{#if (eq action "edit")}}<div class="form-control-plaintext d-none"></div>{{/if}}
+        <label for="floatingLastName">Last name</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Email and phone inputs -->
+  <div class="row">
+    <div class="col-md-6 mb-4">
+      <div class="form-floating">
+        <input type="email" class="form-control" name="email" id="floatingEmail" placeholder="Email" value="{{user.email}}" required
+          {{#if (eq action "edit")}}disabled{{/if}} >
+        <label for="floatingEmail">Email</label>
+      </div>
+    </div>
+    <div class="col-md-6 mb-4">
+      <div class="form-floating">
+        <input type="tel" class="form-control" name="tel" id="floatingPhone" placeholder="Phone" value="{{user.tel}}" required>
+        {{#if (eq action "edit")}}<div class="form-control-plaintext d-none"></div>{{/if}}
+        <label for="floatingPhone">Phone</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- New password input -->
+  <div class="form-floating mb-4 input-group">
+    <input type="password" class="form-control" name="password" id="floatingNewPassword" placeholder="New password" required>
+    {{#if (eq action "edit")}}<div class="form-control-plaintext d-none"></div>{{/if}}
+    <label for="floatingNewPassword">New password</label>
+    <span class="input-group-text fs-4 bi-eye" id="passShow"></span>
+  </div>
+  <!-- Repeat password input -->
+  <div class="form-floating mb-4">
+    <input type="password" class="form-control" name="confirm-password" id="floatingConfirmPassword" placeholder="Confirm password" required>
+    {{#if (eq action "edit")}}<div class="form-control-plaintext d-none"></div>{{/if}}
+    <label for="floatingConfirmPassword">Confirm password</label>
+  </div>
+
+  <br><br>
+
+  {{else}}
 
   <!-- Email input -->
   <div class="form-floating mb-4">
@@ -6,62 +61,29 @@
     <label for="floatingEmail">Email</label>
   </div>
 
-  {{#if (eq action "signup")}}
-  <!-- 2 column grid layout with text inputs for the first and last name -->
-  <div class="row">
-    <div class="col-md-6 mb-4">
-      <div class="form-floating">
-        <input type="text" class="form-control" name="name" id="floatingFirstName" placeholder="John">
-        <label for="floatingFirstName">First name</label>
-      </div>
-    </div>
-    <div class="col-md-6 mb-4">
-      <div class="form-floating">
-        <input type="text" class="form-control" name="surname" id="floatingLastName" placeholder="Doe">
-        <label for="floatingLastName">Last name</label>
-      </div>
-    </div>
-  </div>
-
-  <!-- New password input -->
-  <div class="form-floating mb-4">
-    <input type="password" class="form-control" name="password" id="floatingNewPassword" placeholder="Password" required>
-    <label for="floatingNewPassword">New password</label>
-  </div>
-  <!-- Repeat password input -->
-  <div class="form-floating mb-4">
-    <input type="password" class="form-control" name="confirm-password" id="floatingConfirmPassword" placeholder="Password" required>
-    <label for="floatingConfirmPassword">Confirm password</label>
-  </div>
-
-  {{else}}
-
   <!-- Password input -->
-  <div class="form-floating mb-4">
+  <div class="form-floating mb-4 input-group">
     <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="Password" required>
     <label for="floatingPassword">Password</label>
+    <span class="input-group-text fs-4 bi-eye" id="passShow"></span>
   </div>
-  {{/if}}
 
   <!-- Remember me checkbox -->
   <div class="form-check text-start mb-4">
-  {{#unless (eq action "signup")}}
     <input class="form-check-input dmxValidator-invalid" type="checkbox" name="rememberMe" id="rememberMeCheck">
     <label class="form-check-label" for="rememberMeCheck">Remember me</label>
-  {{/unless}}
   </div>
+  {{/if}}
 
   <!-- Submit button -->
   <button type="submit" class="btn btn-primary w-100 mb-4">
-    Sign {{#if (eq action "signup")}} up {{else}} in {{/if}}
+    {{#if (eq action "edit")}}
+    Save
+    {{else if (eq action "signup")}}
+    Sign up
+    {{else}}
+    Sign in
+    {{/if}}
   </button>
 
-  <!-- Link to the other form -->
-  <div>
-    {{#if (eq action "signup")}}
-    Already have an account? <a href="./login">Login</a> here!
-    {{else}}
-    You don't have an account? <a href="./signup">Sign up</a> now!
-    {{/if}}
-  </div>
 </form>
