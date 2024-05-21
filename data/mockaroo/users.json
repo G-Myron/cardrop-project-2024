@@ -1,0 +1,33 @@
+[{
+  "name": "Myron",
+  "surname": "Giannakis",
+  "email": "gmyron1@gmail.com",
+  "tel": "6946396162",
+  "password": "$2b$10$NupTT/IIKmVq/8L4a4m.7ecxPeAkZQdbN.dILI8Emi91lvNuq.e3C"
+},{
+  "name": "User",
+  "surname": "Testing",
+  "email": "user@test.com",
+  "tel": "6915963780",
+  "password": "$2b$10$NupTT/IIKmVq/8L4a4m.7ecxPeAkZQdbN.dILI8Emi91lvNuq.e3C"
+},
+{"name":"Arleyne","surname":"Greenwell","email":"agreenwell0@foxnews.com","tel":"+302569173020","password":"$2a$04$oqXqTtt/1uXfNgcHxZXmqOYxKvI5nFEDO02YBx/MJlpABbEaFYVBm"},
+{"name":"Sayre","surname":"Marklow","email":"smarklow1@bbc.co.uk","tel":"6987037069","password":"$2a$04$qieM5atIGTaO0ss3IIhEg.gJx/NDkkdJhlsOGKxIbAJzKilychLDi"},
+{"name":"Elvis","surname":"Stammirs","email":"estammirs2@berkeley.edu","tel":"+302704480728","password":"$2a$04$0AnTbHoAuVNmNMLjX9bleO2Y1limFchIYyDxzRh2JjDcLes8R3Wj6"},
+{"name":"Sharron","surname":"Avrahamoff","email":"savrahamoff3@abc.net.au","tel":"6992438576","password":"$2a$04$ptr9fibzAyAjiSNau/e5P.Ut.bZ5bwzt5DahoZT5um7vppYQbVOem"},
+{"name":"Floyd","surname":"Lowdiane","email":"flowdiane4@last.fm","tel":"+306952115078","password":"$2a$04$dNAZn.z..p9lRkdLByDHlO3qoafneF8sXyDnvIInntBTmDL7uxFrG"},
+{"name":"Ferris","surname":"Rennenbach","email":"frennenbach5@posterous.com","tel":"+302955634413","password":"$2a$04$m3fl36sLfY1H3iLW0huaP.nj64NmZR0JXnhXpLQ9kNIUJkMKtFgwu"},
+{"name":"Ade","surname":"Franke","email":"afranke6@nbcnews.com","tel":"+306998040544","password":"$2a$04$KacMmMpE49TffsTO1C407OrE9WM8xauUWlXk8wpu0yfPyBC84omrm"},
+{"name":"Brittne","surname":"Gallego","email":"bgallego7@google.ca","tel":"2796922092","password":"$2a$04$FbVZ3yODRm.f.4g3T8SWounRlSVFmLYDQK/SyUuLuJMTskf0cIf7y"},
+{"name":"Terence","surname":"Shiliton","email":"tshiliton8@friendfeed.com","tel":"6959947270","password":"$2a$04$qEQgnHx31.6bABORRDA05ORuz00bwQlIyN8neEVEcJHMZsCfX5fbO"},
+{"name":"Hali","surname":"Angelo","email":"hangelo9@unicef.org","tel":"+306999592283","password":"$2a$04$9.30apX7/FpgbGlf3cADVerlXlThkoVRbt7OS92CiLoU7ysHpHA7."},
+{"name":"Gigi","surname":"Kennham","email":"gkennhama@51.la","tel":"2482371831","password":"$2a$04$1L./tc1W8QSC/TbLq6EHs.pFZ9iMfesJ9zpuOkT2/UVamuBZ3QbLS"},
+{"name":"Xymenes","surname":"Collelton","email":"xcolleltonb@cargocollective.com","tel":"+306908236291","password":"$2a$04$O.QDAa1.EnfqwcDdYQtPo.9xB2FNDrB4uRZOQX2NWXeCLaxzq37M6"},
+{"name":"Giulietta","surname":"Desson","email":"gdessonc@i2i.jp","tel":"+306990943715","password":"$2a$04$tEP77C4oJ5GvqVhGVPLp/O109eNtDftf8k/bTfsNJxxLxzFeqUdje"},
+{"name":"Beverie","surname":"Dickons","email":"bdickonsd@free.fr","tel":"2639657410","password":"$2a$04$HfQXsjk4Xy0Mmury06GKauVNenqUPBJMHqaCAS/UnJRcoa481DqWe"},
+{"name":"Evelin","surname":"McKearnen","email":"emckearnene@constantcontact.com","tel":"2991367582","password":"$2a$04$6MXYAszh2zdvt4CtOTjpmuSLIH9Fs7G.2Yki.GE7xUYpVvvJ/6nOy"},
+{"name":"Mick","surname":"Fayne","email":"mfaynef@cloudflare.com","tel":"+306972992733","password":"$2a$04$dN7p3WGP20gpqtjr9taLMu.y5CcZseskRpHsPI6OYVU4EUHJOeq7."},
+{"name":"Joela","surname":"Mapstone","email":"jmapstoneg@telegraph.co.uk","tel":"6979553317","password":"$2a$04$H.F3d5bMje4rhA5TkdSW8uz1D06OpXmJI4YviobJUn2POjdCm02k."},
+{"name":"Dena","surname":"Hardacre","email":"dhardacreh@apache.org","tel":"6952021500","password":"$2a$04$2ZjhewVlU/JRu7LkbnV50esLvex3olev1I5SmfR.CRqiAadt1yVjS"},
+{"name":"Terencio","surname":"Olensby","email":"tolensbyi@answers.com","tel":"+306910204901","password":"$2a$04$XNbg4SWBD9NttVWI1saD8e3CSnihVXU7BeR1LrCPEKCosJkhY4xf."},
+{"name":"Darya","surname":"Hartfleet","email":"dhartfleetj@bloglines.com","tel":"6957689071","password":"$2a$04$dEAlZRYzKI3ZZn2vn/NLVuM/h7cEiGU0LRqGgUcmfBZ3/VpqLc/hq"}]

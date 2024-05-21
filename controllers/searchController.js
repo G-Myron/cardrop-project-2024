@@ -8,7 +8,8 @@ export class SearchController {
 
     const availiable = []
     for (let category of categories) {
-      if ( await Cars.countCarsOfCategoryInLocation(category.name, city) )
+      category.availiability = await Cars.countCarsOfCategoryInLocation(category.name, city)
+      if (category.availiability)
         availiable.push(category)
     }
     

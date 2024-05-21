@@ -1,12 +1,16 @@
 [
   {
     "name": "Myron",
+    "surname": "Giannakis",
     "email": "myron@gmail.com",
+    "tel": "6946396162",
     "password": "$2b$10$NupTT/IIKmVq/8L4a4m.7ecxPeAkZQdbN.dILI8Emi91lvNuq.e3C"
   },
   {
     "name": "Myron",
+    "surname": "Giannakis",
     "email": "gmyron1@gmail.com",
+    "tel": "6946396162",
     "password": "$2b$10$NupTT/IIKmVq/8L4a4m.7ecxPeAkZQdbN.dILI8Emi91lvNuq.e3C"
   },
   {
