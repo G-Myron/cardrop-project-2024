@@ -1,5 +1,6 @@
 import express from 'express'
 import { DetailsController } from "../controllers/detailsController.js"
+import { RatingController } from '../controllers/ratingController.js'
 
 const router = express.Router()
 
@@ -16,13 +17,15 @@ router.get("/:category", async (req, res, next) => {
   
   const daysCount = DetailsController.getDays( req.query.from, req.query.to )
   const category = await DetailsController.getCategoryDetails( req.params.category, daysCount )
+  const ratings = await RatingController.getRatings(req.session.user?.email, category.name, req.query.city)
 
   res.render("vehicleDetails", {
     city: req.query.city,
     dateFrom: req.query.from,
     dateTo: req.query.to,
     category: category,
-    days: daysCount
+    days: daysCount,
+    ratings: ratings
   })
 
 })

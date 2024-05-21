@@ -42,7 +42,7 @@
               {{#if carPlate}}
               <form action="/api/set_rating" method="post" id="reservationModalForm{{@index}}">
                 <input name="rentalId" value={{_id}} hidden>
-                <div class="mb-4 text-primary d-flex justify-content-center flex-row-reverse" id="stars-rating">
+                <div class="mb-4 text-primary d-flex justify-content-center flex-row-reverse" id="stars-rating-{{@index}}">
                   <input type="radio" name="rating" value="5" id="5stars-{{@index}}" hidden required>
                   <label class="bi-star fs-3 ps-1" for="5stars-{{@index}}"></label>
                   <input type="radio" name="rating" value="4" id="4stars-{{@index}}" hidden>

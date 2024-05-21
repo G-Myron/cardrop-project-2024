@@ -15,10 +15,15 @@
     <hr class="mb-0"><hr class="mt-0">
     
     <div class="d-flex align-items-center flex-column gap-4">
+      {{#unless ratings}}
+      <h4 class="mt-4">There are no ratings of {{category.name}} cars in {{city}} yet..</h4>
+      {{else}}
       <h3>Testimonials from {{city}}</h3>
-      <div class="d-grid gap-4 overflow-auto text-center">
-        {{>cards/testimonial user="John Doe" car="Alfa Romeo Giulia" time="3 mins ago" stars=4}}
-        {{>cards/testimonial user="Colin Serster" car="Alfa Romeo Giulia" time="2 days ago" stars=3}}
+      {{/unless}}
+      <div class="d-grid gap-4 overflow-auto text-center w-100">
+        {{#each ratings}}
+        {{>cards/testimonial time="3 mins ago" stars=rating comment=comment}}
+        {{/each}}
       </div>
       <br>
     </div>

@@ -1,4 +1,6 @@
+import { Cars } from "../models/car.js"
 import { Reservations } from "../models/reservation.js"
+import { UserController } from "./userController.js"
 
 export class RatingController {
   
@@ -6,14 +8,15 @@ export class RatingController {
     await Reservations.addRating(body.rentalId, parseInt(body.rating), body.comment)
   }
 
-  static async showRatings() {
-    return await Reservations.getRatings(email, category, city)
-  }
+  static async getRatings(userEmail, category, city) {
+    const ratings = await Reservations.getRatings(userEmail, category, city)
 
+    for (let rating of ratings){
+      rating.user = await UserController.getUserDetails(rating.user)
+      rating.car = await Cars.getCarByPlate(rating.carPlate)
+    }
 
-  static getDays(dateFrom, dateTo) {
-    const diff = new Date(dateTo) - new Date(dateFrom)
-    return diff / ( 24 * 60 * 60e3 )
+    return ratings
   }
 
 }
