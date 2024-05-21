@@ -6,7 +6,35 @@
     <input name="dateTo" value={{dateTo}} hidden>
     
     {{>cards/details category days=days imgWidth=350 }}
+
+    <!-- Terms Modal -->
+    <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="termsModalLabel">Terms of use</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body m-3">
+            This app's purpose is to book a car reservation. It does not involve any online payment.
+            The user will pay the ammount corresponding ammount in person in the time they get to the location of the car.<br>
+            In case a car of the category that was reserved is not availiable on the time of pick-up,
+             a vehicle of the next larger category will be provided in the same price.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Understood</button>
+          </div>
+        </div>
+      </div>
+    </div>
     
+    <label class="w-100 mt-5 px-2 text-center">
+      <input type="checkbox" name="terms" required>
+      I understand and agree to the
+      <a class="text-primary" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#termsModal">
+        Terms and Conditions
+      </a>.
+    </label>
     <div class="d-flex justify-content-evenly align-items-center gap-3 flex-wrap text-center my-5 py-3 bg-body-tertiary">
       <h5 class="m-0">{{city}}: from {{{date dateFrom}}} to {{{date dateTo}}}</h5>
       <button type="submit" class="btn btn-success px-4 py-3">Book vehicle</button>
