@@ -12,12 +12,11 @@ export class Reservations {
         $jsonSchema: {
           bsonType: "object",
           title: "Reservation Object Validation",
-          required: [ "user", "location", "dateFrom", "dateTo", "category", "carPlate" ],
+          required: [ "user", "dateFrom", "dateTo", "category", "carPlate" ],
           properties: {
             user: {bsonType: "string"}, // Foreign key
             category: {bsonType: "string"}, // Foreign key
             carPlate: {bsonType: ["string", "null"]}, // Foreign key
-            location: {bsonType: "string"},
             dateFrom: {bsonType: "date"},
             dateTo: {bsonType: "date"},
             rating: {bsonType: "object"},
@@ -67,10 +66,11 @@ export class Reservations {
 
   // --------- RATINGS
 
-  static async getRentals(category, city) {
-    const query = { category: category, location: city, carPlate: {$ne:null} }
+  static async getRentals(category) {
+    const query = { category: category, carPlate: {$ne:null} }
+    const options = {sort: {"rating.stars": -1, "rating.date": -1}}
 
-    return await db.collection('reservations').find(query).toArray()
+    return await db.collection('reservations').find(query, options).toArray()
   }
 
   static async addRating(rentalId, rating, comment) {

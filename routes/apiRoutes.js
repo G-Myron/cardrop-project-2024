@@ -34,7 +34,7 @@ router.post("/unreserve", async (req, res, next) => {
 })
 
 router.post("/set_rating", async (req, res, next) => {
-    await RatingController.addRating(req.body);
+    await RatingController.addRating(req.body)
     res.redirect("/user/my_reservations")
 })
 

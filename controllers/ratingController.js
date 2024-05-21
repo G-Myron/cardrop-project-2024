@@ -9,15 +9,15 @@ export class RatingController {
   }
 
   static async getRatings(category, city) {
-    const rentals = await Reservations.getRentals(category, city)
+    const rentals = await Reservations.getRentals(category)
 
     for (let rental of rentals){
-      rental.user = await UserController.getUserDetails(rental.user)
       rental.car = await Cars.getCarByPlate(rental.carPlate)
+      rental.user = await UserController.getUserDetails(rental.user)
       rental.rating.days = Math.floor( ( new Date() - rental.rating.date ) / ( 24 * 60 * 60e3 ) )
     }
 
-    return rentals
+    return rentals.filter( rental => rental.car.location === city)
   }
 
 }
