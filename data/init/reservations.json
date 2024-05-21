@@ -5,8 +5,7 @@
     "dateFrom": "2024-04-15", "dateTo": "2024-04-17",
     "category": "Small",
     "carPlate": null,
-    "rating": null,
-    "comment": null
+    "rating": {}
   },
   {
     "user": "gmyron1@gmail.com",
@@ -14,8 +13,7 @@
     "dateFrom": "2024-04-21", "dateTo": "2024-04-23",
     "category": "Small",
     "carPlate": null,
-    "rating": null,
-    "comment": null
+    "rating": {}
   },
   {
     "user": "gmyron1@gmail.com",
@@ -23,8 +21,7 @@
     "dateFrom": "2024-03-12", "dateTo": "2024-04-01",
     "category": "Large",
     "carPlate": null,
-    "rating": null,
-    "comment": null
+    "rating": {}
   },
   {
     "user": "gmyron1@gmail.com",
@@ -32,8 +29,11 @@
     "dateFrom": "2024-04-12", "dateTo": "2024-04-20",
     "category": "Medium",
     "carPlate": "NKP-1234",
-    "rating": 4,
-    "comment": "Nice car... Alfa Romeo!"
+    "rating": {
+      "stars": 4,
+      "comment": "Nice car... Alfa Romeo!",
+      "date": "2024-05-19"
+    }
   },
   {
     "user": "gmyron1@gmail.com",
@@ -41,8 +41,11 @@
     "dateFrom": "2024-04-12", "dateTo": "2024-04-20",
     "category": "Medium",
     "carPlate": "ΝΖΝ-0845",
-    "rating": 4,
-    "comment": ""
+    "rating": {
+      "stars": 4,
+      "comment": "",
+      "date": "2024-05-16"
+    }
   },
   {
     "user": "gmyron1@gmail.com",
@@ -50,7 +53,6 @@
     "dateFrom": "2024-04-12", "dateTo": "2024-04-20",
     "category": "Medium",
     "carPlate": null,
-    "rating": null,
-    "comment": null
+    "rating": {}
   }
 ]

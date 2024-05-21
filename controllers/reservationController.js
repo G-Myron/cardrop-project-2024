@@ -23,8 +23,7 @@ export class ReservationController {
       dateTo: dateTo,
       category: category,
       carPlate: null,
-      rating: null,
-      comment: null,
+      rating: {},
     }
     await Reservations.createReservation(reservationDto)
   }

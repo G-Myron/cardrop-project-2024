@@ -14,7 +14,13 @@
         {{comment}}
       </p>
       <p class="card-text">
-        <small class="text-muted">{{time}}</small>
+        {{#if (eq days 0)}}
+        <small class="text-muted">Today</small>
+        {{else if (eq days 1)}}
+        <small class="text-muted">Yesterday</small>
+        {{else}}
+        <small class="text-muted">{{days}} days ago</small>
+        {{/if}}
       </p>
     </div>
   </div>

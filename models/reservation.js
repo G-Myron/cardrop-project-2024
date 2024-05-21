@@ -20,8 +20,7 @@ export class Reservations {
             location: {bsonType: "string"},
             dateFrom: {bsonType: "date"},
             dateTo: {bsonType: "date"},
-            rating: {bsonType: ["int", "null"]},
-            comment: {bsonType: ["string", "null"]}
+            rating: {bsonType: "object"},
           }
       }}
     })
@@ -32,7 +31,10 @@ export class Reservations {
     initReservations.forEach( resv => {
       resv.dateFrom = new Date(resv.dateFrom)
       resv.dateTo = new Date(resv.dateTo)
+      if (resv.rating?.date)
+        resv.rating.date = new Date(resv.rating.date)
     })
+
     await db.collection('reservations').insertMany(initReservations)
 
     console.log("Successfully initialized reservations collection!")
@@ -65,15 +67,19 @@ export class Reservations {
 
   // --------- RATINGS
 
-  static async getRatings(userEmail, category, city) {
-    const query = { user: userEmail, category: category, location: city, carPlate: {$ne:null} }
+  static async getRentals(category, city) {
+    const query = { category: category, location: city, carPlate: {$ne:null} }
 
     return await db.collection('reservations').find(query).toArray()
   }
 
   static async addRating(rentalId, rating, comment) {
     const query = { _id: ObjectId.createFromHexString(rentalId) }
-    const updateDoc = { $set: { rating: rating, comment: comment } }
+    const updateDoc = { $set: { rating: {
+      stars: rating,
+      comment: comment,
+      date: new Date()
+    } }}
 
     return await db.collection('reservations').updateOne(query, updateDoc)
   }

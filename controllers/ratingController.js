@@ -8,15 +8,16 @@ export class RatingController {
     await Reservations.addRating(body.rentalId, parseInt(body.rating), body.comment)
   }
 
-  static async getRatings(userEmail, category, city) {
-    const ratings = await Reservations.getRatings(userEmail, category, city)
+  static async getRatings(category, city) {
+    const rentals = await Reservations.getRentals(category, city)
 
-    for (let rating of ratings){
-      rating.user = await UserController.getUserDetails(rating.user)
-      rating.car = await Cars.getCarByPlate(rating.carPlate)
+    for (let rental of rentals){
+      rental.user = await UserController.getUserDetails(rental.user)
+      rental.car = await Cars.getCarByPlate(rental.carPlate)
+      rental.rating.days = Math.floor( ( new Date() - rental.rating.date ) / ( 24 * 60 * 60e3 ) )
     }
 
-    return ratings
+    return rentals
   }
 
 }

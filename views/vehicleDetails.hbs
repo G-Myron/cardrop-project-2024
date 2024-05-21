@@ -22,7 +22,7 @@
       {{/unless}}
       <div class="d-grid gap-4 overflow-auto text-center w-100">
         {{#each ratings}}
-        {{>cards/testimonial time="3 mins ago" stars=rating comment=comment}}
+        {{>cards/testimonial days=rating.days stars=rating.stars comment=rating.comment}}
         {{/each}}
       </div>
       <br>
