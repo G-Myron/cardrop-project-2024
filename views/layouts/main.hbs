@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="/styles/generalStyle.css">
     <script src="/scripts/datetimeScript.js" defer></script>
     <script src="/scripts/passwordEye.js" defer></script>
+    <script src="/scripts/spinLoader.js" defer></script>
     <script src="/scripts/colorModeToggler.js"></script>
     <script src="/scripts/bootstrapFormValidation.js"></script>
 
@@ -32,6 +33,10 @@
     <main class="container mb-4">
         {{{body}}}
     </main>
+    <div class="d-none justify-content-center align-items-center vh-100 vw-100 position-fixed"
+            id="spinLoader" style="background: #0008; z-index: 100;">
+        <div class="spinner-border text-primary fs-2" style="width: 2em; height: 2em;"></div>
+    </div>
     {{>footer}}
 </body>
 </html>
