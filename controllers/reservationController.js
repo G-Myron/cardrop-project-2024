@@ -1,34 +1,41 @@
+import { Cars } from "../models/car.js"
 import { Categories } from "../models/category.js"
 import { Reservations } from "../models/reservation.js"
 
 
 export class ReservationController {
 
-  static async getReservationsByUser(user, daysCount) {
+  static async getReservationsByUser(user) {
     const resvs = await Reservations.getReservationsByUser(user)
 
     for (let resv of resvs){
       resv.days = this.getDays( resv.dateFrom, resv.dateTo)
       resv.category = await Categories.getCategory(resv.category, resv.days)
+      if (resv.carPlate)
+        resv.car = await Cars.getCarByPlate(resv.carPlate)
     }
 
     return resvs
   }
 
-  static async saveReservation(userEmail, category, city, dateFrom, dateTo) {
+  static async saveReservation(userEmail, body) {
+    const dateFrom = new Date(body.dateFrom)
+    const dateTo = new Date(body.dateTo)
+
     const reservationDto = {
       user: userEmail,
-      category: category,
-      location: city,
+      location: body.city,
       dateFrom: dateFrom,
       dateTo: dateTo,
-      rented: false
+      category: body.category,
+      carPlate: null,
+      rating: {},
     }
     await Reservations.createReservation(reservationDto)
   }
 
   static async deleteReservation(reservationId) {
-    await Reservations.deleteReservation(reservationId)
+    await Reservations.cancelReservation(reservationId)
   }
 
   static getDays(dateFrom, dateTo) {

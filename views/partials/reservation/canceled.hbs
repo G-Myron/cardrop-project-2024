@@ -1,0 +1,22 @@
+<section class="card my-5 mx-lg-5 border-5 border-danger">
+  <div class="card-body p-4 overflow-auto">
+    {{>cards/details category days=days imgWidth=300 }}
+    
+    <div class="d-flex justify-content-evenly align-items-center gap-3 flex-wrap text-center mt-4 py-3 bg-body-tertiary">
+      <p class="fs-5 m-0">
+        You have reserved this car in <strong>{{location}}</strong>
+        from {{{localDate dateFrom}}} to {{{localDate dateTo}}}
+      </p>
+    </div>
+
+    <div class="d-flex justify-content-end align-items-center gap-4 w-100 mt-3 p-1 pb-0">
+      <h4 class="m-0">
+        Canceled vehicle
+      </h4>
+      <a class="btn btn-primary" href="/vehicle/{{category.name}}?city={{location}}&from={{isoDate dateFrom}}&to={{isoDate dateTo}}">
+        Reserve again
+      </a>
+    </div>
+
+  </div>
+</section>

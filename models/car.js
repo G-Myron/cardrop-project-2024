@@ -40,18 +40,8 @@ export class Cars {
     return await this.customFind(query, options)
   }
 
-  static async getCarsOfCategory(category) {
-    const query = { category: category}
-    const options = {}
-
-    return await this.customFind(query, options)
-  }
-
-  static async getCarsByLocation(location) {
-    const query = { location: location}
-    const options = {}
-
-    return await this.customFind(query, options)
+  static async getCarByPlate(plate) {
+    return await db.collection('cars').findOne({plate: plate})
   }
 
   static async countCarsOfCategoryInLocation(category, location) {

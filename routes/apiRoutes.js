@@ -1,6 +1,7 @@
 import express from 'express'
 import { UserController } from '../controllers/userController.js'
 import { ReservationController } from '../controllers/reservationController.js'
+import { RatingController } from '../controllers/ratingController.js'
 
 const router = express.Router()
 
@@ -14,11 +15,7 @@ router.get("/users/:email", async (req, res) => {
 
 router.post("/reserve", async (req, res, next) => {
     try {
-        const dateFrom = new Date(req.body.dateFrom)
-        const dateTo = new Date(req.body.dateTo)
-
-        await ReservationController.saveReservation( req.session.user?.email,
-            req.body.category, req.body.city, dateFrom, dateTo)
+        await ReservationController.saveReservation( req.session.user?.email, req.body)
         
         res.redirect("/user/my_reservations")
     }
@@ -29,6 +26,11 @@ router.post("/reserve", async (req, res, next) => {
 
 router.post("/unreserve", async (req, res, next) => {
     await ReservationController.deleteReservation(req.body.reservationId)
+    res.redirect("/user/my_reservations")
+})
+
+router.post("/set_rating", async (req, res, next) => {
+    await RatingController.addRating(req.body)
     res.redirect("/user/my_reservations")
 })
 

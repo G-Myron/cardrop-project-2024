@@ -12,25 +12,28 @@ export class Reservations {
         $jsonSchema: {
           bsonType: "object",
           title: "Reservation Object Validation",
-          required: [ "user", "category", "dateFrom", "dateTo", "rented" ],
+          required: [ "user", "dateFrom", "dateTo", "category", "carPlate" ],
           properties: {
             user: {bsonType: "string"}, // Foreign key
             category: {bsonType: "string"}, // Foreign key
+            carPlate: {bsonType: ["string", "null"]}, // Foreign key
             dateFrom: {bsonType: "date"},
             dateTo: {bsonType: "date"},
-            rented: {bsonType: "bool"},
+            rating: {bsonType: "object"},
           }
       }}
     })
 
-    // Set primary key
-    // await db.collection('reservations').createIndex({ user: 1, category: 1 }, {unique: true})
+    // primary key the _id
 
     // Populate collection
     initReservations.forEach( resv => {
       resv.dateFrom = new Date(resv.dateFrom)
       resv.dateTo = new Date(resv.dateTo)
+      if (resv.rating?.date)
+        resv.rating.date = new Date(resv.rating.date)
     })
+
     await db.collection('reservations').insertMany(initReservations)
 
     console.log("Successfully initialized reservations collection!")
@@ -44,8 +47,8 @@ export class Reservations {
     return await this.customFind( {}, {sort: {dateTo: -1, dateFrom: -1}} )
   }
 
-  static async getReservationsByUser(user) {
-    return await this.customFind( {user:user}, {sort: {dateTo: -1, dateFrom: -1}} )
+  static async getReservationsByUser(userEmail) {
+    return await this.customFind( {user: userEmail}, {sort: {dateTo: -1, dateFrom: -1}} )
   }
 
   static async createReservation(reservationDto) {
@@ -54,10 +57,38 @@ export class Reservations {
     return await db.collection('reservations').insertOne(query)
   }
 
+  static async cancelReservation(id) {
+    const query = {_id: ObjectId.createFromHexString(id)}
+    const updateDoc = { $set: { canceled: true }}
+
+    await db.collection('reservations').updateOne(query, updateDoc)
+  }
+
   static async deleteReservation(id) {
     const query = {_id: ObjectId.createFromHexString(id)}
 
     await db.collection('reservations').findOneAndDelete(query)
+  }
+  
+
+  // --------- RATINGS
+
+  static async getRentals(category, location) {
+    const query = { category: category, location: location, carPlate: {$ne:null} }
+    const options = {sort: {"rating.stars": -1, "rating.date": -1}}
+
+    return await db.collection('reservations').find(query, options).toArray()
+  }
+
+  static async addRating(rentalId, rating, comment) {
+    const query = { _id: ObjectId.createFromHexString(rentalId) }
+    const updateDoc = { $set: { rating: {
+      stars: rating,
+      comment: comment,
+      date: new Date()
+    } }}
+
+    return await db.collection('reservations').updateOne(query, updateDoc)
   }
 
 }
@@ -66,7 +97,7 @@ export class Reservations {
 // If __name__ == main
 if (process.argv[1] === import.meta.filename){
   await Reservations.initializeReservations().catch(console.dir)
-  // Print the results in JSON format
   console.dir( await Reservations.getAllReservations().catch(console.dir) )
+
   await closeDb()
 }

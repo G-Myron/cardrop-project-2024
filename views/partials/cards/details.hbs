@@ -36,7 +36,8 @@
       </div>
     </div>
     {{#if isBrief}}
-      <div class="d-flex justify-content-end p-1 w-100 pb-0">
+      <div class="d-flex justify-content-between align-items-center p-1 w-100 pb-0">
+        <span>Availiability: <strong>{{availiability}}</strong> cars</span>
         <a href="/vehicle/{{name}}?city={{city}}&from={{dateFrom}}&to={{dateTo}}" class="btn btn-primary px-4">See details</a>
       </div>
     {{/if}}
