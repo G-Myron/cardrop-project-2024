@@ -1,4 +1,21 @@
-<div class="reservations">
+<div class="reservations mt-5 pt-5">
+
+  <form method="get">
+    <label>
+      Current
+      <input type="checkbox" onchange="this.form.submit()" name="current" value="true" {{#if current}}checked{{/if}}>
+    </label>
+    <label>
+      Canceled
+      <input type="checkbox" onchange="this.form.submit()" name="canceled" value="true" {{#if canceled}}checked{{/if}}>
+    </label>
+    <label>
+      Old rentals
+      <input type="checkbox" onchange="this.form.submit()" name="oldRentals" value="true" {{#if oldRentals}}checked{{/if}}>
+    </label>
+    {{!-- <input type="submit" value="Submit"> --}}
+  </form>
+
   {{#unless reservations}}
   <div class="row justify-content-center mt-5">
     <div class="alert alert-info p-4 py-5 m-4 text-center w-75">

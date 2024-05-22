@@ -7,7 +7,7 @@ import { router as userRouter } from './routes/userRoutes.js'
 import { router as indexRouter } from './routes/indexRoutes.js'
 import { router as apiRouter } from './routes/apiRoutes.js'
 import { router as authRouter } from './routes/authRoutes.js'
-import { authenticationMW, globalVariablesMW } from './config/globalMiddleware.js'
+import { authenticationMW, globalVariablesMW } from './config/globalMiddlewares.js'
 
 const app = express()
 const port = process.env.PORT || 3000

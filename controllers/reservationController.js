@@ -5,8 +5,8 @@ import { Reservations } from "../models/reservation.js"
 
 export class ReservationController {
 
-  static async getReservationsByUser(user) {
-    const resvs = await Reservations.getReservationsByUser(user)
+  static async getReservationsByUser(user, current, canceled, oldRentals) {
+    const resvs = await Reservations.getReservationsByUser(user, current, canceled, oldRentals)
 
     for (let resv of resvs){
       resv.days = this.getDays( resv.dateFrom, resv.dateTo)
@@ -28,6 +28,7 @@ export class ReservationController {
       dateFrom: dateFrom,
       dateTo: dateTo,
       category: body.category,
+      canceled: false,
       carPlate: null,
       rating: {},
     }
