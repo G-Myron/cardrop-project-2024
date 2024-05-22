@@ -18,13 +18,16 @@ export class ReservationController {
     return resvs
   }
 
-  static async saveReservation(userEmail, category, city, dateFrom, dateTo) {
+  static async saveReservation(userEmail, body) {
+    const dateFrom = new Date(body.dateFrom)
+    const dateTo = new Date(body.dateTo)
+
     const reservationDto = {
       user: userEmail,
-      location: city,
+      location: body.city,
       dateFrom: dateFrom,
       dateTo: dateTo,
-      category: category,
+      category: body.category,
       carPlate: null,
       rating: {},
     }

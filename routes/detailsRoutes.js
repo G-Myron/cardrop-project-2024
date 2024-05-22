@@ -15,9 +15,13 @@ router.get("/:category", async (req, res, next) => {
     if (! res.locals.citiesList.includes(req.query.city)) {
       throw new Error("We are sorry, but we don't provide vehicles in " + req.query.city)
     }
-    if (! (req.query.from && req.query.to) ) {
+    if (! (req.query.from && req.query.to) || new Date(req.query.from) >= new Date(req.query.to) ) {
       res.status(400)
       throw new Error("Please use properly the app through the UI.")
+    }
+    if ( new Date(req.query.from) < new Date().setDate( new Date().getDate()-1 ) ) {
+      res.status(400)
+      throw new Error("You cannot Reserve a vehicle for past dates Please choose future dates.")
     }
   
     const daysCount = DetailsController.getDays( req.query.from, req.query.to )

@@ -15,11 +15,7 @@ router.get("/users/:email", async (req, res) => {
 
 router.post("/reserve", async (req, res, next) => {
     try {
-        const dateFrom = new Date(req.body.dateFrom)
-        const dateTo = new Date(req.body.dateTo)
-
-        await ReservationController.saveReservation( req.session.user?.email,
-            req.body.category, req.body.city, dateFrom, dateTo)
+        await ReservationController.saveReservation( req.session.user?.email, req.body)
         
         res.redirect("/user/my_reservations")
     }
