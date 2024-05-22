@@ -73,8 +73,8 @@ export class Reservations {
 
   // --------- RATINGS
 
-  static async getRentals(category) {
-    const query = { category: category, carPlate: {$ne:null} }
+  static async getRentals(category, location) {
+    const query = { category: category, location: location, carPlate: {$ne:null} }
     const options = {sort: {"rating.stars": -1, "rating.date": -1}}
 
     return await db.collection('reservations').find(query, options).toArray()

@@ -2,10 +2,13 @@
   <div class="card-body p-4 overflow-auto">
     {{>cards/details category days=days imgWidth=300 }}
     
-    <div class="d-flex justify-content-evenly align-items-center gap-3 flex-wrap text-center mt-4 py-3 bg-body-tertiary">
-      <p class="fs-5 m-0">
+    <div class="text-center flex-wrap text-center mt-4 py-3 bg-body-tertiary">
+      <p class="fs-5">
         You have rented this car in <strong>{{location}}</strong>
         from {{{localDate dateFrom}}} to {{{localDate dateTo}}}
+      </p>
+      <p class="mt-4 m-0">
+        You had a <strong>{{car.make}}</strong>, model <strong>{{car.model}}</strong>.
       </p>
     </div>
 

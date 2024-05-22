@@ -1,16 +1,18 @@
+import { Cars } from "../models/car.js"
 import { Categories } from "../models/category.js"
 import { Reservations } from "../models/reservation.js"
 
 
 export class ReservationController {
 
-  static async getReservationsByUser(user, daysCount) {
+  static async getReservationsByUser(user) {
     const resvs = await Reservations.getReservationsByUser(user)
 
     for (let resv of resvs){
       resv.days = this.getDays( resv.dateFrom, resv.dateTo)
       resv.category = await Categories.getCategory(resv.category, resv.days)
-      resv.location = "Thessaloniki" //TODO: Add location to reservation document?
+      if (resv.carPlate)
+        resv.car = await Cars.getCarByPlate(resv.carPlate)
     }
 
     return resvs
