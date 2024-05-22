@@ -57,6 +57,13 @@ export class Reservations {
     return await db.collection('reservations').insertOne(query)
   }
 
+  static async cancelReservation(id) {
+    const query = {_id: ObjectId.createFromHexString(id)}
+    const updateDoc = { $set: { canceled: true }}
+
+    await db.collection('reservations').updateOne(query, updateDoc)
+  }
+
   static async deleteReservation(id) {
     const query = {_id: ObjectId.createFromHexString(id)}
 

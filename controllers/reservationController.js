@@ -10,6 +10,7 @@ export class ReservationController {
     for (let resv of resvs){
       resv.days = this.getDays( resv.dateFrom, resv.dateTo)
       resv.category = await Categories.getCategory(resv.category, resv.days)
+      resv.location = "Thessaloniki" //TODO: Add location to reservation document?
     }
 
     return resvs
@@ -29,7 +30,7 @@ export class ReservationController {
   }
 
   static async deleteReservation(reservationId) {
-    await Reservations.deleteReservation(reservationId)
+    await Reservations.cancelReservation(reservationId)
   }
 
   static getDays(dateFrom, dateTo) {

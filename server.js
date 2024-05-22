@@ -19,7 +19,8 @@ app.engine('hbs', engine({
     eq: (a, b, c) => a===b || a===c,
     mt: (a, b) => a > b,
     ifexists: (a, b) => a?? b,
-    date: (d) => new Date(d).toLocaleDateString(),
+    localDate: (d) => new Date(d).toLocaleDateString(),
+    isoDate: (d) => new Date(d).toISOString().slice(0,10)
   }
 }))
 app.set("view engine", 'hbs')

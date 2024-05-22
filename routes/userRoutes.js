@@ -9,9 +9,9 @@ router.get("/edit", (req, res) => {
 })
 
 router.get("/my_reservations", async (req, res) => {
-    const resvs = await ReservationController.getReservationsByUser(req.session.user?.email)
+    const reservations = await ReservationController.getReservationsByUser(req.session.user?.email)
     
-    res.render("user/reservations", {reserv: 1, reservations: resvs})
+    res.render("user/reservations", {reserv: 1, reservations: reservations})
 })
 
 

@@ -1,0 +1,46 @@
+<section class="card my-5 mx-lg-5 border-5 border-warning">
+  <div class="card-body p-4 overflow-auto">
+    {{>cards/details category days=days imgWidth=300 }}
+    
+    <div class="d-flex justify-content-evenly align-items-center gap-3 flex-wrap text-center mt-4 py-3 bg-body-tertiary">
+      <p class="fs-5 m-0">
+        You have reserved this car in <strong>{{location}}</strong>
+        from {{{localDate dateFrom}}} to {{{localDate dateTo}}}
+      </p>
+    </div>
+
+    <div class="d-flex justify-content-end align-items-center gap-4 w-100 mt-3 p-1 pb-0">
+      <h4 class="m-0">
+        Reserved vehicle
+      </h4>
+      <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reservationModal{{@index}}">
+        Cancel
+      </button>
+    </div>
+
+    <!-- Popup Modal -->
+    <div class="modal fade text-center" id="reservationModal{{@index}}" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5">
+              Cancel reservation
+            </h1>
+            <button class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <form action="/api/unreserve" method="post" id="reservationModalForm{{@index}}">
+              <p>Are you sure you want to cancel this reservation</p>
+              <input name="reservationId" value={{_id}} hidden>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" form="reservationModalForm{{@index}}" class="btn btn-danger">Cancel it</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
