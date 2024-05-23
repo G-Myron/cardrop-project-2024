@@ -4,11 +4,17 @@ const authWhiteList = ["/auth/login", "/auth/signup"]
 const citiesList = JSON.parse(await fs.readFile(`data/citiesList.json`))
 
 const authenticationMW = (req, res, next) => {
-  if(req.session.user || authWhiteList.includes(req._parsedUrl.pathname)){
+  if(req.session.user){
     res.locals.user = req.session.user
     next()
   }
   else res.redirect(authWhiteList[0])
+}
+
+const adminMW = (req, res, next) => {
+  if(req.session.user?.role === "admin")
+    next()
+  else res.redirect("/")
 }
 
 const globalVariablesMW = async (req, res, next) => {
@@ -16,4 +22,4 @@ const globalVariablesMW = async (req, res, next) => {
   next()
 }
 
-export { authenticationMW, globalVariablesMW }
+export { authenticationMW, adminMW, globalVariablesMW }

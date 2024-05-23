@@ -4,10 +4,11 @@ import session from 'express-session'
 
 import { router as detailsRouter } from './routes/detailsRoutes.js'
 import { router as userRouter } from './routes/userRoutes.js'
+import { router as adminRouter } from './routes/adminRoutes.js'
 import { router as indexRouter } from './routes/indexRoutes.js'
 import { router as apiRouter } from './routes/apiRoutes.js'
 import { router as authRouter } from './routes/authRoutes.js'
-import { authenticationMW, globalVariablesMW } from './config/globalMiddlewares.js'
+import { authenticationMW, adminMW, globalVariablesMW } from './config/globalMiddlewares.js'
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -43,15 +44,16 @@ app.use( session({
   }
 }))
 
-// Check Authentication and set global variables for all pages
-app.use(authenticationMW, globalVariablesMW)
+// Set global variables for all pages
+app.use(globalVariablesMW)
 
 // Routers
-app.use(indexRouter)
-app.use("/vehicle", detailsRouter)
-app.use("/user", userRouter)
-app.use("/api", apiRouter)
+app.all("/", authenticationMW, indexRouter)
 app.use("/auth", authRouter)
+app.use("/api", authenticationMW, apiRouter)
+app.use("/admin", adminMW, adminRouter)
+app.use("/user", authenticationMW, userRouter)
+app.use("/vehicle", authenticationMW, detailsRouter)
 
 // Redirect any other route
 app.use((req, res) => {

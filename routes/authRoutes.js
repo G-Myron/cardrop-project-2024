@@ -55,7 +55,6 @@ router.post("/edit", validateSignup,
             res.redirect("/")
         }
         catch(error) {
-            req.session.destroy()
             res.render("user/edit", {errorMsg: error.message})
         }
 })
