@@ -8,7 +8,7 @@ import { router as adminRouter } from './routes/adminRoutes.js'
 import { router as indexRouter } from './routes/indexRoutes.js'
 import { router as apiRouter } from './routes/apiRoutes.js'
 import { router as authRouter } from './routes/authRoutes.js'
-import { authenticationMW, adminMW, globalVariablesMW } from './config/globalMiddlewares.js'
+import { authenticationMW, adminMW, notAdminMW, globalVariablesMW } from './config/globalMiddlewares.js'
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -18,7 +18,9 @@ app.engine('hbs', engine({
   extname: ".hbs",
   helpers: {
     eq: (a, b, c) => a===b || a===c,
+    or: (a, b) => a?? b,
     mt: (a, b) => a > b,
+    add: (a, b) => a + b,
     ifexists: (a, b) => a?? b,
     localDate: (d) => new Date(d).toLocaleDateString(),
     isoDate: (d) => new Date(d).toISOString().slice(0,10)
@@ -48,12 +50,12 @@ app.use( session({
 app.use(globalVariablesMW)
 
 // Routers
-app.all("/", authenticationMW, indexRouter)
+app.all("/", authenticationMW, notAdminMW, indexRouter)
 app.use("/auth", authRouter)
-app.use("/api", authenticationMW, apiRouter)
-app.use("/admin", adminMW, adminRouter)
-app.use("/user", authenticationMW, userRouter)
-app.use("/vehicle", authenticationMW, detailsRouter)
+app.use("/api", authenticationMW, notAdminMW, apiRouter)
+app.use("/admin", authenticationMW, adminMW, adminRouter)
+app.use("/user", authenticationMW, notAdminMW, userRouter)
+app.use("/vehicle", authenticationMW, notAdminMW, detailsRouter)
 
 // Redirect any other route
 app.use((req, res) => {

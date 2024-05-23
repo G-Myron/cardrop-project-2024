@@ -12,13 +12,15 @@ export class Reservations {
         $jsonSchema: {
           bsonType: "object",
           title: "Reservation Object Validation",
-          required: [ "user", "dateFrom", "dateTo", "category", "carPlate" ],
+          required: [ "user", "dateFrom", "dateTo", "category", "location", "carPlate" ],
           properties: {
             user: {bsonType: "string"}, // Foreign key
             category: {bsonType: "string"}, // Foreign key
             carPlate: {bsonType: ["string", "null"]}, // Foreign key
             dateFrom: {bsonType: "date"},
             dateTo: {bsonType: "date"},
+            location: {bsonType: "string"},
+            canceled: {bsonType: "bool"},
             rating: {bsonType: "object"},
           }
       }}
