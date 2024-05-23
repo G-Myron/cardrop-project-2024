@@ -47,8 +47,18 @@ export class Reservations {
     return await this.customFind( {}, {sort: {dateTo: -1, dateFrom: -1}} )
   }
 
-  static async getReservationsByUser(userEmail) {
-    return await this.customFind( {user: userEmail}, {sort: {dateTo: -1, dateFrom: -1}} )
+  static async getReservationsByUser(userEmail, current=true, canceled=true, old=true) {
+    const query = {user: userEmail}
+
+    if (!current) {
+      query.$or = [{canceled: true}, {carPlate: {$ne:null}}]
+    }
+    if (!canceled) query.canceled = false
+    if (!old) query.carPlate = null
+
+    const reservs = await this.customFind( query, {sort: {dateTo: -1, dateFrom: -1}} )
+
+    return reservs
   }
 
   static async createReservation(reservationDto) {

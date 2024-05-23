@@ -1,4 +1,21 @@
-<div class="reservations">
+<div class="reservations mt-5 pt-5">
+
+  <form method="get" class="sticky-top container px-5" style="top: 6em;">
+    <fieldset class="form-control p-4 d-flex justify-content-center gap-md-5 gap-2 bg-body-tertiary">
+      <input type="checkbox" class="btn-check" id="btn-check-currnet"
+        onchange="this.form.submit()" name="current" {{#if current}}checked{{/if}}>
+      <label class="btn btn-outline-warning" for="btn-check-currnet">Current</label>
+
+      <input type="checkbox" class="btn-check" id="btn-check-canceled"
+        onchange="this.form.submit()" name="canceled" {{#if canceled}}checked{{/if}}>
+      <label class="btn btn-outline-danger" for="btn-check-canceled">Canceled</label>
+
+      <input type="checkbox" class="btn-check" id="btn-check-old"
+        onchange="this.form.submit()" name="oldRentals" {{#if oldRentals}}checked{{/if}}>
+      <label class="btn btn-outline-success" for="btn-check-old">Rented</label>
+    </fieldset>
+  </form>
+
   {{#unless reservations}}
   <div class="row justify-content-center mt-5">
     <div class="alert alert-info p-4 py-5 m-4 text-center w-75">
