@@ -1,19 +1,19 @@
 <div class="reservations mt-5 pt-5">
 
-  <form method="get">
-    <label>
-      Current
-      <input type="checkbox" onchange="this.form.submit()" name="current" value="true" {{#if current}}checked{{/if}}>
-    </label>
-    <label>
-      Canceled
-      <input type="checkbox" onchange="this.form.submit()" name="canceled" value="true" {{#if canceled}}checked{{/if}}>
-    </label>
-    <label>
-      Old rentals
-      <input type="checkbox" onchange="this.form.submit()" name="oldRentals" value="true" {{#if oldRentals}}checked{{/if}}>
-    </label>
-    {{!-- <input type="submit" value="Submit"> --}}
+  <form method="get" class="sticky-top container px-5" style="top: 6em;">
+    <fieldset class="form-control p-4 d-flex justify-content-center gap-md-5 gap-2 bg-body-tertiary">
+      <input type="checkbox" class="btn-check" id="btn-check-currnet"
+        onchange="this.form.submit()" name="current" {{#if current}}checked{{/if}}>
+      <label class="btn btn-outline-warning" for="btn-check-currnet">Current</label>
+
+      <input type="checkbox" class="btn-check" id="btn-check-canceled"
+        onchange="this.form.submit()" name="canceled" {{#if canceled}}checked{{/if}}>
+      <label class="btn btn-outline-danger" for="btn-check-canceled">Canceled</label>
+
+      <input type="checkbox" class="btn-check" id="btn-check-old"
+        onchange="this.form.submit()" name="oldRentals" {{#if oldRentals}}checked{{/if}}>
+      <label class="btn btn-outline-success" for="btn-check-old">Rented</label>
+    </fieldset>
   </form>
 
   {{#unless reservations}}

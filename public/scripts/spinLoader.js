@@ -1,10 +1,10 @@
 const forms = document.querySelectorAll("form")
-const links = document.querySelectorAll("[href]")
+const links = document.querySelectorAll("a[href]:not([target=_blank])")
 const spinLoader = document.querySelector("#spinLoader")
 
 forms.forEach( form => {
   form.addEventListener("submit", async (ev) => {
-    if (!ev.target.classList.contains("needs-validation"))
+    if (!form.classList.contains("needs-validation"))
       showSpinner()
   })
 })
