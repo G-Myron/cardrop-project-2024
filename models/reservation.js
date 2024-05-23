@@ -41,12 +41,16 @@ export class Reservations {
     console.log("Successfully initialized reservations collection!")
   }
 
-  static async customFind(query, options) {
-    return await db.collection('reservations').find(query, options).toArray()
+  static async customFind(query, options, limit=0, skip=0) {
+    return await db.collection('reservations').find(query, options).limit(limit).skip(skip).toArray()
   }
 
-  static async getAllReservations() {
-    return await this.customFind( {}, {sort: {dateTo: -1, dateFrom: -1}} )
+  static async getAllReservations(limit=0, skip=0) {
+    return await this.customFind( {}, {sort: {dateTo: -1, dateFrom: -1}}, limit, skip )
+  }
+  static async countReservations() {
+    const filter = {}
+    return await db.collection('reservations').countDocuments(filter)
   }
 
   static async getReservationsByUser(userEmail, current=true, canceled=true, old=true) {

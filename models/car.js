@@ -30,15 +30,19 @@ export class Cars {
     console.log("Successfully initialized cars collection!")
   }
 
-  static async customFind(query, options) {
-    return await db.collection('cars').find(query, options).toArray()
+  static async customFind(query, options, limit=0, skip=0) {
+    return await db.collection('cars').find(query, options).limit(limit).skip(skip).toArray()
   }
 
-  static async getAllCars() {
+  static async getAllCars(limit=0, skip=0) {
     const query = {}
     const options = { projection: {_id:0} }
 
-    return await this.customFind(query, options)
+    return await this.customFind(query, options, limit, skip)
+  }
+  static async countCars() {
+    const filter = {}
+    return await db.collection('cars').countDocuments(filter)
   }
 
   static async getCarByPlate(plate) {

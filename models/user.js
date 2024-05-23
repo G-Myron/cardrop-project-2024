@@ -30,15 +30,19 @@ export class Users {
     console.log("Successfully initialized users collection!")
   }
 
-  static async customFind(query, options) {
-    return await db.collection('users').find(query, options).toArray()
+  static async customFind(query, options, limit=0, skip=0) {
+    return await db.collection('users').find(query, options).limit(limit).skip(skip).toArray()
   }
 
-  static async getAllUsers() {
+  static async getAllUsers(limit=0, skip=0) {
     const query = {}
     const options = { projection: {_id:0, password:0} } // Hide the passwords
 
-    return await this.customFind(query, options)
+    return await this.customFind(query, options, limit, skip)
+  }
+  static async countUsers() {
+    const filter = {}
+    return await db.collection('users').countDocuments(filter)
   }
 
   static async getUser(userEmail) {
