@@ -28,7 +28,7 @@
         <small class="text-muted">Today</small>
         {{else if (eq days 1)}}
         <small class="text-muted">Yesterday</small>
-        {{else}}
+        {{else if days}}
         <small class="text-muted">{{days}} days ago</small>
         {{/if}}
       </p>

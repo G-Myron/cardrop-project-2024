@@ -6,14 +6,14 @@
         Rent A Car
       </a>
       <div class="d-flex align-items-center gap-4 gap-md-5" style="color: var(--bs-navbar-color);">
-        {{#if user}}
+        {{#if logged_in_user}}
         <div class="nav-item dropdown">
           <button class="nav-link dropdown-toggle d-flex align-items-center gap-1" data-bs-toggle="dropdown">
             <img src="/images/profile.jpg" alt="profile" class="rounded-circle" height="30"/>
-            <span class="d-inline-block text-truncate" style="max-width: 7em;">{{user.name}} {{user.surname}}</span>
+            <span class="d-inline-block text-truncate" style="max-width: 7em;">{{logged_in_user.name}} {{logged_in_user.surname}}</span>
           </button>
           <ul class="dropdown-menu dropdown-menu-end shadow">
-            {{#unless (eq user.role "admin")}}
+            {{#unless (eq logged_in_user.role "admin")}}
             <a class="dropdown-item {{#if reserv}}active{{/if}}" href="/user/my_reservations">
               <i class="bi bi-journals me-1"></i>
               My reservations

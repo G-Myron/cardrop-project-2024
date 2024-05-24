@@ -1,6 +1,9 @@
 
 <section class="">
-  <h2 class="text-center my-5">Reservations</h2>
+  <h2 class="text-center my-5">
+    Reservations
+    {{#if user}} for {{user}}{{/if}}
+  </h2>
   <div class="table-responsive">
     <table class="table table-striped table-bordered  admin-table">
       <thead class="table-primary">
@@ -80,6 +83,7 @@
   </div>
 
   <form method="get">
+    <input name="user" value={{user}} hidden>
     <input name="page" value={{page}} hidden>
     <input name="limit" value={{limit}} hidden>
     <ul class="pagination justify-content-end">

@@ -48,22 +48,26 @@ export class AdminController {
   }
 
   // Reservations
-  static async getAllReservations(limit=0, skip=0) {
-    const resvs = await Reservations.getAllReservations(limit, skip)
+  static async getAllReservations(userEmail, limit=0, skip=0) {
+    const resvs = userEmail? await Reservations.getAllReservationsByUser(userEmail, limit, skip)
+        : await Reservations.getAllReservations(limit, skip)
     return resvs
   }
-  static async countReservations() {
-    return await Reservations.countReservations()
+  static async countReservations(userEmail) {
+    const count = userEmail? await Reservations.countReservationsByUser(userEmail)
+        : await Reservations.countReservations()
+    console.log(count);
+    return count
   }
   static async updateReservation(body) {
     const reservationDto = {
-      user: body.user,
+      user: body.user.replaceAll(' ', ''),
       dateFrom: new Date(body.dateFrom),
       dateTo: new Date(body.dateTo),
       category: body.category,
       location: body.location,
       canceled: body.canceled === "true",
-      carPlate: body.carPlate
+      carPlate: body.carPlate.replaceAll(' ', '')? body.carPlate: null
     }
     return await Reservations.updateReservation(reservationDto, body.reservationId)
   }

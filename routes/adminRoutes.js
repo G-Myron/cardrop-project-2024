@@ -56,11 +56,12 @@ router.get("/cars", async (req, res) => {
 })
 
 router.get("/reservations", async (req, res) => {
-  const maxCount = await AdminController.countReservations()
+  const maxCount = await AdminController.countReservations(req.query.user)
   let [limit, skip, page] = pagination(req.query, maxCount)
   
-  const reservs = await AdminController.getAllReservations(limit, skip)
-  res.render("admin/reservations", {reservations: reservs, limit: limit, skip: skip, page: page})
+  const reservs = await AdminController.getAllReservations(req.query.user, limit, skip)
+  res.render("admin/reservations", {reservations: reservs,
+    user: req.query.user, limit: limit, skip: skip, page: page})
 })
 
 

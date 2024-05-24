@@ -3,21 +3,21 @@ import fs from 'fs/promises'
 const citiesList = JSON.parse(await fs.readFile(`data/citiesList.json`))
 
 const authenticationMW = (req, res, next) => {
-  if(req.session.user){
-    res.locals.user = req.session.user
+  if(req.session.logged_in_user){
+    res.locals.logged_in_user = req.session.logged_in_user
     next()
   }
   else res.redirect("/auth/login")
 }
 
 const adminMW = (req, res, next) => {
-  if(req.session.user?.role === "admin")
+  if(req.session.logged_in_user?.role === "admin")
     next()
   else res.redirect("/")
 }
 
 const notAdminMW = (req, res, next) => {
-  if(req.session.user?.role !== "admin")
+  if(req.session.logged_in_user?.role !== "admin")
     next()
   else res.redirect("/admin")
 }

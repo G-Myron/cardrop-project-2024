@@ -53,6 +53,16 @@ export class Reservations {
     return await db.collection('reservations').countDocuments(filter)
   }
 
+  static async getAllReservationsByUser(userEmail, limit=0, skip=0) {
+    const query = {user: userEmail}
+    const options = {sort: {dateTo: -1, dateFrom: -1}}
+    return await this.customFind( query, options, limit, skip )
+  }
+  static async countReservationsByUser(userEmail) {
+    const filter = { user: userEmail }
+    return await db.collection('reservations').countDocuments(filter)
+  }
+
   static async getReservationsByUser(userEmail, current=true, canceled=true, old=true) {
     const query = {user: userEmail}
 
