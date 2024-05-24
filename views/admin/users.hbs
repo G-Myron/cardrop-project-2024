@@ -10,6 +10,7 @@
           <th scope="col" class="col-2">Surname</th>
           <th scope="col" class="col-2">Email</th>
           <th scope="col" class="col-2">Phone</th>
+          <th scope="col" class="col-1">Reservations</th>
           <th scope="col" class="col-1"></th>
         </tr>
       </thead>
@@ -35,6 +36,11 @@
             <td class="form-floating">
               <input type="tel" class="form-control p-2" style="height:unset; min-height:unset;"
                 name="tel" value="{{tel}}" readonly>
+            </td>
+            <td class="form-floating text-center">
+              <a class="btn w-100" href="/admin/reservations?user={{email}}">
+                <i class="bi bi-journals"></i>
+              </a>
             </td>
 
             <td>
