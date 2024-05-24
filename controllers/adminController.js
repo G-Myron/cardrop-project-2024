@@ -1,6 +1,7 @@
 import { Cars } from "../models/car.js"
 import { Reservations } from "../models/reservation.js"
 import { Users } from "../models/user.js"
+import bcrypt from 'bcrypt'
 
 export class AdminController {
 
@@ -19,6 +20,9 @@ export class AdminController {
       tel: body.tel,
       email: body.email
     }
+    if (body.password)
+      userDto.password = await bcrypt.hash(body.password, 10)
+    
     return await Users.updateUser(userDto)
   }
   static async deleteUser(userEmail) {
@@ -56,7 +60,6 @@ export class AdminController {
   static async countReservations(userEmail) {
     const count = userEmail? await Reservations.countReservationsByUser(userEmail)
         : await Reservations.countReservations()
-    console.log(count);
     return count
   }
   static async updateReservation(body) {
