@@ -8,6 +8,8 @@ router.get("/", (req, res) => {
 })
 
 router.all("/users", async (req, res) => {
+  console.log(req.body);
+  
   const maxCount = await AdminController.countUsers()
   let [limit, skip, page] = pagination(req.body, maxCount)
 
