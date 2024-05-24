@@ -4,7 +4,15 @@
   "email": "gmyron1@gmail.com",
   "tel": "6946396162",
   "password": "$2b$10$NupTT/IIKmVq/8L4a4m.7ecxPeAkZQdbN.dILI8Emi91lvNuq.e3C"
-},{
+},
+{
+  "name": "John",
+  "surname": "Doe",
+  "email": "user@test.com",
+  "tel": "6912345678",
+  "password": "$2b$10$NupTT/IIKmVq/8L4a4m.7ecxPeAkZQdbN.dILI8Emi91lvNuq.e3C"
+},
+{
   "name": "Admin",
   "surname": "",
   "email": "admin@test.com",

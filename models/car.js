@@ -27,7 +27,7 @@ export class Cars {
 
     // Populate collection
     await db.collection('cars').insertMany(initCars)
-    console.log("Successfully initialized cars collection!")
+    console.log(`Successfully initialized cars collection!`)
   }
 
   static async customFind(query, options, limit=0, skip=0) {
@@ -52,6 +52,19 @@ export class Cars {
   static async countCarsOfCategoryInLocation(category, location) {
     const filter = { category: category, location: location }
     return await db.collection('cars').countDocuments(filter)
+  }
+
+  static async updateCar(carDto) {
+    const query = { plate: carDto.plate }
+    const updateDoc = { $set: carDto }
+
+    return await db.collection('cars').updateOne(query, updateDoc)
+  }
+
+  static async deleteCar(plate) {
+    const query = {plate: plate}
+
+    await db.collection('cars').findOneAndDelete(query)
   }
 
 }

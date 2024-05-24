@@ -29,7 +29,8 @@
             </td>
             <td class="form-floating">
               <input type="email" class="form-control p-2" style="height:unset; min-height:unset;"
-                name="email" value="{{email}}" readonly>
+                name="email" value="{{email}}" disabled readonly>
+              <input name="email" value="{{email}}" hidden>
             </td>
             <td class="form-floating">
               <input type="tel" class="form-control p-2" style="height:unset; min-height:unset;"
@@ -44,7 +45,7 @@
                 <button type="submit" class="btn btn-success admin-save d-none">
                   <i class="bi bi-floppy"></i>
                 </button>
-                <button type="submit" class="btn btn-danger admin-cancel">
+                <button type="submit" class="btn btn-danger admin-cancel" name="delete" value="1">
                   <i class="bi bi-trash"></i>
                 </button>
               </div>
@@ -57,7 +58,7 @@
     </table>
   </div>
 
-  <form method="post">
+  <form method="get">
     <input name="page" value={{page}} hidden>
     <input name="limit" value={{limit}} hidden>
     <ul class="pagination justify-content-end">

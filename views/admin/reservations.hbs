@@ -25,15 +25,16 @@
             
             <td class="form-floating">
               <input type="text" class="form-control p-2" style="height:unset; min-height:unset;"
-                name="user" value="{{user}}" readonly>
+                name="user" value="{{user}}" disabled readonly>
+              <input name="user" value="{{user}}" hidden>
             </td>
             <td class="form-floating">
-              <input type="text" class="form-control p-2" style="height:unset; min-height:unset;"
-                name="dateFrom" value="{{localDate dateFrom}}" readonly>
+              <input type="date" class="form-control p-2" style="height:unset; min-height:unset;"
+                name="dateFrom" value="{{isoDate dateFrom}}" readonly>
             </td>
             <td class="form-floating">
-              <input type="text" class="form-control p-2" style="height:unset; min-height:unset;"
-                name="dateTo" value="{{localDate dateTo}}" readonly>
+              <input type="date" class="form-control p-2" style="height:unset; min-height:unset;"
+                name="dateTo" value="{{isoDate dateTo}}" readonly>
             </td>
             <td class="form-floating">
               <input type="text" class="form-control p-2" style="height:unset; min-height:unset;"
@@ -57,6 +58,7 @@
             </td>
 
             <td>
+              <input  name="reservationId" value={{_id}} hidden>
               <div class="d-flex justify-content-center gap-2">
                 <button type="button" class="btn btn-primary admin-edit">
                   <i class="bi bi-pencil-square"></i>
@@ -64,7 +66,7 @@
                 <button type="submit" class="btn btn-success admin-save d-none">
                   <i class="bi bi-floppy"></i>
                 </button>
-                <button type="submit" class="btn btn-danger admin-cancel">
+                <button type="submit" class="btn btn-danger admin-cancel" name="delete" value="1">
                   <i class="bi bi-trash"></i>
                 </button>
               </div>
@@ -77,7 +79,7 @@
     </table>
   </div>
 
-  <form method="post">
+  <form method="get">
     <input name="page" value={{page}} hidden>
     <input name="limit" value={{limit}} hidden>
     <ul class="pagination justify-content-end">

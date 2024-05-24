@@ -27,7 +27,7 @@ export class Users {
 
     // Populate collection
     await db.collection('users').insertMany(initUsers)
-    console.log("Successfully initialized users collection!")
+    console.log(`Successfully initialized users collection!`)
   }
 
   static async customFind(query, options, limit=0, skip=0) {
@@ -74,6 +74,12 @@ export class Users {
     await db.collection('users').updateOne(query, updateDoc)
 
     return await db.collection('users').findOne(query)
+  }
+
+  static async deleteUser(email) {
+    const query = {email: email}
+
+    await db.collection('users').findOneAndDelete(query)
   }
 }
 

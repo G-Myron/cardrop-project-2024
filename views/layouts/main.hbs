@@ -31,11 +31,11 @@
 <body class="d-flex flex-column min-vh-100">
     {{>header}}
     {{>error}}
-    <main class="container my-5" style="z-index: 1000;">
+    <main class="container my-5">
         {{{body}}}
     </main>
     <div class="d-none justify-content-center align-items-center vh-100 vw-100 position-fixed"
-            id="spinLoader" style="background: rgba(var(--bs-body-bg-rgb), .5); z-index: 1000;">
+            id="spinLoader" style="background: rgba(var(--bs-body-bg-rgb), .5);">
         <div class="spinner-border text-primary fs-2" style="width: 2em; height: 2em;"></div>
     </div>
     {{>footer}}

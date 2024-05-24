@@ -38,7 +38,7 @@ export class Reservations {
 
     await db.collection('reservations').insertMany(initReservations)
 
-    console.log("Successfully initialized reservations collection!")
+    console.log(`Successfully initialized reservations collection!`)
   }
 
   static async customFind(query, options, limit=0, skip=0) {
@@ -84,6 +84,13 @@ export class Reservations {
     const query = {_id: ObjectId.createFromHexString(id)}
 
     await db.collection('reservations').findOneAndDelete(query)
+  }
+
+  static async updateReservation(reservationDto, id) {
+    const query = { _id: ObjectId.createFromHexString(id) }
+    const updateDoc = { $set: reservationDto }
+
+    return await db.collection('reservations').updateOne(query, updateDoc)
   }
   
 
