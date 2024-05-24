@@ -22,23 +22,29 @@
 
             <td class="form-floating">
               <input type="text" class="form-control p-2" style="height:unset; min-height:unset;"
-                name="plate" value="{{plate}}" readonly>
+                name="plate" value="{{plate}}" disabled>
             </td>
             <td class="form-floating">
               <input type="text" class="form-control p-2" style="height:unset; min-height:unset;"
-                name="make" value="{{make}}" readonly>
+                name="make" value="{{make}}" disabled>
             </td>
             <td class="form-floating">
               <input type="text" class="form-control p-2" style="height:unset; min-height:unset;"
-                name="model" value="{{model}}" readonly>
+                name="model" value="{{model}}" disabled>
             </td>
             <td class="form-floating">
-              <input type="text" class="form-control p-2" style="height:unset; min-height:unset;"
-                name="category" value="{{category}}" readonly>
+              <select class="form-select p-2" style="height:unset; min-height:unset;" name="category" disabled>
+                <option {{#if (eq category "Large")}}selected{{/if}}>Large</option>
+                <option {{#if (eq category "Medium")}}selected{{/if}}>Medium</option>
+                <option {{#if (eq category "Small")}}selected{{/if}}>Small</option>
+              </select>
             </td>
             <td class="form-floating">
-              <input type="text" class="form-control p-2" style="height:unset; min-height:unset;"
-                name="location" value="{{location}}" readonly>
+              <select class="form-select p-2" style="height:unset; min-height:unset;" name="location" disabled>
+                {{#each ../citiesList}}
+                <option {{#if (eq ../location this)}}selected{{/if}}>{{this}}</option>
+                {{/each}}
+              </select>
             </td>
 
             <td>

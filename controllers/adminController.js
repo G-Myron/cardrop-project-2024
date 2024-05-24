@@ -64,7 +64,7 @@ export class AdminController {
   }
   static async updateReservation(body) {
     const reservationDto = {
-      user: body.user.replaceAll(' ', ''),
+      user: body.user,
       dateFrom: new Date(body.dateFrom),
       dateTo: new Date(body.dateTo),
       category: body.category,

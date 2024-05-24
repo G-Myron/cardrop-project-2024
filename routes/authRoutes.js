@@ -1,6 +1,6 @@
 import express from 'express'
 import { UserController } from '../controllers/userController.js'
-import { validateLogin, validateSignup } from '../validators/validator.js'
+import { validateEdit, validateLogin, validateSignup } from '../validators/validator.js'
 
 const router = express.Router()
 
@@ -47,7 +47,7 @@ router.post("/signup", validateSignup,
         }
 })
 
-router.post("/edit", validateSignup,
+router.post("/edit", validateEdit,
     async (req, res) => {
         try {
             const user = await UserController.handleEdit(req.body)

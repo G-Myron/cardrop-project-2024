@@ -19,9 +19,7 @@ router.post("/reserve", async (req, res, next) => {
         
         res.redirect("/user/my_reservations")
     }
-    catch(err) {
-        next(err)
-    }
+    catch(err) {next(err)}
 })
 
 router.post("/unreserve", async (req, res, next) => {

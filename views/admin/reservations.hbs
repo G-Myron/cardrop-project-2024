@@ -27,37 +27,42 @@
             <td>{{add @index (add ../skip 1)}}</td>
             
             <td class="form-floating">
-              <input type="text" class="form-control p-2" style="height:unset; min-height:unset;"
+              <input type="email" class="form-control p-2" style="height:unset; min-height:unset;"
                 name="user" value="{{user}}" disabled readonly>
-              <input name="user" value="{{user}}" hidden>
             </td>
             <td class="form-floating">
               <input type="date" class="form-control p-2" style="height:unset; min-height:unset;"
-                name="dateFrom" value="{{isoDate dateFrom}}" readonly>
+                name="dateFrom" value="{{isoDate dateFrom}}" disabled>
             </td>
             <td class="form-floating">
               <input type="date" class="form-control p-2" style="height:unset; min-height:unset;"
-                name="dateTo" value="{{isoDate dateTo}}" readonly>
+                name="dateTo" value="{{isoDate dateTo}}" disabled>
+            </td>
+            <td class="form-floating">
+              <select class="form-select p-2" style="height:unset; min-height:unset;" name="category" disabled>
+                <option {{#if (eq category "Large")}}selected{{/if}}>Large</option>
+                <option {{#if (eq category "Medium")}}selected{{/if}}>Medium</option>
+                <option {{#if (eq category "Small")}}selected{{/if}}>Small</option>
+              </select>
+            </td>
+            <td class="form-floating">
+              <select class="form-select p-2" style="height:unset; min-height:unset;" name="location" disabled>
+                {{#each ../citiesList}}
+                <option {{#if (eq ../location this)}}selected{{/if}}>{{this}}</option>
+                {{/each}}
+              </select>
+            </td>
+            <td class="form-floating">
+              <input readonly class="form-control p-2" style="height:unset; min-height:unset;"
+                name="canceled" value="{{canceled}}" onclick="this.value = this.value === 'false'? 'true':'false' " disabled>
             </td>
             <td class="form-floating">
               <input type="text" class="form-control p-2" style="height:unset; min-height:unset;"
-                name="category" value="{{category}}" readonly>
-            </td>
-            <td class="form-floating">
-              <input type="text" class="form-control p-2" style="height:unset; min-height:unset;"
-                name="location" value="{{location}}" readonly>
-            </td>
-            <td class="form-floating">
-              <input type="text" class="form-control p-2" style="height:unset; min-height:unset;"
-                name="canceled" value="{{canceled}}" readonly>
-            </td>
-            <td class="form-floating">
-              <input type="text" class="form-control p-2" style="height:unset; min-height:unset;"
-                name="carPlate" value="{{carPlate}}" readonly>
+                name="carPlate" value="{{carPlate}}" disabled>
             </td>
             <td class="form-floating">
               <input type="text" class="form-control text-center p-2" style="height:unset; min-height:unset;"
-                value="{{rating.stars}}" readonly>
+                value="{{rating.stars}}" disabled>
             </td>
 
             <td>
