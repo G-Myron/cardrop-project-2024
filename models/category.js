@@ -42,7 +42,7 @@ export class Categories {
 
   static async getCategory(name, daysCount=undefined) {
     const query = { name: name }
-    const options = {projection: { _id: 0 }, sort:{ _id: 1 }}
+    const options = {projection: { _id: 0 }}
 
     const category = await db.collection('categories').findOne(query, options)
 

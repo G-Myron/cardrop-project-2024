@@ -36,7 +36,7 @@ export class Cars {
 
   static async getAllCars(limit=0, skip=0) {
     const query = {}
-    const options = { projection: {_id:0} }
+    const options = { projection: {_id:0}, sort:{ _id: 1 } }
 
     return await this.customFind(query, options, limit, skip)
   }

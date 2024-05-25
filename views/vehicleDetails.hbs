@@ -48,7 +48,8 @@
       {{else}}
       <h3>Testimonials from {{city}}</h3>
       {{/unless}}
-      <div class="d-grid gap-4 overflow-auto text-center w-100">
+      <div class="d-grid gap-4 overflow-auto text-center w-100 py-1"
+        style="max-height: 75vh; scrollbar-width: none;">
         {{#each ratings}}
         {{>cards/testimonial days=rating.days stars=rating.stars comment=rating.comment}}
         {{/each}}

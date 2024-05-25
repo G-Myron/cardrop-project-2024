@@ -36,7 +36,7 @@ export class Users {
 
   static async getAllUsers(limit=0, skip=0) {
     const query = {}
-    const options = { projection: {_id:0, password:0} } // Hide the passwords
+    const options = { projection: {_id:0, password:0}, sort:{ _id: -1 } } // Hide the passwords
 
     return await this.customFind(query, options, limit, skip)
   }
