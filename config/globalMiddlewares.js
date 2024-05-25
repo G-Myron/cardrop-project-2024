@@ -1,6 +1,7 @@
 import fs from 'fs/promises'
 
 const citiesList = JSON.parse(await fs.readFile(`data/citiesList.json`))
+const carsGlobalCategories = ["Small", "Medium", "Large"]
 
 const authenticationMW = (req, res, next) => {
   if(req.session.logged_in_user){
@@ -24,6 +25,7 @@ const notAdminMW = (req, res, next) => {
 
 const globalVariablesMW = async (req, res, next) => {
   res.locals.citiesList = citiesList
+  res.locals.carsGlobalCategories = carsGlobalCategories
   next()
 }
 

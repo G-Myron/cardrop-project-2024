@@ -9,14 +9,13 @@
       <thead class="table-primary">
         <tr>
           <th scope="col" class="col-1">#</th>
-          <th scope="col" class="col-2">User</th>
+          <th scope="col" class="col-3">User</th>
           <th scope="col" class="col-1">From</th>
           <th scope="col" class="col-1">To</th>
           <th scope="col" class="col-1">Category</th>
-          <th scope="col" class="col-1">Location</th>
+          <th scope="col" class="col-2">Location</th>
           <th scope="col" class="col-1">Canceled</th>
-          <th scope="col" class="col-1">Plate</th>
-          <th scope="col" class="col-1">Rating</th>
+          <th scope="col" class="col-2">Plate</th>
           <th scope="col" class="col-1"></th>
         </tr>
       </thead>
@@ -27,42 +26,43 @@
             <td>{{add @index (add ../skip 1)}}</td>
             
             <td class="form-floating">
-              <input type="email" class="form-control p-2" style="height:unset; min-height:unset;"
-                name="user" value="{{user}}" disabled readonly>
+              <input type="email" class="form-control p-2" name="user" value="{{user}}"
+                style="height:unset; min-height:unset;" disabled readonly>
             </td>
             <td class="form-floating">
-              <input type="date" class="form-control p-2" style="height:unset; min-height:unset;"
-                name="dateFrom" value="{{isoDate dateFrom}}" disabled>
+              <input type="date" class="form-control py-2 ps-1 pe-0" name="dateFrom" value="{{isoDate dateFrom}}"
+                style="height:unset; min-height:unset; width:7em;" disabled>
             </td>
             <td class="form-floating">
-              <input type="date" class="form-control p-2" style="height:unset; min-height:unset;"
-                name="dateTo" value="{{isoDate dateTo}}" disabled>
+              <input type="date" class="form-control py-2 ps-1 pe-0" name="dateTo" value="{{isoDate dateTo}}"
+                style="height:unset; min-height:unset; width:7em;" disabled>
             </td>
             <td class="form-floating">
-              <select class="form-select p-2" style="height:unset; min-height:unset;" name="category" disabled>
-                <option {{#if (eq category "Large")}}selected{{/if}}>Large</option>
-                <option {{#if (eq category "Medium")}}selected{{/if}}>Medium</option>
-                <option {{#if (eq category "Small")}}selected{{/if}}>Small</option>
+              <select class="form-select p-2" name="category"
+                style="height:unset; min-height:unset; width:7em;" disabled>
+                <option></option>
+                {{#each ../carsGlobalCategories}}
+                <option {{#if (eq ../category this)}}selected{{/if}}>{{this}}</option>
+                {{/each}}
               </select>
             </td>
             <td class="form-floating">
-              <select class="form-select p-2" style="height:unset; min-height:unset;" name="location" disabled>
+              <select class="form-select p-2" name="location"
+                style="height:unset; min-height:unset;" disabled>
+                <option></option>
                 {{#each ../citiesList}}
                 <option {{#if (eq ../location this)}}selected{{/if}}>{{this}}</option>
                 {{/each}}
               </select>
             </td>
             <td class="form-floating">
-              <input readonly class="form-control p-2" style="height:unset; min-height:unset;"
-                name="canceled" value="{{canceled}}" onclick="this.value = this.value === 'false'? 'true':'false' " disabled>
+              <input readonly class="form-control p-2" name="canceled" value="{{canceled}}"
+                style="height:unset; min-height:unset; cursor:default;"
+                onclick="this.value = this.value === 'false'? 'true':'false' " disabled>
             </td>
             <td class="form-floating">
-              <input type="text" class="form-control p-2" style="height:unset; min-height:unset;"
-                name="carPlate" value="{{carPlate}}" disabled>
-            </td>
-            <td class="form-floating">
-              <input type="text" class="form-control text-center p-2" style="height:unset; min-height:unset;"
-                value="{{rating.stars}}" disabled>
+              <input type="text" class="form-control p-2" name="carPlate" value="{{carPlate}}"
+                style="height:unset; min-height:unset;" disabled>
             </td>
 
             <td>
@@ -74,7 +74,7 @@
                 <button type="submit" class="btn btn-success admin-save d-none">
                   <i class="bi bi-floppy"></i>
                 </button>
-                <button type="submit" class="btn btn-danger admin-cancel" name="delete" value="1">
+                <button type="submit" class="btn btn-danger admin-delete" name="delete" value="1" disabled>
                   <i class="bi bi-trash"></i>
                 </button>
               </div>

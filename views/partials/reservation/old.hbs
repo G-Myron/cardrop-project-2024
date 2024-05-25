@@ -7,9 +7,11 @@
         You have rented this car in <strong>{{location}}</strong>
         from {{{localDate dateFrom}}} to {{{localDate dateTo}}}
       </p>
+      {{#if car}}
       <p class="mt-4 m-0">
         You had a <strong>{{car.make}}</strong>, model <strong>{{car.model}}</strong>.
       </p>
+      {{/if}}
     </div>
 
     <div class="d-flex justify-content-end align-items-center gap-4 w-100 mt-3 p-1 pb-0">
@@ -35,20 +37,25 @@
             <form action="/api/set_rating" method="post" id="reservationModalForm{{@index}}">
               <input name="rentalId" value={{_id}} hidden>
               <div class="mb-4 text-primary d-flex justify-content-center flex-row-reverse" id="stars-rating">
-                <input type="radio" name="rating" value="5" id="5stars-{{@index}}" hidden required>
+                <input type="radio" name="rating" value="5" id="5stars-{{@index}}"
+                  {{#if (eq rating.stars 5)}}checked{{/if}} hidden required>
                 <label class="bi-star fs-3 ps-1" for="5stars-{{@index}}"></label>
-                <input type="radio" name="rating" value="4" id="4stars-{{@index}}" hidden>
+                <input type="radio" name="rating" value="4" id="4stars-{{@index}}"
+                  {{#if (eq rating.stars 4)}}checked{{/if}} hidden>
                 <label class="bi-star fs-3 ps-1" for="4stars-{{@index}}"></label>
-                <input type="radio" name="rating" value="3" id="3stars-{{@index}}" hidden>
+                <input type="radio" name="rating" value="3" id="3stars-{{@index}}"
+                  {{#if (eq rating.stars 3)}}checked{{/if}} hidden>
                 <label class="bi-star fs-3 ps-1" for="3stars-{{@index}}"></label>
-                <input type="radio" name="rating" value="2" id="2stars-{{@index}}" hidden>
+                <input type="radio" name="rating" value="2" id="2stars-{{@index}}"
+                  {{#if (eq rating.stars 2)}}checked{{/if}} hidden>
                 <label class="bi-star fs-3 ps-1" for="2stars-{{@index}}"></label>
-                <input type="radio" name="rating" value="1" id="1stars-{{@index}}" hidden>
+                <input type="radio" name="rating" value="1" id="1stars-{{@index}}"
+                  {{#if (eq rating.stars 1)}}checked{{/if}} hidden>
                 <label class="bi-star fs-3 ps-1" for="1stars-{{@index}}"></label>
               </div>
 
               <textarea class="form-control" name="comment" rows="3"
-                placeholder="Leave your comments here"></textarea>
+                placeholder="Leave your comments here">{{rating.comment}}</textarea>
             </form>
           </div>
           <div class="modal-footer">

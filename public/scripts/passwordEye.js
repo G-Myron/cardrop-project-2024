@@ -1,7 +1,7 @@
-const passwordEye = document.querySelector("input~#passShow")
+const passwordEye = document.querySelector(".input-group #passShow")
 
 passwordEye?.addEventListener( "click", () => {
-  const passwordInput = passwordEye.previousElementSibling.previousElementSibling
+  const passwordInput = passwordEye.parentElement.querySelector("input")
   passwordInput.type = passwordInput.type === "text"? "password" : "text"
 
   passwordEye.classList.toggle("bi-eye")

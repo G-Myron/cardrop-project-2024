@@ -32,7 +32,7 @@ router.post("/login", validateLogin,
 
 router.get("/signup", (req, res) => {
     req.session.logged_in_user? res.redirect("/") :
-        res.render("user/create")
+        res.render("user/signup")
 })
 router.post("/signup", validateSignup,
     async (req, res) => {
@@ -43,7 +43,7 @@ router.post("/signup", validateSignup,
         }
         catch(error) {
             req.session.destroy()
-            res.render("user/create", {errorMsg: error.message})
+            res.render("user/signup", {errorMsg: error.message})
         }
 })
 

@@ -38,10 +38,12 @@
   </div>
 
   <!-- New password input -->
-  <div class="form-floating mb-4 input-group">
-    {{#if (eq action "edit")}}<div class="form-control-plaintext d-none"></div>{{/if}}
-    <input type="password" class="form-control" name="password" id="floatingNewPassword" placeholder="New password" required>
-    <label for="floatingNewPassword">New password</label>
+  <div class="input-group mb-4">
+    <div class="form-floating">
+      {{#if (eq action "edit")}}<div class="form-control-plaintext d-none"></div>{{/if}}
+      <input type="password" class="form-control" name="password" id="floatingNewPassword" placeholder="New password" required>
+      <label for="floatingNewPassword">New password</label>
+    </div>
     <button type="button" tabindex="-1" class="input-group-text fs-4 bi-eye" id="passShow"></button>
   </div>
   <!-- Repeat password input -->
@@ -62,9 +64,11 @@
   </div>
 
   <!-- Password input -->
-  <div class="form-floating mb-4 input-group">
-    <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="Password" required>
-    <label for="floatingPassword">Password</label>
+  <div class="input-group mb-4">
+    <div class="form-floating">
+      <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="Password" required>
+      <label for="floatingPassword">Password</label>
+    </div>
     <button type="button" tabindex="-1" class="input-group-text fs-4 bi-eye" id="passShow"></button>
   </div>
 
