@@ -40,7 +40,7 @@ app.use( session({
   secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
-  name: "rentACar",
+  name: "cardrop",
   cookie: {
       maxAge: 20 * 60e3 // 20mims
   }

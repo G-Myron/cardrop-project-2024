@@ -20,7 +20,7 @@ const validateSignup = [
       if (value === req.body.password) return true
       else throw new Error("Passwords don't match")
     }),
-    (req, res, next) => handleValidityErrors(req, res, next, "user/create")
+    (req, res, next) => handleValidityErrors(req, res, next, "user/signup")
 ]
 
 const validateEdit = [...validateSignup]
