@@ -11,10 +11,64 @@
           <th scope="col" class="col-2">Model</th>
           <th scope="col" class="col-2">Category</th>
           <th scope="col" class="col-2">Location</th>
-          <th scope="col" class="col-2"></th>
+          <th scope="col" class="col-2 text-center">
+            <button type="button" class="btn btn-success admin-add">
+              <i class="bi bi-file-earmark-plus"></i>
+            </button>
+          </th>
         </tr>
       </thead>
       <tbody>
+        <tr class="d-none" id="new-row">
+          <form method="post">
+            <td>0</td>
+
+            <td class="form-floating">
+              <input type="text" class="form-control p-2" style="height:unset; min-height:unset;"
+                name="plate" value="" disabled>
+            </td>
+            <td class="form-floating">
+              <input type="text" class="form-control p-2" style="height:unset; min-height:unset;"
+                name="make" value="" disabled>
+            </td>
+            <td class="form-floating">
+              <input type="text" class="form-control p-2" style="height:unset; min-height:unset;"
+                name="model" value="" disabled>
+            </td>
+            <td class="form-floating">
+              <select class="form-select p-2" style="height:unset; min-height:unset;" name="category" disabled>
+                <option></option>
+                {{#each carsGlobalCategories}}
+                <option>{{this}}</option>
+                {{/each}}
+              </select>
+            </td>
+            <td class="form-floating">
+              <select class="form-select p-2" style="height:unset; min-height:unset;" name="location" disabled>
+                <option></option>
+                {{#each citiesList}}
+                <option>{{this}}</option>
+                {{/each}}
+              </select>
+            </td>
+
+            <td>
+              <div class="d-flex justify-content-center gap-2">
+                <button type="button" class="btn btn-primary admin-edit">
+                  <i class="bi bi-pencil-square"></i>
+                </button>
+                <button type="submit" class="btn btn-success admin-save d-none">
+                  <i class="bi bi-floppy"></i>
+                </button>
+                <button type="submit" class="btn btn-danger admin-delete" name="delete" value="1" disabled>
+                  <i class="bi bi-trash"></i>
+                </button>
+              </div>
+            </td>
+
+          </form>
+        </tr>
+        
         {{#each cars}}
         <tr>
           <form method="post">
@@ -34,13 +88,15 @@
             </td>
             <td class="form-floating">
               <select class="form-select p-2" style="height:unset; min-height:unset;" name="category" disabled>
-                <option {{#if (eq category "Large")}}selected{{/if}}>Large</option>
-                <option {{#if (eq category "Medium")}}selected{{/if}}>Medium</option>
-                <option {{#if (eq category "Small")}}selected{{/if}}>Small</option>
+                <option></option>
+                {{#each ../carsGlobalCategories}}
+                <option {{#if (eq ../category this)}}selected{{/if}}>{{this}}</option>
+                {{/each}}
               </select>
             </td>
             <td class="form-floating">
               <select class="form-select p-2" style="height:unset; min-height:unset;" name="location" disabled>
+                <option></option>
                 {{#each ../citiesList}}
                 <option {{#if (eq ../location this)}}selected{{/if}}>{{this}}</option>
                 {{/each}}
@@ -55,7 +111,7 @@
                 <button type="submit" class="btn btn-success admin-save d-none">
                   <i class="bi bi-floppy"></i>
                 </button>
-                <button type="submit" class="btn btn-danger admin-cancel" name="delete" value="1">
+                <button type="submit" class="btn btn-danger admin-delete" name="delete" value="1" disabled>
                   <i class="bi bi-trash"></i>
                 </button>
               </div>

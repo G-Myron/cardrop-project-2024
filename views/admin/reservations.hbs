@@ -40,14 +40,16 @@
             <td class="form-floating">
               <select class="form-select p-2" name="category"
                 style="height:unset; min-height:unset; width:7em;" disabled>
-                <option {{#if (eq category "Large")}}selected{{/if}}>Large</option>
-                <option {{#if (eq category "Medium")}}selected{{/if}}>Medium</option>
-                <option {{#if (eq category "Small")}}selected{{/if}}>Small</option>
+                <option></option>
+                {{#each ../carsGlobalCategories}}
+                <option {{#if (eq ../category this)}}selected{{/if}}>{{this}}</option>
+                {{/each}}
               </select>
             </td>
             <td class="form-floating">
               <select class="form-select p-2" name="location"
                 style="height:unset; min-height:unset;" disabled>
+                <option></option>
                 {{#each ../citiesList}}
                 <option {{#if (eq ../location this)}}selected{{/if}}>{{this}}</option>
                 {{/each}}
@@ -72,7 +74,7 @@
                 <button type="submit" class="btn btn-success admin-save d-none">
                   <i class="bi bi-floppy"></i>
                 </button>
-                <button type="submit" class="btn btn-danger admin-cancel" name="delete" value="1">
+                <button type="submit" class="btn btn-danger admin-delete" name="delete" value="1" disabled>
                   <i class="bi bi-trash"></i>
                 </button>
               </div>

@@ -36,7 +36,7 @@ export class Cars {
 
   static async getAllCars(limit=0, skip=0) {
     const query = {}
-    const options = { projection: {_id:0}, sort:{ _id: 1 } }
+    const options = { projection: {_id:0}, sort:{ _id:-1 } }
 
     return await this.customFind(query, options, limit, skip)
   }
@@ -57,8 +57,9 @@ export class Cars {
   static async updateCar(carDto) {
     const query = { plate: carDto.plate }
     const updateDoc = { $set: carDto }
+    const options = {upsert: true}
 
-    return await db.collection('cars').updateOne(query, updateDoc)
+    return await db.collection('cars').updateOne(query, updateDoc, options)
   }
 
   static async deleteCar(plate) {
