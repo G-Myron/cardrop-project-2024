@@ -23,7 +23,7 @@ export class Categories {
 
     // Populate collection
     await db.collection('categories').insertMany(initCategories)
-    console.log("Successfully created categories collection!")
+    console.log(`Successfully created categories collection!`)
   }
 
   static async customFind(query, options) {

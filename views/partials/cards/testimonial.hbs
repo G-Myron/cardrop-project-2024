@@ -1,8 +1,18 @@
 <div class="col-md-7 mx-auto mb-4 mb-md-0">
   <div class="card">
     <div class="card-body py-4 mt-2">
+      {{#if user}}
       <h5 class="card-title">{{user.name}} {{user.surname}}</h5>
+      {{else}}
+      <h6 class="card-title"><em>Deleted user</em></h6>
+      {{/if}}
+      
+      {{#if car}}
       <h6 class="card-title my-3">{{car.make}} {{car.model}} ({{car.plate}})</h6>
+      {{else}}
+      <h6 class="card-title my-3"><em>Removed car</em></h6>
+      {{/if}}
+
       <ul class="list-unstyled d-flex justify-content-center text-primary">
         {{#if (mt stars 0)}}<i class="bi bi-star-fill"></i>{{else}}<i class="bi bi-star"></i>{{/if}}
         {{#if (mt stars 1)}}<i class="bi bi-star-fill"></i>{{else}}<i class="bi bi-star"></i>{{/if}}
@@ -18,7 +28,7 @@
         <small class="text-muted">Today</small>
         {{else if (eq days 1)}}
         <small class="text-muted">Yesterday</small>
-        {{else}}
+        {{else if days}}
         <small class="text-muted">{{days}} days ago</small>
         {{/if}}
       </p>

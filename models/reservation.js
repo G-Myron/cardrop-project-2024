@@ -12,13 +12,15 @@ export class Reservations {
         $jsonSchema: {
           bsonType: "object",
           title: "Reservation Object Validation",
-          required: [ "user", "dateFrom", "dateTo", "category", "carPlate" ],
+          required: [ "user", "dateFrom", "dateTo", "category", "location", "carPlate" ],
           properties: {
             user: {bsonType: "string"}, // Foreign key
             category: {bsonType: "string"}, // Foreign key
             carPlate: {bsonType: ["string", "null"]}, // Foreign key
             dateFrom: {bsonType: "date"},
             dateTo: {bsonType: "date"},
+            location: {bsonType: "string"},
+            canceled: {bsonType: "bool"},
             rating: {bsonType: "object"},
           }
       }}
@@ -36,15 +38,29 @@ export class Reservations {
 
     await db.collection('reservations').insertMany(initReservations)
 
-    console.log("Successfully initialized reservations collection!")
+    console.log(`Successfully initialized reservations collection!`)
   }
 
-  static async customFind(query, options) {
-    return await db.collection('reservations').find(query, options).toArray()
+  static async customFind(query, options, limit=0, skip=0) {
+    return await db.collection('reservations').find(query, options).limit(limit).skip(skip).toArray()
   }
 
-  static async getAllReservations() {
-    return await this.customFind( {}, {sort: {dateTo: -1, dateFrom: -1}} )
+  static async getAllReservations(limit=0, skip=0) {
+    return await this.customFind( {}, {sort: {dateTo: -1, dateFrom: -1}}, limit, skip )
+  }
+  static async countReservations() {
+    const filter = {}
+    return await db.collection('reservations').countDocuments(filter)
+  }
+
+  static async getAllReservationsByUser(userEmail, limit=0, skip=0) {
+    const query = {user: userEmail}
+    const options = {sort: {dateTo: -1, dateFrom: -1}}
+    return await this.customFind( query, options, limit, skip )
+  }
+  static async countReservationsByUser(userEmail) {
+    const filter = { user: userEmail }
+    return await db.collection('reservations').countDocuments(filter)
   }
 
   static async getReservationsByUser(userEmail, current=true, canceled=true, old=true) {
@@ -78,6 +94,13 @@ export class Reservations {
     const query = {_id: ObjectId.createFromHexString(id)}
 
     await db.collection('reservations').findOneAndDelete(query)
+  }
+
+  static async updateReservation(reservationDto, id) {
+    const query = { _id: ObjectId.createFromHexString(id) }
+    const updateDoc = { $set: reservationDto }
+
+    return await db.collection('reservations').updateOne(query, updateDoc)
   }
   
 

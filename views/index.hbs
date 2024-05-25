@@ -1,17 +1,26 @@
 
-{{#unless categories}}<div style="margin-top: 20vh;"></div>{{/unless}}
+{{#unless city}}<div style="margin-top: 20vh;"></div>{{/unless}}
 
 <div class="mt-3 m-md-5 p-4 p-md-5 rounded border border-3">
   {{>forms/search}}
 </div>
 
 <div class="mx-lg-5 px-lg-5">
+  {{#if city}}
+  {{#unless categories}}
+  <section class="card alert alert-warning mx-lg-5">
+    <div class="card-body text-center">
+      We are sorry. There are no available cars for this search..
+    </div>
+  </section>
+  {{/unless}}
+  {{/if}}
   {{#each categories }}
-    <section class="card my-5 mx-lg-5">
-      <div class="card-body p-4 overflow-auto">
-        {{>cards/details imgWidth=250 isBrief=1
-            days=../days city=../city dateFrom=../dateFrom dateTo=../dateTo}}
-      </div>
-    </section>
+  <section class="card my-5 mx-lg-5">
+    <div class="card-body p-4 overflow-auto">
+      {{>cards/details imgWidth=250 isBrief=1
+          days=../days city=../city dateFrom=../dateFrom dateTo=../dateTo}}
+    </div>
+  </section>
   {{/each}}
 </div>

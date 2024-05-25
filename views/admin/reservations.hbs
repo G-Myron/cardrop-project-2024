@@ -1,0 +1,104 @@
+
+<section class="">
+  <h2 class="text-center my-5">
+    Reservations
+    {{#if user}} for {{user}}{{/if}}
+  </h2>
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered  admin-table">
+      <thead class="table-primary">
+        <tr>
+          <th scope="col" class="col-1">#</th>
+          <th scope="col" class="col-2">User</th>
+          <th scope="col" class="col-1">From</th>
+          <th scope="col" class="col-1">To</th>
+          <th scope="col" class="col-1">Category</th>
+          <th scope="col" class="col-1">Location</th>
+          <th scope="col" class="col-1">Canceled</th>
+          <th scope="col" class="col-1">Plate</th>
+          <th scope="col" class="col-1">Rating</th>
+          <th scope="col" class="col-1"></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each reservations}}
+        <tr>
+          <form method="post">
+            <td>{{add @index (add ../skip 1)}}</td>
+            
+            <td class="form-floating">
+              <input type="email" class="form-control p-2" style="height:unset; min-height:unset;"
+                name="user" value="{{user}}" disabled readonly>
+            </td>
+            <td class="form-floating">
+              <input type="date" class="form-control p-2" style="height:unset; min-height:unset;"
+                name="dateFrom" value="{{isoDate dateFrom}}" disabled>
+            </td>
+            <td class="form-floating">
+              <input type="date" class="form-control p-2" style="height:unset; min-height:unset;"
+                name="dateTo" value="{{isoDate dateTo}}" disabled>
+            </td>
+            <td class="form-floating">
+              <select class="form-select p-2" style="height:unset; min-height:unset;" name="category" disabled>
+                <option {{#if (eq category "Large")}}selected{{/if}}>Large</option>
+                <option {{#if (eq category "Medium")}}selected{{/if}}>Medium</option>
+                <option {{#if (eq category "Small")}}selected{{/if}}>Small</option>
+              </select>
+            </td>
+            <td class="form-floating">
+              <select class="form-select p-2" style="height:unset; min-height:unset;" name="location" disabled>
+                {{#each ../citiesList}}
+                <option {{#if (eq ../location this)}}selected{{/if}}>{{this}}</option>
+                {{/each}}
+              </select>
+            </td>
+            <td class="form-floating">
+              <input readonly class="form-control p-2" style="height:unset; min-height:unset;"
+                name="canceled" value="{{canceled}}" onclick="this.value = this.value === 'false'? 'true':'false' " disabled>
+            </td>
+            <td class="form-floating">
+              <input type="text" class="form-control p-2" style="height:unset; min-height:unset;"
+                name="carPlate" value="{{carPlate}}" disabled>
+            </td>
+            <td class="form-floating">
+              <input type="text" class="form-control text-center p-2" style="height:unset; min-height:unset;"
+                value="{{rating.stars}}" disabled>
+            </td>
+
+            <td>
+              <input  name="reservationId" value={{_id}} hidden>
+              <div class="d-flex justify-content-center gap-2">
+                <button type="button" class="btn btn-primary admin-edit">
+                  <i class="bi bi-pencil-square"></i>
+                </button>
+                <button type="submit" class="btn btn-success admin-save d-none">
+                  <i class="bi bi-floppy"></i>
+                </button>
+                <button type="submit" class="btn btn-danger admin-cancel" name="delete" value="1">
+                  <i class="bi bi-trash"></i>
+                </button>
+              </div>
+            </td>
+          
+          </form>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+
+  <form method="get">
+    <input name="user" value="{{user}}" hidden>
+    <input name="page" value="{{page}}" hidden>
+    <input name="limit" value="{{limit}}" hidden>
+    <ul class="pagination justify-content-end">
+      <li class="page-item">
+        <button class="page-link" name="prev" value="1">Prev.</button>
+      </li>
+      <li class="page-item">
+        <button class="page-link" name="next" value="1">Next</button>
+      </li>
+    </ul>
+  </form>
+
+</section>

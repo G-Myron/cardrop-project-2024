@@ -6,14 +6,14 @@
     <div class="col-md-6 mb-4">
       <div class="form-floating">
         {{#if (eq action "edit")}}<div class="form-control-plaintext d-none"></div>{{/if}}
-        <input type="text" class="form-control" name="name" id="floatingFirstName" placeholder="Name" value="{{user.name}}" required>
+        <input type="text" class="form-control" name="name" id="floatingFirstName" placeholder="Name" value="{{logged_in_user.name}}" required>
         <label for="floatingFirstName">First name</label>
       </div>
     </div>
     <div class="col-md-6 mb-4">
       <div class="form-floating">
         {{#if (eq action "edit")}}<div class="form-control-plaintext d-none"></div>{{/if}}
-        <input type="text" class="form-control" name="surname" id="floatingLastName" placeholder="Surname" value="{{user.surname}}" required>
+        <input type="text" class="form-control" name="surname" id="floatingLastName" placeholder="Surname" value="{{logged_in_user.surname}}" required>
         <label for="floatingLastName">Last name</label>
       </div>
     </div>
@@ -23,7 +23,7 @@
   <div class="row">
     <div class="col-md-6 mb-4">
       <div class="form-floating">
-        <input type="email" class="form-control" name="email" id="floatingEmail" placeholder="Email" value="{{user.email}}" required
+        <input type="email" class="form-control" name="email" id="floatingEmail" placeholder="Email" value="{{logged_in_user.email}}" required
           {{#if (eq action "edit")}}readonly{{/if}} >
         <label for="floatingEmail">Email</label>
       </div>
@@ -31,7 +31,7 @@
     <div class="col-md-6 mb-4">
       <div class="form-floating">
         {{#if (eq action "edit")}}<div class="form-control-plaintext d-none"></div>{{/if}}
-        <input type="tel" class="form-control" name="tel" id="floatingPhone" placeholder="Phone" value="{{user.tel}}" required>
+        <input type="tel" class="form-control" name="tel" id="floatingPhone" placeholder="Phone" value="{{logged_in_user.tel}}" required>
         <label for="floatingPhone">Phone</label>
       </div>
     </div>

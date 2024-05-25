@@ -1,12 +1,12 @@
 import express from 'express'
 import { UserController } from '../controllers/userController.js'
-import { validateLogin, validateSignup } from '../validators/validator.js'
+import { validateEdit, validateLogin, validateSignup } from '../validators/validator.js'
 
 const router = express.Router()
 
 
 router.get("/login", (req, res) => {
-    req.session.user? res.redirect("/") :
+    req.session.logged_in_user? res.redirect("/") :
         res.render("user/login")
 })
 router.post("/login", validateLogin,
@@ -16,7 +16,7 @@ router.post("/login", validateLogin,
         try {
             const user = await UserController.handleLogin(req.body)
             if (user){
-                req.session.user = user
+                req.session.logged_in_user = user
                 res.redirect("/")
             }
             else {
@@ -31,14 +31,14 @@ router.post("/login", validateLogin,
 
 
 router.get("/signup", (req, res) => {
-    req.session.user? res.redirect("/") :
+    req.session.logged_in_user? res.redirect("/") :
         res.render("user/create")
 })
 router.post("/signup", validateSignup,
     async (req, res) => {
         try {
             const user = await UserController.handleSignup(req.body)
-            req.session.user = user
+            req.session.logged_in_user = user
             res.redirect("/")
         }
         catch(error) {
@@ -47,15 +47,14 @@ router.post("/signup", validateSignup,
         }
 })
 
-router.post("/edit", validateSignup,
+router.post("/edit", validateEdit,
     async (req, res) => {
         try {
             const user = await UserController.handleEdit(req.body)
-            req.session.user = user
+            req.session.logged_in_user = user
             res.redirect("/")
         }
         catch(error) {
-            req.session.destroy()
             res.render("user/edit", {errorMsg: error.message})
         }
 })

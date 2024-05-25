@@ -1,14 +1,25 @@
 import fs from 'fs/promises'
 
-const authWhiteList = ["/auth/login", "/auth/signup"]
 const citiesList = JSON.parse(await fs.readFile(`data/citiesList.json`))
 
 const authenticationMW = (req, res, next) => {
-  if(req.session.user || authWhiteList.includes(req._parsedUrl.pathname)){
-    res.locals.user = req.session.user
+  if(req.session.logged_in_user){
+    res.locals.logged_in_user = req.session.logged_in_user
     next()
   }
-  else res.redirect(authWhiteList[0])
+  else res.redirect("/auth/login")
+}
+
+const adminMW = (req, res, next) => {
+  if(req.session.logged_in_user?.role === "admin")
+    next()
+  else res.redirect("/")
+}
+
+const notAdminMW = (req, res, next) => {
+  if(req.session.logged_in_user?.role !== "admin")
+    next()
+  else res.redirect("/admin")
 }
 
 const globalVariablesMW = async (req, res, next) => {
@@ -16,4 +27,4 @@ const globalVariablesMW = async (req, res, next) => {
   next()
 }
 
-export { authenticationMW, globalVariablesMW }
+export { authenticationMW, adminMW, notAdminMW, globalVariablesMW }

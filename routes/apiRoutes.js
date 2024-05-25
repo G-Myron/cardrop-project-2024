@@ -15,13 +15,11 @@ router.get("/users/:email", async (req, res) => {
 
 router.post("/reserve", async (req, res, next) => {
     try {
-        await ReservationController.saveReservation( req.session.user?.email, req.body)
+        await ReservationController.saveReservation( req.session.logged_in_user?.email, req.body)
         
         res.redirect("/user/my_reservations")
     }
-    catch(err) {
-        next(err)
-    }
+    catch(err) {next(err)}
 })
 
 router.post("/unreserve", async (req, res, next) => {

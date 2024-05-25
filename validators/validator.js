@@ -20,8 +20,11 @@ const validateSignup = [
       if (value === req.body.password) return true
       else throw new Error("Passwords don't match")
     }),
-    (req, res, next) => handleValidityErrors(req, res, next, "user"+req.route.path)
+    (req, res, next) => handleValidityErrors(req, res, next, "user/create")
 ]
+
+const validateEdit = [...validateSignup]
+validateEdit[ validateEdit.length - 1 ] = (req, res, next) => handleValidityErrors(req, res, next, "user/edit")
 
 const validateSearch = [
   body("city").exists().withMessage("Please choose a city from the list"),
@@ -39,10 +42,12 @@ const validateSearch = [
 ]
 
 
-function handleValidityErrors(req, res, next, onErrorRender, options={}) {
+function handleValidityErrors(req, res, next, onErrorRender, options={}, redirect=false) {
   const errors = validationResult(req)
   if (errors.isEmpty())
     next()
+  else if (redirect)
+    res.redirect(req._parsedOriginalUrl.path)
   else {
     options.errorMsg = errors.array()[0].msg
     res.render(onErrorRender, options)
@@ -50,4 +55,4 @@ function handleValidityErrors(req, res, next, onErrorRender, options={}) {
 }
 
 
-export { validateLogin, validateSignup, validateSearch }
+export { validateLogin, validateSignup, validateEdit, validateSearch }

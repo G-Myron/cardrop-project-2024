@@ -4,10 +4,11 @@ import session from 'express-session'
 
 import { router as detailsRouter } from './routes/detailsRoutes.js'
 import { router as userRouter } from './routes/userRoutes.js'
+import { router as adminRouter } from './routes/adminRoutes.js'
 import { router as indexRouter } from './routes/indexRoutes.js'
 import { router as apiRouter } from './routes/apiRoutes.js'
 import { router as authRouter } from './routes/authRoutes.js'
-import { authenticationMW, globalVariablesMW } from './config/globalMiddlewares.js'
+import { authenticationMW, adminMW, notAdminMW, globalVariablesMW } from './config/globalMiddlewares.js'
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -17,7 +18,9 @@ app.engine('hbs', engine({
   extname: ".hbs",
   helpers: {
     eq: (a, b, c) => a===b || a===c,
+    or: (a, b) => a?? b,
     mt: (a, b) => a > b,
+    add: (a, b) => a + b,
     ifexists: (a, b) => a?? b,
     localDate: (d) => new Date(d).toLocaleDateString(),
     isoDate: (d) => new Date(d).toISOString().slice(0,10)
@@ -43,15 +46,16 @@ app.use( session({
   }
 }))
 
-// Check Authentication and set global variables for all pages
-app.use(authenticationMW, globalVariablesMW)
+// Set global variables for all pages
+app.use(globalVariablesMW)
 
 // Routers
-app.use(indexRouter)
-app.use("/vehicle", detailsRouter)
-app.use("/user", userRouter)
-app.use("/api", apiRouter)
+app.all("/", authenticationMW, notAdminMW, indexRouter)
 app.use("/auth", authRouter)
+app.use("/api", authenticationMW, notAdminMW, apiRouter)
+app.use("/admin", authenticationMW, adminMW, adminRouter)
+app.use("/user", authenticationMW, notAdminMW, userRouter)
+app.use("/vehicle", authenticationMW, notAdminMW, detailsRouter)
 
 // Redirect any other route
 app.use((req, res) => {

@@ -19,7 +19,7 @@ router.get("/my_reservations", async (req, res) => {
     const oldRentals = ["false","0","",undefined].includes(req.query.oldRentals)? false:true
 
     const reservations = await ReservationController.getReservationsByUser(
-        req.session.user?.email, current, canceled, oldRentals)
+        req.session.logged_in_user?.email, current, canceled, oldRentals)
     
     res.render("user/reservations", {reserv: 1, reservations: reservations,
         current:current, canceled:canceled, oldRentals:oldRentals})

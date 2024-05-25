@@ -28,7 +28,7 @@ async function initializeDB() {
 
 // If __name__ == main
 if (process.argv[1] === import.meta.filename){
-  console.log("Running database script..")
+  console.log(`Running database script..`)
   await initializeDB().catch(console.dir)
 }
 

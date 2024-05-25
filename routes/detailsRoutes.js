@@ -26,7 +26,7 @@ router.get("/:category", async (req, res, next) => {
   
     const daysCount = DetailsController.getDays( req.query.from, req.query.to )
     const category = await DetailsController.getCategoryDetails( req.params.category, daysCount )
-    const ratings = await RatingController.getRatings(category.name, req.query.city)
+    const ratings = await RatingController.getRentals(category.name, req.query.city)
 
     res.render("vehicleDetails", {
       city: req.query.city,

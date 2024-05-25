@@ -8,7 +8,7 @@ export class RatingController {
     await Reservations.addRating(body.rentalId, parseInt(body.rating), body.comment)
   }
 
-  static async getRatings(category, city) {
+  static async getRentals(category, city) {
     const rentals = await Reservations.getRentals(category, city)
 
     for (let rental of rentals){

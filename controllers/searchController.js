@@ -3,17 +3,17 @@ import { Categories } from "../models/category.js"
 
 export class SearchController {
 
-  static async getAvailiableCategories(city, daysCount) {
+  static async getAvailableCategories(city, daysCount) {
     const categories = await Categories.getAllCategories(daysCount)
 
-    const availiable = []
+    const available = []
     for (let category of categories) {
-      category.availiability = await Cars.countCarsOfCategoryInLocation(category.name, city)
-      if (category.availiability)
-        availiable.push(category)
+      category.availability = await Cars.countCarsOfCategoryInLocation(category.name, city)
+      if (category.availability)
+        available.push(category)
     }
     
-    return availiable
+    return available
   }
 
   static getDays(dateFrom, dateTo) {

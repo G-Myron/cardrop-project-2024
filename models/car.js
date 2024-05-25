@@ -11,9 +11,10 @@ export class Cars {
         $jsonSchema: {
           bsonType: "object",
           title: "Car Object Validation",
-          required: [ "category", "model", "plate", "location" ],
+          required: [ "category", "make", "model", "plate", "location" ],
           properties: {
             category: {bsonType: "string"}, // Foreign key
+            make: {bsonType: "string"},
             model: {bsonType: "string"},
             plate: {bsonType: "string"},
             location: {bsonType: "string"},
@@ -26,18 +27,22 @@ export class Cars {
 
     // Populate collection
     await db.collection('cars').insertMany(initCars)
-    console.log("Successfully initialized cars collection!")
+    console.log(`Successfully initialized cars collection!`)
   }
 
-  static async customFind(query, options) {
-    return await db.collection('cars').find(query, options).toArray()
+  static async customFind(query, options, limit=0, skip=0) {
+    return await db.collection('cars').find(query, options).limit(limit).skip(skip).toArray()
   }
 
-  static async getAllCars() {
+  static async getAllCars(limit=0, skip=0) {
     const query = {}
     const options = { projection: {_id:0} }
 
-    return await this.customFind(query, options)
+    return await this.customFind(query, options, limit, skip)
+  }
+  static async countCars() {
+    const filter = {}
+    return await db.collection('cars').countDocuments(filter)
   }
 
   static async getCarByPlate(plate) {
@@ -47,6 +52,19 @@ export class Cars {
   static async countCarsOfCategoryInLocation(category, location) {
     const filter = { category: category, location: location }
     return await db.collection('cars').countDocuments(filter)
+  }
+
+  static async updateCar(carDto) {
+    const query = { plate: carDto.plate }
+    const updateDoc = { $set: carDto }
+
+    return await db.collection('cars').updateOne(query, updateDoc)
+  }
+
+  static async deleteCar(plate) {
+    const query = {plate: plate}
+
+    await db.collection('cars').findOneAndDelete(query)
   }
 
 }
