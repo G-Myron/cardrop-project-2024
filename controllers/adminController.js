@@ -53,7 +53,7 @@ export class AdminController {
 
   // Reservations
   static async getAllReservations(userEmail, limit=0, skip=0) {
-    const resvs = userEmail? await Reservations.getAllReservationsByUser(userEmail, limit, skip)
+    const resvs = userEmail? await Reservations.getReservationsByUser(userEmail, true, true, true, limit, skip)
         : await Reservations.getAllReservations(limit, skip)
     return resvs
   }

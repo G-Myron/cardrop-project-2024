@@ -2,7 +2,7 @@
 const rows = document.querySelectorAll(".admin-table tbody tr")
 const newRow = document.querySelector(".admin-table tbody tr#new-row")
 
-rows.forEach( row => {
+rows?.forEach( row => {
   const inputs = row.querySelectorAll("td input.form-control, td select.form-select")
   const editBtn = row.querySelector(".admin-edit")
   const saveBtn = row.querySelector(".admin-save")
@@ -18,7 +18,7 @@ rows.forEach( row => {
 })
 
 const addDocumentBtn = document.querySelector(".admin-table .admin-add")
-addDocumentBtn.addEventListener("click", () => {
+addDocumentBtn?.addEventListener("click", () => {
   newRow.classList.toggle("d-none")
   newRow.querySelector(".admin-edit").click()
 })
