@@ -1,25 +1,4 @@
-[{
-  "name": "Myron",
-  "surname": "Giannakis",
-  "email": "gmyron1@gmail.com",
-  "tel": "6946396162",
-  "password": "$2b$10$NupTT/IIKmVq/8L4a4m.7ecxPeAkZQdbN.dILI8Emi91lvNuq.e3C"
-},
-{
-  "name": "John",
-  "surname": "Doe",
-  "email": "user@test.com",
-  "tel": "6912345678",
-  "password": "$2b$10$NupTT/IIKmVq/8L4a4m.7ecxPeAkZQdbN.dILI8Emi91lvNuq.e3C"
-},
-{
-  "name": "Admin",
-  "surname": "",
-  "email": "admin@test.com",
-  "role": "admin",
-  "tel": "6915963780",
-  "password": "$2b$10$NupTT/IIKmVq/8L4a4m.7ecxPeAkZQdbN.dILI8Emi91lvNuq.e3C"
-},
+[
 {"name":"Arleyne","surname":"Greenwell","email":"agreenwell0@foxnews.com","tel":"+302569173020","password":"$2a$04$oqXqTtt/1uXfNgcHxZXmqOYxKvI5nFEDO02YBx/MJlpABbEaFYVBm"},
 {"name":"Sayre","surname":"Marklow","email":"smarklow1@bbc.co.uk","tel":"6987037069","password":"$2a$04$qieM5atIGTaO0ss3IIhEg.gJx/NDkkdJhlsOGKxIbAJzKilychLDi"},
 {"name":"Elvis","surname":"Stammirs","email":"estammirs2@berkeley.edu","tel":"+302704480728","password":"$2a$04$0AnTbHoAuVNmNMLjX9bleO2Y1limFchIYyDxzRh2JjDcLes8R3Wj6"},
@@ -39,4 +18,27 @@
 {"name":"Joela","surname":"Mapstone","email":"jmapstoneg@telegraph.co.uk","tel":"6979553317","password":"$2a$04$H.F3d5bMje4rhA5TkdSW8uz1D06OpXmJI4YviobJUn2POjdCm02k."},
 {"name":"Dena","surname":"Hardacre","email":"dhardacreh@apache.org","tel":"6952021500","password":"$2a$04$2ZjhewVlU/JRu7LkbnV50esLvex3olev1I5SmfR.CRqiAadt1yVjS"},
 {"name":"Terencio","surname":"Olensby","email":"tolensbyi@answers.com","tel":"+306910204901","password":"$2a$04$XNbg4SWBD9NttVWI1saD8e3CSnihVXU7BeR1LrCPEKCosJkhY4xf."},
-{"name":"Darya","surname":"Hartfleet","email":"dhartfleetj@bloglines.com","tel":"6957689071","password":"$2a$04$dEAlZRYzKI3ZZn2vn/NLVuM/h7cEiGU0LRqGgUcmfBZ3/VpqLc/hq"}]
+{"name":"Darya","surname":"Hartfleet","email":"dhartfleetj@bloglines.com","tel":"6957689071","password":"$2a$04$dEAlZRYzKI3ZZn2vn/NLVuM/h7cEiGU0LRqGgUcmfBZ3/VpqLc/hq"},
+{
+  "name": "Myron",
+  "surname": "Giannakis",
+  "email": "gmyron1@gmail.com",
+  "tel": "6946396162",
+  "password": "$2b$10$NupTT/IIKmVq/8L4a4m.7ecxPeAkZQdbN.dILI8Emi91lvNuq.e3C"
+},
+{
+  "name": "Giannis",
+  "surname": "Kontogouris",
+  "email": "user@test.com",
+  "tel": "6912345678",
+  "password": "$2a$10$u4hfQDCExlTBa/AQlHSx9eHWId2qwFlnltTD54QPdWhzW0GV5iN3."
+},
+{
+  "name": "Admin",
+  "surname": "",
+  "email": "admin@test.com",
+  "role": "admin",
+  "tel": "6915963780",
+  "password": "$2a$10$u4hfQDCExlTBa/AQlHSx9eHWId2qwFlnltTD54QPdWhzW0GV5iN3."
+}
+]

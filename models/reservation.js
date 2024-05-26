@@ -45,25 +45,20 @@ export class Reservations {
     return await db.collection('reservations').find(query, options).limit(limit).skip(skip).toArray()
   }
 
-  static async getAllReservations(limit=0, skip=0) {
-    return await this.customFind( {}, {sort: {dateTo: -1, dateFrom: -1}}, limit, skip )
+  static async getAllReservations(limit=0, skip=0, query={}) {
+    const options = {sort: {dateTo: -1, dateFrom: -1, canceled: 1}}
+    return await this.customFind( query, options, limit, skip )
   }
   static async countReservations() {
     const filter = {}
     return await db.collection('reservations').countDocuments(filter)
-  }
-
-  static async getAllReservationsByUser(userEmail, limit=0, skip=0) {
-    const query = {user: userEmail}
-    const options = {sort: {dateTo: -1, dateFrom: -1}}
-    return await this.customFind( query, options, limit, skip )
   }
   static async countReservationsByUser(userEmail) {
     const filter = { user: userEmail }
     return await db.collection('reservations').countDocuments(filter)
   }
 
-  static async getReservationsByUser(userEmail, current=true, canceled=true, old=true) {
+  static async getReservationsByUser(userEmail, current=true, canceled=true, old=true, limit=0, skip=0) {
     const query = {user: userEmail}
 
     if (!current) {
@@ -72,8 +67,7 @@ export class Reservations {
     if (!canceled) query.canceled = false
     if (!old) query.carPlate = null
 
-    const reservs = await this.customFind( query, {sort: {dateTo: -1, dateFrom: -1}} )
-
+    const reservs = await this.getAllReservations(limit, skip, query)
     return reservs
   }
 
