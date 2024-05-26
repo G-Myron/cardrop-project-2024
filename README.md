@@ -5,7 +5,7 @@ The final project for 4th year Computer Engineering class on "Web programming".
 ## Prerequisites
 - NodeJS v10 or higher.
 
-## Run instructions
+## Install and run instructions
 - In a desired directory open terminal and run `git clone https://github.com/G-Myron/cardrop-project-2024.git`
 - `cd cardrop-project-2024` to get into the directory
 - `npm i` or `npm install` to install dependencies
@@ -15,6 +15,10 @@ The final project for 4th year Computer Engineering class on "Web programming".
 ## Environment Variables
 In order for the app to run properly, you have to add a `.env` file in the root folder.
 This file contains any passwords and other environment variables ndeeded and you can request it from your *system admin* or find it in the wiki.
+
+## Database initialization
+- To initialize all collections at once, run `node .\config\initializeDb.js` in the root folder.
+- You can also initialize only one collection by running, for example for the users, `node .\models\user.js`.
 
 ## Wiki
 You can find the project's wiki [here](https://github.com/G-Myron/cardrop-project-2024/wiki), or clone it localy with this command: `git clone https://github.com/G-Myron/cardrop-project-2024.wiki.git`
